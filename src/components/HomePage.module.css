@@ -1,0 +1,290 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content {
+  max-width: 1000px;
+  width: 100%;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.rules {
+  padding: 60px 40px;
+  background: #f8f9fa;
+}
+
+.rules h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.ruleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ruleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ruleNumber {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.ruleContent h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.ruleContent p {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.scoring {
+  padding: 60px 40px;
+  background: white;
+}
+
+.scoring h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.scoringTable {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #f8f9fa;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.scoringRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.scoringRow:last-child {
+  border-bottom: none;
+}
+
+.attempt {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.points {
+  font-weight: bold;
+  color: #28a745;
+  font-size: 1.2rem;
+}
+
+.gameModes {
+  padding: 60px 40px;
+  background: #f8f9fa;
+}
+
+.gameModes h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.modeCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modeCard {
+  display: block;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modeCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.modeCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modeIcon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.modeCard h3 {
+  font-size: 1.8rem;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.modeCard p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.modeButton {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.modeCard:hover .modeButton {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.footer {
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+  color: #666;
+  border-top: 1px solid #e9ecef;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .content {
+    border-radius: 15px;
+  }
+
+  .header {
+    padding: 40px 20px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .rules,
+  .scoring,
+  .gameModes {
+    padding: 40px 20px;
+  }
+
+  .rules h2,
+  .scoring h2,
+  .gameModes h2 {
+    font-size: 2rem;
+  }
+
+  .rulesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ruleCard {
+    padding: 20px;
+  }
+
+  .modeCards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .modeCard {
+    padding: 30px 20px;
+  }
+}
