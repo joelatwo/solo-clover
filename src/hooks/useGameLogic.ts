@@ -3,7 +3,7 @@ import {
   GameState,
   Card,
   SlotPosition,
-  Puzzle,
+  PuzzleType,
   PuzzleSlot,
   PuzzleSlots,
   CardCorrectnessType,
@@ -19,12 +19,12 @@ const defaultPlacedCards = {
   bottomLeft: null,
 };
 
-export function useGameLogic(initialPuzzle: Puzzle | null) {
+export function useGameLogic(initialPuzzle: PuzzleType | null) {
   const [score, setScore] = useState<number | null>();
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
-  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(
+  const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType | null>(
     initialPuzzle
   );
   const [placedCards, setPlacedCards] =

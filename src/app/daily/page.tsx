@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import WordPuzzleGame from "@/components/WordPuzzleGame";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { Puzzle } from "@/types/game";
+import { PuzzleType } from "@/types/game";
 import gameData from "@/data/puzzles";
 
 export default function DailyPage() {
-  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
+  const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function DailyPage() {
 
     // For testing, cycle through puzzles based on day of week
     const puzzleIndex = dayOfWeek % gameData.length;
-    setCurrentPuzzle(gameData[puzzleIndex] as Puzzle);
+    setCurrentPuzzle(gameData[puzzleIndex] as PuzzleType);
     setIsLoading(false);
   }, []);
 
