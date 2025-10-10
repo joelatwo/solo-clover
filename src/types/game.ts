@@ -10,30 +10,38 @@ export interface PuzzleSlot {
 }
 
 export interface PuzzleSlots {
-  topLeft: PuzzleSlot;
-  topRight: PuzzleSlot;
-  bottomRight: PuzzleSlot;
-  bottomLeft: PuzzleSlot;
+  top: PuzzleSlot;
+  right: PuzzleSlot;
+  bottom: PuzzleSlot;
+  left: PuzzleSlot;
 }
 
 export interface Puzzle {
   id: string;
   cards: Card[];
-  puzzleSlots: PuzzleSlots;
+  solutions: PuzzleSlots;
 }
 
 export interface GameData {
   puzzles: Puzzle[];
 }
 
+export interface CardCorrectnessType {
+  topLeft: boolean;
+  topRight: boolean;
+  bottomLeft: boolean;
+  bottomRight: boolean;
+}
+
+export interface PlacedCardsType {
+  topLeft: Card | null;
+  topRight: Card | null;
+  bottomRight: Card | null;
+  bottomLeft: Card | null;
+}
 export interface GameState {
   currentPuzzle: Puzzle | null;
-  placedCards: {
-    topLeft: Card | null;
-    topRight: Card | null;
-    bottomRight: Card | null;
-    bottomLeft: Card | null;
-  };
+  placedCards: PlacedCardsType;
   attempts: number;
   score: number;
   isComplete: boolean;
@@ -45,4 +53,8 @@ export interface GameState {
   };
 }
 
-export type SlotPosition = 'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft';
+export type SlotPosition =
+  | "topLeft"
+  | "topRight"
+  | "bottomRight"
+  | "bottomLeft";

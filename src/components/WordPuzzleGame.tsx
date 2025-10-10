@@ -7,7 +7,7 @@ import Card from "./Card";
 import Puzzle from "./Puzzle";
 import { useGameLogic } from "@/hooks/useGameLogic";
 import { Puzzle as PuzzleType } from "@/types/game";
-import gameData from "@/data/puzzles.json";
+import gameData from "@/data/puzzles";
 import styles from "./WordPuzzleGame.module.css";
 
 type Props = {
@@ -15,20 +15,28 @@ type Props = {
 };
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
-  console.log("WordPuzzleGame");
-  console.log(gameData);
   const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType>(initialPuzzle);
   const [showResult, setShowResult] = useState<{
     isCorrect: boolean;
     pointsEarned: number;
   } | null>(null);
 
-  const gameLogic = useGameLogic(currentPuzzle);
+  const {
+    placedCards,
+    cardsCorrectness,
+    score,
+    numberOfAttempts,
+    availableCards,
+    rotateCard,
+    placeCard,
+    removeCard,
+    submitSolution,
+    resetGame,
+  } = useGameLogic(currentPuzzle);
 
   const handleSubmit = () => {
-    const result = gameLogic.submitSolution();
-    console.log("result", result);
-    setShowResult(result);
+    const result = submitSolution();
+    // setShowResult(result);
 
     // Hide result after 3 seconds
     setTimeout(() => {
@@ -37,11 +45,11 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
   };
 
   const handleReset = () => {
-    gameLogic.resetGame();
+    resetGame();
     setShowResult(null);
   };
 
-  if (!currentPuzzle || !gameLogic.gameState.currentPuzzle) {
+  if (!currentPuzzle) {
     return <div className={styles.loading}>Loading puzzle...</div>;
   }
 
@@ -51,11 +59,9 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <div className={styles.header}>
           <h1>Word Puzzle Game</h1>
           <div className={styles.scoreInfo}>
-            <div className={styles.score}>
-              Score: {gameLogic.gameState.score}
-            </div>
+            <div className={styles.score}>Score: {score}</div>
             <div className={styles.attempts}>
-              Attempts: {gameLogic.gameState.attempts}/3
+              Attempts: {numberOfAttempts}/3
             </div>
           </div>
         </div>
@@ -75,23 +81,18 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <div className={styles.gameArea}>
           <div className={styles.puzzleArea}>
             <Puzzle
-              puzzleSlots={currentPuzzle.puzzleSlots}
-              placedCards={gameLogic.gameState.placedCards}
-              incorrectCards={gameLogic.gameState.incorrectCards}
-              onCardDrop={gameLogic.placeCard}
-              onCardRemove={gameLogic.removeCard}
+              solutions={currentPuzzle.solutions}
+              placedCards={placedCards}
+              onCardDrop={placeCard}
+              onCardRemove={removeCard}
             />
           </div>
 
           <div className={styles.cardsArea}>
             <h3>Available Cards</h3>
             <div className={styles.cardsGrid}>
-              {gameLogic.availableCards.map((card) => (
-                <Card
-                  key={card.id}
-                  card={card}
-                  onRotate={gameLogic.rotateCard}
-                />
+              {availableCards.map((card) => (
+                <Card key={card.id} card={card} onRotate={rotateCard} />
               ))}
             </div>
           </div>
@@ -100,17 +101,15 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <div className={styles.controls}>
           <button
             onClick={handleSubmit}
-            disabled={
-              gameLogic.gameState.isComplete ||
-              Object.values(gameLogic.gameState.placedCards).some(
-                (card) => card === null
-              )
-            }
+            // disabled={
+            //   gameLogic.gameState.isComplete ||
+            //   Object.values(gameLogic.gameState.placedCards).some(
+            //     (card) => card === null
+            //   )
+            // }
             className={styles.submitButton}
           >
-            {gameLogic.gameState.isComplete
-              ? "Game Complete!"
-              : "Submit Solution"}
+            {score ? "Game Complete!" : "Submit Solution"}
           </button>
 
           <button onClick={handleReset} className={styles.resetButton}>
@@ -118,11 +117,11 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           </button>
         </div>
 
-        {gameLogic.gameState.isComplete && (
+        {score && (
           <div className={styles.gameComplete}>
             <h2>Game Complete!</h2>
-            <p>Final Score: {gameLogic.gameState.score}</p>
-            <p>Attempts Used: {gameLogic.gameState.attempts}</p>
+            <p>Final Score: {score}</p>
+            <p>Attempts Used: {numberOfAttempts}</p>
           </div>
         )}
       </div>

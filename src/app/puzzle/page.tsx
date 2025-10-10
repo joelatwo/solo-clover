@@ -1,8 +1,7 @@
 import WordPuzzleGame from "@/components/WordPuzzleGame";
 import Link from "next/link";
 import styles from "./page.module.css";
-import gameData from "@/data/puzzles.json";
-import { Puzzle } from "@/types/game";
+import gameData from "@/data/puzzles";
 
 export default function PuzzlePage() {
   return (
@@ -13,7 +12,7 @@ export default function PuzzlePage() {
         </Link>
         <h1>Practice Puzzle</h1>
       </div>
-      <WordPuzzleGame initialPuzzle={gameData.puzzles[0] as Puzzle} />
+      <WordPuzzleGame initialPuzzle={gameData[0]} />
     </div>
   );
 }
