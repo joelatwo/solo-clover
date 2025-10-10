@@ -5,7 +5,7 @@ import WordPuzzleGame from "@/components/WordPuzzleGame";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { Puzzle } from "@/types/game";
-import gameData from "@/data/puzzles.json";
+import gameData from "@/data/puzzles";
 
 export default function DailyPage() {
   const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(null);
@@ -18,8 +18,8 @@ export default function DailyPage() {
     const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
 
     // For testing, cycle through puzzles based on day of week
-    const puzzleIndex = dayOfWeek % gameData.puzzles.length;
-    setCurrentPuzzle(gameData.puzzles[puzzleIndex] as Puzzle);
+    const puzzleIndex = dayOfWeek % gameData.length;
+    setCurrentPuzzle(gameData[puzzleIndex] as Puzzle);
     setIsLoading(false);
   }, []);
 

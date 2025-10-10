@@ -1,40 +1,46 @@
-import { useState, useEffect } from 'react';
-import { GameState, Card, SlotPosition, Puzzle } from '@/types/game';
+import { useState, useEffect } from "react";
+import {
+  GameState,
+  Card,
+  SlotPosition,
+  Puzzle,
+  PuzzleSlot,
+  PuzzleSlots,
+  CardCorrectnessType,
+  PlacedCardsType,
+} from "@/types/game";
+import { Bodoni_Moda } from "next/font/google";
+import { Interface } from "readline";
+
+const defaultPlacedCards = {
+  topLeft: null,
+  topRight: null,
+  bottomRight: null,
+  bottomLeft: null,
+};
 
 export function useGameLogic(initialPuzzle: Puzzle | null) {
-  const [gameState, setGameState] = useState<GameState>({
-    currentPuzzle: initialPuzzle,
-    placedCards: {
-      topLeft: null,
-      topRight: null,
-      bottomRight: null,
-      bottomLeft: null,
-    },
-    attempts: 0,
-    score: 0,
-    isComplete: false,
-    incorrectCards: {
-      topLeft: false,
-      topRight: false,
-      bottomRight: false,
-      bottomLeft: false,
-    },
-  });
+  const [score, setScore] = useState<number | null>();
+  const [cardsCorrectness, setCardsCorrectness] =
+    useState<CardCorrectnessType | null>();
+  const [numberOfAttempts, setNumberOfAttempts] = useState(0);
+  const [currentPuzzle, setCurrentPuzzle] = useState<Puzzle | null>(
+    initialPuzzle
+  );
+  const [placedCards, setPlacedCards] =
+    useState<PlacedCardsType>(defaultPlacedCards);
 
-  const [availableCards, setAvailableCards] = useState<Card[]>(initialPuzzle?.cards || []);
+  const [availableCards, setAvailableCards] = useState<Card[]>(
+    initialPuzzle?.cards || []
+  );
 
   // Load score from localStorage on mount
   useEffect(() => {
-    const savedScore = localStorage.getItem('wordPuzzleScore');
+    const savedScore = localStorage.getItem("wordPuzzleScore");
     if (savedScore) {
-      setGameState(prev => ({ ...prev, score: parseInt(savedScore) }));
+      setScore(parseInt(savedScore));
     }
   }, []);
-
-  // Save score to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('wordPuzzleScore', gameState.score.toString());
-  }, [gameState.score]);
 
   // Update available cards when puzzle changes
   useEffect(() => {
@@ -44,240 +50,158 @@ export function useGameLogic(initialPuzzle: Puzzle | null) {
   }, [initialPuzzle]);
 
   const rotateCard = (cardId: string) => {
-    setAvailableCards(prev => 
-      prev.map(card => 
-        card.id === cardId 
-          ? { ...card, rotation: ((card.rotation + 90) % 360) as 0 | 90 | 180 | 270 }
+    setAvailableCards((prev) =>
+      prev.map((card) =>
+        card.id === cardId
+          ? {
+              ...card,
+              rotation: ((card.rotation + 90) % 360) as 0 | 90 | 180 | 270,
+            }
           : card
       )
     );
   };
 
   const placeCard = (card: Card, position: SlotPosition) => {
-    // Remove card from available cards
-    setAvailableCards(prev => prev.filter(c => c.id !== card.id));
-    
-    // If there's already a card in this position, return it to available cards
-    const currentCard = gameState.placedCards[position];
-    if (currentCard) {
-      setAvailableCards(prev => [...prev, currentCard]);
+    console.log(position);
+    const existingCard = placedCards[position];
+    if (existingCard) {
+      setAvailableCards((prev) => {
+        const filtered = prev.filter((c) => c.id !== card.id);
+        return [...filtered, existingCard];
+      });
+    } else {
+      setAvailableCards((prev) => prev.filter((c) => c.id !== card.id));
     }
-
-    setGameState(prev => ({
-      ...prev,
-      placedCards: {
-        ...prev.placedCards,
-        [position]: card,
-      },
-    }));
+    setPlacedCards((prev) => ({ ...prev, [position]: card }));
   };
 
   const removeCard = (position: SlotPosition) => {
-    const card = gameState.placedCards[position];
+    const card = placedCards[position];
     if (card) {
-      setAvailableCards(prev => [...prev, card]);
-      setGameState(prev => ({
+      setAvailableCards((prev) => [...prev, card]);
+      setPlacedCards((prev) => ({
         ...prev,
-        placedCards: {
-          ...prev.placedCards,
-          [position]: null,
-        },
+        [position]: null,
       }));
     }
   };
 
+  const getCardByRotation = (card: Card) => {
+    switch (card.rotation) {
+      case 0:
+        return {
+          top: card.words[0],
+          right: card.words[1],
+          bottom: card.words[2],
+          left: card.words[3],
+        };
+
+      case 90:
+        return {
+          top: card.words[1],
+          right: card.words[2],
+          bottom: card.words[3],
+          left: card.words[0],
+        };
+
+      case 180:
+        return {
+          top: card.words[2],
+          right: card.words[3],
+          bottom: card.words[0],
+          left: card.words[1],
+        };
+
+      case 270:
+        return {
+          top: card.words[3],
+          right: card.words[0],
+          bottom: card.words[1],
+          left: card.words[2],
+        };
+
+      default:
+        return {
+          top: card.words[0],
+          right: card.words[1],
+          bottom: card.words[2],
+          left: card.words[3],
+        };
+    }
+  };
+
+  const validateTopLeft = (solutions: PuzzleSlots, card: Card) => {
+    const { top, right, bottom, left } = getCardByRotation(card);
+    return solutions.left.words[0] === left && solutions.top.words[0] === top;
+  };
+
+  const validateTopRight = (solutions: PuzzleSlots, card: Card) => {
+    const { top, right, bottom, left } = getCardByRotation(card);
+    return solutions.top.words[1] === top && solutions.right.words[0] === right;
+  };
+
+  const validateBottomLeft = (solutions: PuzzleSlots, card: Card) => {
+    const { top, right, bottom, left } = getCardByRotation(card);
+
+    console.log(left, solutions.left.words, bottom, solutions.bottom.words);
+    return (
+      solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
+    );
+  };
+
+  const validateBottomRight = (solutions: PuzzleSlots, card: Card) => {
+    const { top, right, bottom, left } = getCardByRotation(card);
+
+    console.log(left, solutions.left.words, bottom, solutions.bottom.words);
+    return (
+      solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
+    );
+  };
+
   const checkSolution = () => {
     // Validate that all slots are filled. & that we have a valid puzzle
-    if (!gameState.currentPuzzle) {
-      return false;
+    if (!currentPuzzle || !placedCards) {
+      return {
+        topLeft: false,
+        topRight: false,
+        bottomRight: false,
+        bottomLeft: false,
+      };
     }
 
-    const { placedCards, currentPuzzle } = gameState;
-    const { puzzleSlots } = currentPuzzle;
+    const { solutions } = currentPuzzle;
 
-    // Check if all slots are filled
-    const allSlotsFilled = Object.values(placedCards).every(card => card !== null);
-    if (!allSlotsFilled) {
-      return false;
+    if (
+      !placedCards.topLeft ||
+      !placedCards.topRight ||
+      !placedCards.bottomLeft ||
+      !placedCards.bottomRight
+    ) {
+      return {
+        topLeft: false,
+        topRight: false,
+        bottomRight: false,
+        bottomLeft: false,
+      };
     }
 
-    const incorrectCards = {
-      topLeft: false,
-      topRight: false,
-      bottomRight: false,
-      bottomLeft: false,
+    return {
+      topLeft: validateTopLeft(solutions, placedCards.topLeft),
+      topRight: validateTopRight(solutions, placedCards.topRight),
+      bottomRight: validateBottomLeft(solutions, placedCards.bottomLeft),
+      bottomLeft: validateBottomRight(solutions, placedCards.bottomRight),
     };
-
-    // Check that the top 2 cards top words match the top clue
-    const topLeftCard = placedCards.topLeft;
-    const topRightCard = placedCards.topRight;
-    if (topLeftCard && topRightCard) {
-      const topLeftCardTopWord = topLeftCard.words[(0 + topLeftCard.rotation / 90) % 4];
-      const topRightCardTopWord = topRightCard.words[(0 + topRightCard.rotation / 90) % 4];
-      const expectedTopWords = puzzleSlots.topLeft.words;
-      
-      const topWordsMatch = expectedTopWords.includes(topLeftCardTopWord) && 
-                           expectedTopWords.includes(topRightCardTopWord) &&
-                           topLeftCardTopWord !== topRightCardTopWord;
-      
-      if (!topWordsMatch) {
-        incorrectCards.topLeft = true;
-        incorrectCards.topRight = true;
-      }
-      console.log("topWordsMatch", topWordsMatch, topLeftCardTopWord, topRightCardTopWord, expectedTopWords, topWordsMatch);
-    }
-
-    // Check that the right 2 cards right words match the right clue
-    const bottomRightCard = placedCards.bottomRight;
-    if (topRightCard && bottomRightCard) {
-      const topRightCardRightWord = topRightCard.words[(1 + topRightCard.rotation / 90) % 4];
-      const bottomRightCardRightWord = bottomRightCard.words[(1 + bottomRightCard.rotation / 90) % 4];
-      const expectedRightWords = puzzleSlots.topRight.words;
-      
-      const rightWordsMatch = expectedRightWords.includes(topRightCardRightWord) && 
-                             expectedRightWords.includes(bottomRightCardRightWord) &&
-                             topRightCardRightWord !== bottomRightCardRightWord;
-      
-      if (!rightWordsMatch) {
-        incorrectCards.topRight = true;
-        incorrectCards.bottomRight = true;
-      }
-    }
-
-    // Check that the bottom 2 cards top words match the bottom clue
-    const bottomLeftCard = placedCards.bottomLeft;
-    if (bottomRightCard && bottomLeftCard) {
-      const bottomRightCardTopWord = bottomRightCard.words[(0 + bottomRightCard.rotation / 90) % 4];
-      const bottomLeftCardTopWord = bottomLeftCard.words[(0 + bottomLeftCard.rotation / 90) % 4];
-      const expectedBottomWords = puzzleSlots.bottomLeft.words;
-      
-      const bottomWordsMatch = expectedBottomWords.includes(bottomRightCardTopWord) && 
-                              expectedBottomWords.includes(bottomLeftCardTopWord) &&
-                              bottomRightCardTopWord !== bottomLeftCardTopWord;
-      
-      console.log("bottomWordsMatch", bottomWordsMatch, bottomRightCardTopWord, bottomLeftCardTopWord, expectedBottomWords);
-      
-      if (!bottomWordsMatch) {
-        incorrectCards.bottomRight = true;
-        incorrectCards.bottomLeft = true;
-      }
-    }
-
-    // Check that the left 2 cards left words match the left clue
-    if (bottomLeftCard && topLeftCard) {
-      const bottomLeftCardLeftWord = bottomLeftCard.words[(3 + bottomLeftCard.rotation / 90) % 4];
-      const topLeftCardLeftWord = topLeftCard.words[(3 + topLeftCard.rotation / 90) % 4];
-      const expectedLeftWords = puzzleSlots.bottomRight.words;
-      
-      const leftWordsMatch = expectedLeftWords.includes(bottomLeftCardLeftWord) && 
-                            expectedLeftWords.includes(topLeftCardLeftWord) &&
-                            bottomLeftCardLeftWord !== topLeftCardLeftWord;
-      
-      if (!leftWordsMatch) {
-        incorrectCards.bottomLeft = true;
-        incorrectCards.topLeft = true;
-      }
-    }
-
-    console.log("incorrectCards", incorrectCards);
-
-    // If all of the above are true, return true else return the incorrect cards
-    const allCorrect = Object.values(incorrectCards).every(incorrect => !incorrect);
-    console.log("allCorrect", allCorrect);
-    return allCorrect;
   };
 
   const submitSolution = () => {
-    const isCorrect = checkSolution();
-    const newAttempts = gameState.attempts + 1;
-    
-    // Track which cards are incorrect by running the same logic as checkSolution
-    const incorrectCards = {
-      topLeft: false,
-      topRight: false,
-      bottomRight: false,
-      bottomLeft: false,
-    };
-    
-    if (!isCorrect && gameState.currentPuzzle) {
-      const { placedCards, currentPuzzle } = gameState;
-      const { puzzleSlots } = currentPuzzle;
-
-      // Check that the top 2 cards top words match the top clue
-      const topLeftCard = placedCards.topLeft;
-      const topRightCard = placedCards.topRight;
-      if (topLeftCard && topRightCard) {
-        const topLeftCardTopWord = topLeftCard.words[(0 + topLeftCard.rotation / 90) % 4];
-        const topRightCardTopWord = topRightCard.words[(0 + topRightCard.rotation / 90) % 4];
-        const expectedTopWords = puzzleSlots.topLeft.words;
-        
-        const topWordsMatch = expectedTopWords.includes(topLeftCardTopWord) && 
-                             expectedTopWords.includes(topRightCardTopWord) &&
-                             topLeftCardTopWord !== topRightCardTopWord;
-        
-        if (!topWordsMatch) {
-          incorrectCards.topLeft = true;
-          incorrectCards.topRight = true;
-        }
-      }
-      
-      console.log("top??", incorrectCards)
-
-      // Check that the right 2 cards right words match the right clue
-      const bottomRightCard = placedCards.bottomRight;
-      if (topRightCard && bottomRightCard) {
-        const topRightCardRightWord = topRightCard.words[(1 + topRightCard.rotation / 90) % 4];
-        const bottomRightCardRightWord = bottomRightCard.words[(1 + bottomRightCard.rotation / 90) % 4];
-        const expectedRightWords = puzzleSlots.topRight.words;
-        
-        const rightWordsMatch = expectedRightWords.includes(topRightCardRightWord) && 
-                               expectedRightWords.includes(bottomRightCardRightWord) &&
-                               topRightCardRightWord !== bottomRightCardRightWord;
-        
-        if (!rightWordsMatch) {
-          incorrectCards.topRight = true;
-          incorrectCards.bottomRight = true;
-        }
-      }
-
-      // Check that the bottom 2 cards top words match the bottom clue
-      const bottomLeftCard = placedCards.bottomLeft;
-
-      console.log("bottom??", incorrectCards);
-            if (bottomRightCard && bottomLeftCard) {
-        const bottomRightCardTopWord = bottomRightCard.words[(0 + bottomRightCard.rotation / 90) % 4];
-        const bottomLeftCardTopWord = bottomLeftCard.words[(0 + bottomLeftCard.rotation / 90) % 4];
-        const expectedBottomWords = puzzleSlots.bottomLeft.words;
-        
-        const bottomWordsMatch = expectedBottomWords.includes(bottomRightCardTopWord) && 
-                                expectedBottomWords.includes(bottomLeftCardTopWord) &&
-                                bottomRightCardTopWord !== bottomLeftCardTopWord;
-        
-        
-        if (!bottomWordsMatch) {
-          incorrectCards.bottomRight = true;
-          incorrectCards.bottomLeft = true;
-        }
-      }
-
-      // Check that the left 2 cards left words match the left clue
-      console.log("left??", incorrectCards);
-      if (bottomLeftCard && topLeftCard) {
-        const bottomLeftCardLeftWord = bottomLeftCard.words[(3 + bottomLeftCard.rotation / 90) % 4];
-        const topLeftCardLeftWord = topLeftCard.words[(3 + topLeftCard.rotation / 90) % 4];
-        const expectedLeftWords = puzzleSlots.bottomRight.words;
-        
-        const leftWordsMatch = expectedLeftWords.includes(bottomLeftCardLeftWord) && 
-                              expectedLeftWords.includes(topLeftCardLeftWord) &&
-                              bottomLeftCardLeftWord !== topLeftCardLeftWord;
-        
-        if (!leftWordsMatch) {
-          incorrectCards.bottomLeft = true;
-          incorrectCards.topLeft = true;
-        }
-      }
-    }
-    
+    const checkedSolutions = checkSolution();
+    const newAttempts = numberOfAttempts + 1;
+    const isCorrect =
+      checkedSolutions.topLeft &&
+      checkedSolutions.topRight &&
+      checkedSolutions.bottomLeft &&
+      checkedSolutions.bottomRight;
     let pointsEarned = 0;
     if (isCorrect) {
       if (newAttempts === 1) {
@@ -289,45 +213,26 @@ export function useGameLogic(initialPuzzle: Puzzle | null) {
       }
     }
 
-    setGameState(prev => ({
-      ...prev,
-      attempts: newAttempts,
-      score: prev.score + pointsEarned,
-      isComplete: isCorrect || newAttempts >= 3,
-      incorrectCards,
-    }));
+    setScore(pointsEarned);
+    setCardsCorrectness(checkedSolutions);
+    setNumberOfAttempts(newAttempts);
 
-    console.log("incorrectCards results", incorrectCards)
-
-    return { isCorrect, pointsEarned };
+    localStorage.setItem("wordPuzzleScore", pointsEarned.toString());
   };
 
   const resetGame = () => {
     if (initialPuzzle) {
-      setGameState({
-        currentPuzzle: initialPuzzle,
-        placedCards: {
-          topLeft: null,
-          topRight: null,
-          bottomRight: null,
-          bottomLeft: null,
-        },
-        attempts: 0,
-        score: gameState.score, // Keep current score
-        isComplete: false,
-        incorrectCards: {
-          topLeft: false,
-          topRight: false,
-          bottomRight: false,
-          bottomLeft: false,
-        },
-      });
+      setPlacedCards(defaultPlacedCards);
+      setCurrentPuzzle(initialPuzzle);
       setAvailableCards(initialPuzzle.cards);
     }
   };
 
   return {
-    gameState,
+    placedCards,
+    cardsCorrectness,
+    score,
+    numberOfAttempts,
     availableCards,
     rotateCard,
     placeCard,

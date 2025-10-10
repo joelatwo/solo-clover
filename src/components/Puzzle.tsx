@@ -1,37 +1,25 @@
 "use client";
 
 import { useDrop } from "react-dnd";
-import { Card as CardType, SlotPosition } from "@/types/game";
+import { Card as CardType, PlacedCardsType, SlotPosition } from "@/types/game";
 import Card from "./Card";
 import styles from "./Puzzle.module.css";
 
 interface PuzzleProps {
-  puzzleSlots: {
-    topLeft: { clue: string; words: [string, string] };
-    topRight: { clue: string; words: [string, string] };
-    bottomRight: { clue: string; words: [string, string] };
-    bottomLeft: { clue: string; words: [string, string] };
+  solutions: {
+    top: { clue: string; words: [string, string] };
+    right: { clue: string; words: [string, string] };
+    bottom: { clue: string; words: [string, string] };
+    left: { clue: string; words: [string, string] };
   };
-  placedCards: {
-    topLeft: CardType | null;
-    topRight: CardType | null;
-    bottomRight: CardType | null;
-    bottomLeft: CardType | null;
-  };
-  incorrectCards: {
-    topLeft: boolean;
-    topRight: boolean;
-    bottomRight: boolean;
-    bottomLeft: boolean;
-  };
+  placedCards: PlacedCardsType;
   onCardDrop: (card: CardType, position: SlotPosition) => void;
   onCardRemove: (position: SlotPosition) => void;
 }
 
 export default function Puzzle({
-  puzzleSlots,
+  solutions,
   placedCards,
-  incorrectCards,
   onCardDrop,
   onCardRemove,
 }: PuzzleProps) {
@@ -67,11 +55,7 @@ export default function Puzzle({
     }),
   });
 
-  const renderSlot = (
-    position: SlotPosition,
-    slot: { clue: string; words: [string, string] },
-    isOver: boolean
-  ) => {
+  const renderSlot = (position: SlotPosition, isOver: boolean) => {
     const placedCard = placedCards[position];
 
     return (
@@ -93,11 +77,7 @@ export default function Puzzle({
       >
         {placedCard ? (
           <div className={styles.cardContainer}>
-            <Card
-              card={placedCard}
-              isPlaced={true}
-              isIncorrect={incorrectCards[position]}
-            />
+            <Card card={placedCard} isPlaced={true} />
             <div className={styles.removeHint}>Click to remove</div>
           </div>
         ) : (
@@ -115,13 +95,13 @@ export default function Puzzle({
           className={styles.outerWord}
           style={{ top: "-10px", left: "50%", transform: "translateX(-50%)" }}
         >
-          {puzzleSlots.topLeft.clue}
+          {solutions.top.clue}
         </div>
         <div
           className={`${styles.outerWord} ${styles.rotated}`}
           style={{ right: "-10px", top: "50%", transform: "translateY(-50%)" }}
         >
-          {puzzleSlots.topRight.clue}
+          {solutions.right.clue}
         </div>
         <div
           className={styles.outerWord}
@@ -131,20 +111,20 @@ export default function Puzzle({
             transform: "translateX(-50%)",
           }}
         >
-          {puzzleSlots.bottomLeft.clue}
+          {solutions.bottom.clue}
         </div>
         <div
           className={`${styles.outerWord} ${styles.rotated}`}
           style={{ left: "-10px", top: "50%", transform: "translateY(-50%)" }}
         >
-          {puzzleSlots.bottomRight.clue}
+          {solutions.left.clue}
         </div>
 
         {/* Grid slots */}
-        {renderSlot("topLeft", puzzleSlots.topLeft, isOverTopLeft)}
-        {renderSlot("topRight", puzzleSlots.topRight, isOverTopRight)}
-        {renderSlot("bottomRight", puzzleSlots.bottomRight, isOverBottomRight)}
-        {renderSlot("bottomLeft", puzzleSlots.bottomLeft, isOverBottomLeft)}
+        {renderSlot("topLeft", isOverTopLeft)}
+        {renderSlot("topRight", isOverTopRight)}
+        {renderSlot("bottomRight", isOverBottomRight)}
+        {renderSlot("bottomLeft", isOverBottomLeft)}
       </div>
     </div>
   );
