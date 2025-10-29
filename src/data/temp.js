@@ -1,6 +1,6 @@
-import { PuzzleType } from "@/types/game";
+const axios = require("axios");
 
-const data: PuzzleType[] = [
+let data = [
   {
     id: "9-5-2025",
     cards: [
@@ -31,10 +31,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Wallet", words: ["receivers", "coins"] },
-      right: { clue: "Database", words: ["sessions", "store"] },
-      left: { clue: "Military", words: ["corps", "livecam"] },
-      bottom: { clue: "Archaeology", words: ["physical", "history"] },
+      top: { clue: "", words: ["receivers", "coins"] },
+      right: { clue: "", words: ["sessions", "store"] },
+      left: { clue: "", words: ["corps", "livecam"] },
+      bottom: { clue: "", words: ["physical", "history"] },
     },
   },
   {
@@ -45,11 +45,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["codes", "chancellor", "cest", "hyundai"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["flame", "bool", "course", "sandy"],
-      },
+      { id: "card1", rotation: 0, words: ["flame", "bool", "course", "sandy"] },
       {
         id: "card2",
         rotation: 0,
@@ -67,10 +63,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pyro", words: ["codes", "flame"] },
-      right: { clue: "Dialogue", words: ["bool", "communication"] },
-      left: { clue: "Kitchen", words: ["hyundai", "meals"] },
-      bottom: { clue: "Tourist", words: ["patient", "travel"] },
+      top: { clue: "", words: ["codes", "flame"] },
+      right: { clue: "", words: ["bool", "communication"] },
+      left: { clue: "", words: ["hyundai", "meals"] },
+      bottom: { clue: "", words: ["patient", "travel"] },
     },
   },
   {
@@ -103,10 +99,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Biome", words: ["enzyme", "draft"] },
-      right: { clue: "Purchase", words: ["rand", "acquisition"] },
-      left: { clue: "Colleagues", words: ["architects", "friends"] },
-      bottom: { clue: "Rare", words: ["chronic", "unlikely"] },
+      top: { clue: "", words: ["enzyme", "draft"] },
+      right: { clue: "", words: ["rand", "acquisition"] },
+      left: { clue: "", words: ["architects", "friends"] },
+      bottom: { clue: "", words: ["chronic", "unlikely"] },
     },
   },
   {
@@ -139,10 +135,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Contractors", words: ["builders", "general"] },
-      right: { clue: "Bright", words: ["principal", "sunny"] },
-      left: { clue: "Change", words: ["shift", "madrid"] },
-      bottom: { clue: "Analysis", words: ["mention", "statistical"] },
+      top: { clue: "", words: ["builders", "general"] },
+      right: { clue: "", words: ["principal", "sunny"] },
+      left: { clue: "", words: ["shift", "madrid"] },
+      bottom: { clue: "", words: ["mention", "statistical"] },
     },
   },
   {
@@ -175,10 +171,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Manager", words: ["warehouse", "executive"] },
-      right: { clue: "Readers", words: ["really", "bookmarks"] },
-      left: { clue: "Mindful", words: ["meditation", "train"] },
-      bottom: { clue: "Habit", words: ["disposition", "cartridges"] },
+      top: { clue: "", words: ["warehouse", "executive"] },
+      right: { clue: "", words: ["really", "bookmarks"] },
+      left: { clue: "", words: ["meditation", "train"] },
+      bottom: { clue: "", words: ["disposition", "cartridges"] },
     },
   },
   {
@@ -211,10 +207,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Diver", words: ["qualify", "reef"] },
-      right: { clue: "Roadrunner", words: ["arizona", "cocks"] },
-      left: { clue: "Novel", words: ["fiction", "mali"] },
-      bottom: { clue: "Box", words: ["mystery", "cartridge"] },
+      top: { clue: "", words: ["qualify", "reef"] },
+      right: { clue: "", words: ["arizona", "cocks"] },
+      left: { clue: "", words: ["fiction", "mali"] },
+      bottom: { clue: "", words: ["mystery", "cartridge"] },
     },
   },
   {
@@ -247,20 +243,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Guesstimate", words: ["estimation", "calling"] },
-      right: { clue: "Classification", words: ["label", "system"] },
-      left: { clue: "Portfolio", words: ["accomplished", "projects"] },
-      bottom: { clue: "Efficiency", words: ["productivity", "ran"] },
+      top: { clue: "", words: ["estimation", "calling"] },
+      right: { clue: "", words: ["label", "system"] },
+      left: { clue: "", words: ["accomplished", "projects"] },
+      bottom: { clue: "", words: ["productivity", "ran"] },
     },
   },
   {
     id: "9-5-2025",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["like", "lion", "whose", "upgrade"],
-      },
+      { id: "card0", rotation: 0, words: ["like", "lion", "whose", "upgrade"] },
       {
         id: "card1",
         rotation: 0,
@@ -283,10 +275,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Congress", words: ["like", "senators"] },
-      right: { clue: "Sisterhood", words: ["mustang", "sister"] },
-      left: { clue: "Drilling", words: ["upgrade", "mining"] },
-      bottom: { clue: "Bazaar", words: ["hall", "turkish"] },
+      top: { clue: "", words: ["like", "senators"] },
+      right: { clue: "", words: ["mustang", "sister"] },
+      left: { clue: "", words: ["upgrade", "mining"] },
+      bottom: { clue: "", words: ["hall", "turkish"] },
     },
   },
   {
@@ -319,10 +311,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Discount", words: ["bloody", "sale"] },
-      right: { clue: "Pathway", words: ["circuit", "respiratory"] },
-      left: { clue: "Wildlife", words: ["animals", "ranges"] },
-      bottom: { clue: "Concept", words: ["themes", "must"] },
+      top: { clue: "", words: ["bloody", "sale"] },
+      right: { clue: "", words: ["circuit", "respiratory"] },
+      left: { clue: "", words: ["animals", "ranges"] },
+      bottom: { clue: "", words: ["themes", "must"] },
     },
   },
   {
@@ -355,10 +347,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Options", words: ["profiles", "choice"] },
-      right: { clue: "Clock", words: ["timer", "under"] },
-      left: { clue: "Publication", words: ["newspaper", "maintaining"] },
-      bottom: { clue: "Spry", words: ["fast", "town"] },
+      top: { clue: "", words: ["profiles", "choice"] },
+      right: { clue: "", words: ["timer", "under"] },
+      left: { clue: "", words: ["newspaper", "maintaining"] },
+      bottom: { clue: "", words: ["fast", "town"] },
     },
   },
   {
@@ -391,13 +383,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cadavers", words: ["those", "bodies"] },
-      right: { clue: "Satellite", words: ["aerospace", "networking"] },
-      left: {
-        clue: "Strengthening",
-        words: ["enhancing", "attachments"],
-      },
-      bottom: { clue: "Home", words: ["frontpage", "fireplace"] },
+      top: { clue: "", words: ["those", "bodies"] },
+      right: { clue: "", words: ["aerospace", "networking"] },
+      left: { clue: "", words: ["enhancing", "attachments"] },
+      bottom: { clue: "", words: ["frontpage", "fireplace"] },
     },
   },
   {
@@ -430,10 +419,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Marathon", words: ["official", "running"] },
-      right: { clue: "Nipples", words: ["derek", "titten"] },
-      left: { clue: "Invertebrate", words: ["aquatic", "native"] },
-      bottom: { clue: "Marketing", words: ["promoting", "pulled"] },
+      top: { clue: "", words: ["official", "running"] },
+      right: { clue: "", words: ["derek", "titten"] },
+      left: { clue: "", words: ["aquatic", "native"] },
+      bottom: { clue: "", words: ["promoting", "pulled"] },
     },
   },
   {
@@ -466,10 +455,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Renovation", words: ["updating", "lighting"] },
-      right: { clue: "Schwarzenegger", words: ["arnold", "bowl"] },
-      left: { clue: "Ship", words: ["port", "gets"] },
-      bottom: { clue: "Scholarship", words: ["mariah", "tuition"] },
+      top: { clue: "", words: ["updating", "lighting"] },
+      right: { clue: "", words: ["arnold", "bowl"] },
+      left: { clue: "", words: ["port", "gets"] },
+      bottom: { clue: "", words: ["mariah", "tuition"] },
     },
   },
   {
@@ -502,10 +491,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Door", words: ["andrew", "locked"] },
-      right: { clue: "Light", words: ["process", "flashing"] },
-      left: { clue: "Harmony", words: ["gospel", "company"] },
-      bottom: { clue: "Strategy", words: ["positioning", "toolbox"] },
+      top: { clue: "", words: ["andrew", "locked"] },
+      right: { clue: "", words: ["process", "flashing"] },
+      left: { clue: "", words: ["gospel", "company"] },
+      bottom: { clue: "", words: ["positioning", "toolbox"] },
     },
   },
   {
@@ -538,10 +527,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Doctors", words: ["patients", "mainly"] },
-      right: { clue: "Teenager", words: ["adolescent", "pakistan"] },
-      left: { clue: "Islam", words: ["believes", "malaysia"] },
-      bottom: { clue: "Conflict", words: ["heroes", "tension"] },
+      top: { clue: "", words: ["patients", "mainly"] },
+      right: { clue: "", words: ["adolescent", "pakistan"] },
+      left: { clue: "", words: ["believes", "malaysia"] },
+      bottom: { clue: "", words: ["heroes", "tension"] },
     },
   },
   {
@@ -574,10 +563,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Comics", words: ["panel", "marvel"] },
-      right: { clue: "Secure", words: ["transfer", "assured"] },
-      left: { clue: "Latin", words: ["manitoba", "guatemala"] },
-      bottom: { clue: "Tiger", words: ["swingers", "danny"] },
+      top: { clue: "", words: ["panel", "marvel"] },
+      right: { clue: "", words: ["transfer", "assured"] },
+      left: { clue: "", words: ["manitoba", "guatemala"] },
+      bottom: { clue: "", words: ["swingers", "danny"] },
     },
   },
   {
@@ -610,10 +599,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Source", words: ["mounts", "original"] },
-      right: { clue: "Party", words: ["oaks", "invite"] },
-      left: { clue: "Real", words: ["pointer", "estates"] },
-      bottom: { clue: "Power", words: ["registrar", "battery"] },
+      top: { clue: "", words: ["mounts", "original"] },
+      right: { clue: "", words: ["oaks", "invite"] },
+      left: { clue: "", words: ["pointer", "estates"] },
+      bottom: { clue: "", words: ["registrar", "battery"] },
     },
   },
   {
@@ -646,10 +635,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Influence", words: ["strength", "mainstream"] },
-      right: { clue: "Lama", words: ["tribune", "patrick"] },
-      left: { clue: "Space", words: ["sky", "cyber"] },
-      bottom: { clue: "Heavy", words: ["sleep", "loaded"] },
+      top: { clue: "", words: ["strength", "mainstream"] },
+      right: { clue: "", words: ["tribune", "patrick"] },
+      left: { clue: "", words: ["sky", "cyber"] },
+      bottom: { clue: "", words: ["sleep", "loaded"] },
     },
   },
   {
@@ -682,10 +671,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Street", words: ["neighborhood", "owen"] },
-      right: { clue: "Refining", words: ["healthy", "revisions"] },
-      left: { clue: "Assigned", words: ["figured", "designated"] },
-      bottom: { clue: "Report", words: ["commission", "document"] },
+      top: { clue: "", words: ["neighborhood", "owen"] },
+      right: { clue: "", words: ["healthy", "revisions"] },
+      left: { clue: "", words: ["figured", "designated"] },
+      bottom: { clue: "", words: ["commission", "document"] },
     },
   },
   {
@@ -701,11 +690,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["amino", "blond", "spoke", "latinas"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["wins", "guam", "sons", "social"],
-      },
+      { id: "card2", rotation: 0, words: ["wins", "guam", "sons", "social"] },
       {
         id: "card3",
         rotation: 0,
@@ -718,10 +703,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Acid", words: ["discuss", "amino"] },
-      right: { clue: "Island", words: ["blond", "guam"] },
-      left: { clue: "Conclude", words: ["reduce", "assumed"] },
-      bottom: { clue: "Heirs", words: ["sons", "substitute"] },
+      top: { clue: "", words: ["discuss", "amino"] },
+      right: { clue: "", words: ["blond", "guam"] },
+      left: { clue: "", words: ["reduce", "assumed"] },
+      bottom: { clue: "", words: ["sons", "substitute"] },
     },
   },
   {
@@ -742,11 +727,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["verified", "piece", "inquiry", "rainbow"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["colours", "space", "step", "jump"],
-      },
+      { id: "card3", rotation: 0, words: ["colours", "space", "step", "jump"] },
       {
         id: "card4",
         rotation: 0,
@@ -754,10 +735,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Movements", words: ["transfers", "happen"] },
-      right: { clue: "Snap", words: ["pics", "piece"] },
-      left: { clue: "Increase", words: ["attendance", "jump"] },
-      bottom: { clue: "Process", words: ["inquiry", "step"] },
+      top: { clue: "", words: ["transfers", "happen"] },
+      right: { clue: "", words: ["pics", "piece"] },
+      left: { clue: "", words: ["attendance", "jump"] },
+      bottom: { clue: "", words: ["inquiry", "step"] },
     },
   },
   {
@@ -790,10 +771,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Code", words: ["flashers", "program"] },
-      right: { clue: "Reading", words: ["using", "novels"] },
-      left: { clue: "Principle", words: ["kill", "fundamental"] },
-      bottom: { clue: "Warriors", words: ["fighters", "armed"] },
+      top: { clue: "", words: ["flashers", "program"] },
+      right: { clue: "", words: ["using", "novels"] },
+      left: { clue: "", words: ["kill", "fundamental"] },
+      bottom: { clue: "", words: ["fighters", "armed"] },
     },
   },
   {
@@ -826,10 +807,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Disaster", words: ["relief", "researchers"] },
-      right: { clue: "Certification", words: ["validation", "japanese"] },
-      left: { clue: "Classy", words: ["school", "vintage"] },
-      bottom: { clue: "Carefully", words: ["ultra", "watched"] },
+      top: { clue: "", words: ["relief", "researchers"] },
+      right: { clue: "", words: ["validation", "japanese"] },
+      left: { clue: "", words: ["school", "vintage"] },
+      bottom: { clue: "", words: ["ultra", "watched"] },
     },
   },
   {
@@ -862,10 +843,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Bill", words: ["ericsson", "monthly"] },
-      right: { clue: "Musical", words: ["template", "broadway"] },
-      left: { clue: "Edge", words: ["knives", "status"] },
-      bottom: { clue: "Smog", words: ["yang", "emission"] },
+      top: { clue: "", words: ["ericsson", "monthly"] },
+      right: { clue: "", words: ["template", "broadway"] },
+      left: { clue: "", words: ["knives", "status"] },
+      bottom: { clue: "", words: ["yang", "emission"] },
     },
   },
   {
@@ -881,11 +862,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["stunning", "started", "humans", "calculated"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["enable", "br", "itsa", "anatomy"],
-      },
+      { id: "card2", rotation: 0, words: ["enable", "br", "itsa", "anatomy"] },
       {
         id: "card3",
         rotation: 0,
@@ -898,10 +875,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Impactful", words: ["policies", "stunning"] },
-      right: { clue: "Brightly", words: ["started", "br"] },
-      left: { clue: "Void", words: ["undefined", "interior"] },
-      bottom: { clue: "Antique", words: ["itsa", "norton"] },
+      top: { clue: "", words: ["policies", "stunning"] },
+      right: { clue: "", words: ["started", "br"] },
+      left: { clue: "", words: ["undefined", "interior"] },
+      bottom: { clue: "", words: ["itsa", "norton"] },
     },
   },
   {
@@ -912,11 +889,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["everywhere", "belief", "consequences", "combat"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["shine", "safer", "brothers", "du"],
-      },
+      { id: "card1", rotation: 0, words: ["shine", "safer", "brothers", "du"] },
       {
         id: "card2",
         rotation: 0,
@@ -934,10 +907,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Light", words: ["everywhere", "shine"] },
-      right: { clue: "Secure", words: ["safer", "searches"] },
-      left: { clue: "Warfare", words: ["combat", "mouse"] },
-      bottom: { clue: "Shopping", words: ["holidays", "online"] },
+      top: { clue: "", words: ["everywhere", "shine"] },
+      right: { clue: "", words: ["safer", "searches"] },
+      left: { clue: "", words: ["combat", "mouse"] },
+      bottom: { clue: "", words: ["holidays", "online"] },
     },
   },
   {
@@ -970,10 +943,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Established", words: ["actor", "proven"] },
-      right: { clue: "Angel", words: ["halo", "charity"] },
-      left: { clue: "Europe", words: ["montana", "budapest"] },
-      bottom: { clue: "Schema", words: ["ranging", "databases"] },
+      top: { clue: "", words: ["actor", "proven"] },
+      right: { clue: "", words: ["halo", "charity"] },
+      left: { clue: "", words: ["montana", "budapest"] },
+      bottom: { clue: "", words: ["ranging", "databases"] },
     },
   },
   {
@@ -999,17 +972,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["apply", "highways", "looks", "unlike"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["sandra", "sends", "tabs", "used"],
-      },
+      { id: "card4", rotation: 0, words: ["sandra", "sends", "tabs", "used"] },
     ],
     solutions: {
-      top: { clue: "Witch", words: ["salem", "broadcast"] },
-      right: { clue: "Closet", words: ["laundry", "within"] },
-      left: { clue: "Diverse", words: ["houses", "unlike"] },
-      bottom: { clue: "Aurelius", words: ["marcus", "looks"] },
+      top: { clue: "", words: ["salem", "broadcast"] },
+      right: { clue: "", words: ["laundry", "within"] },
+      left: { clue: "", words: ["houses", "unlike"] },
+      bottom: { clue: "", words: ["marcus", "looks"] },
     },
   },
   {
@@ -1042,10 +1011,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Grievance", words: ["minor", "compliant"] },
-      right: { clue: "March", words: ["sherman", "extent"] },
-      left: { clue: "Crossroads", words: ["underwear", "junction"] },
-      bottom: { clue: "Command", words: ["assignment", "sir"] },
+      top: { clue: "", words: ["minor", "compliant"] },
+      right: { clue: "", words: ["sherman", "extent"] },
+      left: { clue: "", words: ["underwear", "junction"] },
+      bottom: { clue: "", words: ["assignment", "sir"] },
     },
   },
   {
@@ -1066,11 +1035,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["dealtime", "trusted", "reminder", "ghana"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["raid", "apart", "test", "hostel"],
-      },
+      { id: "card3", rotation: 0, words: ["raid", "apart", "test", "hostel"] },
       {
         id: "card4",
         rotation: 0,
@@ -1078,10 +1043,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Tranquility", words: ["nottingham", "soul"] },
-      right: { clue: "Credible", words: ["advertisement", "trusted"] },
-      left: { clue: "Accommodation", words: ["divisions", "hostel"] },
-      bottom: { clue: "Examination", words: ["reminder", "test"] },
+      top: { clue: "", words: ["nottingham", "soul"] },
+      right: { clue: "", words: ["advertisement", "trusted"] },
+      left: { clue: "", words: ["divisions", "hostel"] },
+      bottom: { clue: "", words: ["reminder", "test"] },
     },
   },
   {
@@ -1102,11 +1067,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["disposal", "consequently", "regularly", "completely"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["pole", "lender", "flower", "voip"],
-      },
+      { id: "card3", rotation: 0, words: ["pole", "lender", "flower", "voip"] },
       {
         id: "card4",
         rotation: 0,
@@ -1114,10 +1075,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Mystic", words: ["magical", "infection"] },
-      right: { clue: "Result", words: ["photographic", "consequently"] },
-      left: { clue: "Telecom", words: ["austria", "voip"] },
-      bottom: { clue: "Bloom", words: ["regularly", "flower"] },
+      top: { clue: "", words: ["magical", "infection"] },
+      right: { clue: "", words: ["photographic", "consequently"] },
+      left: { clue: "", words: ["austria", "voip"] },
+      bottom: { clue: "", words: ["regularly", "flower"] },
     },
   },
   {
@@ -1150,10 +1111,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Neil", words: ["owners", "armstrong"] },
-      right: { clue: "Insurance", words: ["paxil", "employer"] },
-      left: { clue: "Storm", words: ["lightning", "reunion"] },
-      bottom: { clue: "Rare", words: ["acts", "exception"] },
+      top: { clue: "", words: ["owners", "armstrong"] },
+      right: { clue: "", words: ["paxil", "employer"] },
+      left: { clue: "", words: ["lightning", "reunion"] },
+      bottom: { clue: "", words: ["acts", "exception"] },
     },
   },
   {
@@ -1186,20 +1147,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Drydock", words: ["archived", "boat"] },
-      right: { clue: "State", words: ["explained", "calif"] },
-      left: { clue: "Book", words: ["defects", "publisher"] },
-      bottom: { clue: "College", words: ["graduated", "while"] },
+      top: { clue: "", words: ["archived", "boat"] },
+      right: { clue: "", words: ["explained", "calif"] },
+      left: { clue: "", words: ["defects", "publisher"] },
+      bottom: { clue: "", words: ["graduated", "while"] },
     },
   },
   {
     id: "10-3-2025",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["dense", "ak", "around", "tracks"],
-      },
+      { id: "card0", rotation: 0, words: ["dense", "ak", "around", "tracks"] },
       {
         id: "card1",
         rotation: 0,
@@ -1222,10 +1179,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Intense", words: ["dense", "extreme"] },
-      right: { clue: "Navigator", words: ["granny", "gps"] },
-      left: { clue: "Train", words: ["tracks", "chicks"] },
-      bottom: { clue: "Sami", words: ["norwegian", "tribal"] },
+      top: { clue: "", words: ["dense", "extreme"] },
+      right: { clue: "", words: ["granny", "gps"] },
+      left: { clue: "", words: ["tracks", "chicks"] },
+      bottom: { clue: "", words: ["norwegian", "tribal"] },
     },
   },
   {
@@ -1258,10 +1215,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Hair", words: ["strand", "apnic"] },
-      right: { clue: "Backup", words: ["reserve", "replacing"] },
-      left: { clue: "Nightmare", words: ["worst", "speaks"] },
-      bottom: { clue: "News", words: ["receives", "journalism"] },
+      top: { clue: "", words: ["strand", "apnic"] },
+      right: { clue: "", words: ["reserve", "replacing"] },
+      left: { clue: "", words: ["worst", "speaks"] },
+      bottom: { clue: "", words: ["receives", "journalism"] },
     },
   },
   {
@@ -1294,10 +1251,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Noticeable", words: ["render", "disclaimer"] },
-      right: { clue: "Illegitimate", words: ["degrees", "unauthorized"] },
-      left: { clue: "Strait", words: ["island", "channel"] },
-      bottom: { clue: "Cue", words: ["acting", "sound"] },
+      top: { clue: "", words: ["render", "disclaimer"] },
+      right: { clue: "", words: ["degrees", "unauthorized"] },
+      left: { clue: "", words: ["island", "channel"] },
+      bottom: { clue: "", words: ["acting", "sound"] },
     },
   },
   {
@@ -1330,10 +1287,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pen", words: ["knock", "stylus"] },
-      right: { clue: "Caipira", words: ["brazilian", "layers"] },
-      left: { clue: "Health", words: ["gained", "normal"] },
-      bottom: { clue: "Vintage", words: ["retro", "rosa"] },
+      top: { clue: "", words: ["knock", "stylus"] },
+      right: { clue: "", words: ["brazilian", "layers"] },
+      left: { clue: "", words: ["gained", "normal"] },
+      bottom: { clue: "", words: ["retro", "rosa"] },
     },
   },
   {
@@ -1354,11 +1311,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["watch", "area", "correlation", "objective"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["zoloft", "june", "about", "bucks"],
-      },
+      { id: "card3", rotation: 0, words: ["zoloft", "june", "about", "bucks"] },
       {
         id: "card4",
         rotation: 0,
@@ -1366,10 +1319,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Clothing", words: ["gabriel", "affordable"] },
-      right: { clue: "Spotlight", words: ["fame", "area"] },
-      left: { clue: "Money", words: ["genome", "bucks"] },
-      bottom: { clue: "Relationship", words: ["correlation", "about"] },
+      top: { clue: "", words: ["gabriel", "affordable"] },
+      right: { clue: "", words: ["fame", "area"] },
+      left: { clue: "", words: ["genome", "bucks"] },
+      bottom: { clue: "", words: ["correlation", "about"] },
     },
   },
   {
@@ -1402,10 +1355,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cataloged", words: ["staying", "indexed"] },
-      right: { clue: "Records", words: ["documents", "connecticut"] },
-      left: { clue: "Thrill", words: ["terror", "excited"] },
-      bottom: { clue: "Psychic", words: ["mental", "jackets"] },
+      top: { clue: "", words: ["staying", "indexed"] },
+      right: { clue: "", words: ["documents", "connecticut"] },
+      left: { clue: "", words: ["terror", "excited"] },
+      bottom: { clue: "", words: ["mental", "jackets"] },
     },
   },
   {
@@ -1438,10 +1391,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Australia", words: ["inquiries", "queensland"] },
-      right: { clue: "Bronchial", words: ["appears", "asthma"] },
-      left: { clue: "Hotels", words: ["inns", "showcase"] },
-      bottom: { clue: "Purchase", words: ["insertion", "acquire"] },
+      top: { clue: "", words: ["inquiries", "queensland"] },
+      right: { clue: "", words: ["appears", "asthma"] },
+      left: { clue: "", words: ["inns", "showcase"] },
+      bottom: { clue: "", words: ["insertion", "acquire"] },
     },
   },
   {
@@ -1474,13 +1427,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Data", words: ["queries", "gathering"] },
-      right: {
-        clue: "I cannot provide a response that promotes or condones harmful behavior, including animal abuse. Is there anything else I can help you with?",
-        words: ["beastality", "harm"],
-      },
-      left: { clue: "Outcome", words: ["role", "resulted"] },
-      bottom: { clue: "Cream", words: ["avon", "torture"] },
+      top: { clue: "", words: ["queries", "gathering"] },
+      right: { clue: "", words: ["beastality", "harm"] },
+      left: { clue: "", words: ["role", "resulted"] },
+      bottom: { clue: "", words: ["avon", "torture"] },
     },
   },
   {
@@ -1513,10 +1463,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Journal", words: ["phenomenon", "publishing"] },
-      right: { clue: "Baking", words: ["inserted", "flour"] },
-      left: { clue: "Desk", words: ["workstation", "other"] },
-      bottom: { clue: "Wants", words: ["prefers", "seek"] },
+      top: { clue: "", words: ["phenomenon", "publishing"] },
+      right: { clue: "", words: ["inserted", "flour"] },
+      left: { clue: "", words: ["workstation", "other"] },
+      bottom: { clue: "", words: ["prefers", "seek"] },
     },
   },
   {
@@ -1549,10 +1499,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Habit", words: ["routine", "said"] },
-      right: { clue: "Revamp", words: ["reform", "called"] },
-      left: { clue: "Cause", words: ["association", "advocacy"] },
-      bottom: { clue: "Console", words: ["nintendo", "dryer"] },
+      top: { clue: "", words: ["routine", "said"] },
+      right: { clue: "", words: ["reform", "called"] },
+      left: { clue: "", words: ["association", "advocacy"] },
+      bottom: { clue: "", words: ["nintendo", "dryer"] },
     },
   },
   {
@@ -1563,21 +1513,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["internship", "welfare", "capitol", "mls"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["tc", "joel", "showing", "wrap"],
-      },
+      { id: "card1", rotation: 0, words: ["tc", "joel", "showing", "wrap"] },
       {
         id: "card2",
         rotation: 0,
         words: ["inquire", "edmonton", "todd", "republican"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["asian", "pointed", "alto", "pond"],
-      },
+      { id: "card3", rotation: 0, words: ["asian", "pointed", "alto", "pond"] },
       {
         id: "card4",
         rotation: 0,
@@ -1585,10 +1527,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Job", words: ["internship", "tc"] },
-      right: { clue: "Oilers", words: ["joel", "edmonton"] },
-      left: { clue: "Depth", words: ["mls", "pond"] },
-      bottom: { clue: "Trumpet", words: ["todd", "alto"] },
+      top: { clue: "", words: ["internship", "tc"] },
+      right: { clue: "", words: ["joel", "edmonton"] },
+      left: { clue: "", words: ["mls", "pond"] },
+      bottom: { clue: "", words: ["todd", "alto"] },
     },
   },
   {
@@ -1621,10 +1563,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Grip", words: ["gang", "handle"] },
-      right: { clue: "RISK", words: ["edge", "ourselves"] },
-      left: { clue: "Glaze", words: ["makeup", "ceramic"] },
-      bottom: { clue: "Health", words: ["positive", "grain"] },
+      top: { clue: "", words: ["gang", "handle"] },
+      right: { clue: "", words: ["edge", "ourselves"] },
+      left: { clue: "", words: ["makeup", "ceramic"] },
+      bottom: { clue: "", words: ["positive", "grain"] },
     },
   },
   {
@@ -1657,10 +1599,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pledges", words: ["informal", "commitments"] },
-      right: { clue: "Adventure", words: ["chase", "experiencing"] },
-      left: { clue: "Sock", words: ["gourmet", "compression"] },
-      bottom: { clue: "Design", words: ["fonts", "yu"] },
+      top: { clue: "", words: ["informal", "commitments"] },
+      right: { clue: "", words: ["chase", "experiencing"] },
+      left: { clue: "", words: ["gourmet", "compression"] },
+      bottom: { clue: "", words: ["fonts", "yu"] },
     },
   },
   {
@@ -1686,17 +1628,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["eagle", "everything", "thereof", "real"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["medieval", "climb", "cc", "fo"],
-      },
+      { id: "card4", rotation: 0, words: ["medieval", "climb", "cc", "fo"] },
     ],
     solutions: {
-      top: { clue: "Gratitude", words: ["bless", "adds"] },
-      right: { clue: "Protected", words: ["secure", "kept"] },
-      left: { clue: "Lock", words: ["canal", "real"] },
-      bottom: { clue: "Condition", words: ["temp", "thereof"] },
+      top: { clue: "", words: ["bless", "adds"] },
+      right: { clue: "", words: ["secure", "kept"] },
+      left: { clue: "", words: ["canal", "real"] },
+      bottom: { clue: "", words: ["temp", "thereof"] },
     },
   },
   {
@@ -1729,10 +1667,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Eighties", words: ["edited", "decade"] },
-      right: { clue: "Rap", words: ["bahamas", "eminem"] },
-      left: { clue: "Actress", words: ["carmen", "jennifer"] },
-      bottom: { clue: "Taboo", words: ["omissions", "incest"] },
+      top: { clue: "", words: ["edited", "decade"] },
+      right: { clue: "", words: ["bahamas", "eminem"] },
+      left: { clue: "", words: ["carmen", "jennifer"] },
+      bottom: { clue: "", words: ["omissions", "incest"] },
     },
   },
   {
@@ -1765,10 +1703,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Garden", words: ["flowers", "operational"] },
-      right: { clue: "Authoritarian", words: ["proud", "controlling"] },
-      left: { clue: "Manuscript", words: ["revised", "edt"] },
-      bottom: { clue: "Divide", words: ["sections", "super"] },
+      top: { clue: "", words: ["flowers", "operational"] },
+      right: { clue: "", words: ["proud", "controlling"] },
+      left: { clue: "", words: ["revised", "edt"] },
+      bottom: { clue: "", words: ["sections", "super"] },
     },
   },
   {
@@ -1801,10 +1739,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Impact", words: ["conventions", "effectiveness"] },
-      right: { clue: "Territory", words: ["dressed", "land"] },
-      left: { clue: "Opportunity", words: ["good", "freelance"] },
-      bottom: { clue: "Host", words: ["entertaining", "associate"] },
+      top: { clue: "", words: ["conventions", "effectiveness"] },
+      right: { clue: "", words: ["dressed", "land"] },
+      left: { clue: "", words: ["good", "freelance"] },
+      bottom: { clue: "", words: ["entertaining", "associate"] },
     },
   },
   {
@@ -1837,10 +1775,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Ferry", words: ["dover", "outlet"] },
-      right: { clue: "Unimpressed", words: ["shops", "negative"] },
-      left: { clue: "Country", words: ["guidelines", "guyana"] },
-      bottom: { clue: "Yoga", words: ["fitness", "sticks"] },
+      top: { clue: "", words: ["dover", "outlet"] },
+      right: { clue: "", words: ["shops", "negative"] },
+      left: { clue: "", words: ["guidelines", "guyana"] },
+      bottom: { clue: "", words: ["fitness", "sticks"] },
     },
   },
   {
@@ -1873,10 +1811,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Audience", words: ["viewer", "reasonably"] },
-      right: { clue: "Beauty", words: ["gardening", "clearly"] },
-      left: { clue: "Japanese", words: ["fuji", "dictionary"] },
-      bottom: { clue: "Study", words: ["researcher", "review"] },
+      top: { clue: "", words: ["viewer", "reasonably"] },
+      right: { clue: "", words: ["gardening", "clearly"] },
+      left: { clue: "", words: ["fuji", "dictionary"] },
+      bottom: { clue: "", words: ["researcher", "review"] },
     },
   },
   {
@@ -1909,10 +1847,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Neurology", words: ["advanced", "soma"] },
-      right: { clue: "Clothing", words: ["discounts", "ladies"] },
-      left: { clue: "Destiny", words: ["whether", "fate"] },
-      bottom: { clue: "Tutorial", words: ["addressing", "newbie"] },
+      top: { clue: "", words: ["advanced", "soma"] },
+      right: { clue: "", words: ["discounts", "ladies"] },
+      left: { clue: "", words: ["whether", "fate"] },
+      bottom: { clue: "", words: ["addressing", "newbie"] },
     },
   },
   {
@@ -1945,10 +1883,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Achievement", words: ["greatest", "refer"] },
-      right: { clue: "Estimate", words: ["contractor", "cost"] },
-      left: { clue: "Transport", words: ["complete", "carrying"] },
-      bottom: { clue: "Notifications", words: ["complaint", "alerts"] },
+      top: { clue: "", words: ["greatest", "refer"] },
+      right: { clue: "", words: ["contractor", "cost"] },
+      left: { clue: "", words: ["complete", "carrying"] },
+      bottom: { clue: "", words: ["complaint", "alerts"] },
     },
   },
   {
@@ -1981,10 +1919,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Fine", words: ["sw", "anyway"] },
-      right: { clue: "Manager", words: ["supervisor", "says"] },
-      left: { clue: "Train", words: ["metro", "referred"] },
-      bottom: { clue: "Responsibility", words: ["power", "commitment"] },
+      top: { clue: "", words: ["sw", "anyway"] },
+      right: { clue: "", words: ["supervisor", "says"] },
+      left: { clue: "", words: ["metro", "referred"] },
+      bottom: { clue: "", words: ["power", "commitment"] },
     },
   },
   {
@@ -2017,10 +1955,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Physics", words: ["radiation", "klein"] },
-      right: { clue: "Travel", words: ["amsterdam", "letting"] },
-      left: { clue: "Design", words: ["finland", "things"] },
-      bottom: { clue: "Fashion", words: ["dresses", "calls"] },
+      top: { clue: "", words: ["radiation", "klein"] },
+      right: { clue: "", words: ["amsterdam", "letting"] },
+      left: { clue: "", words: ["finland", "things"] },
+      bottom: { clue: "", words: ["dresses", "calls"] },
     },
   },
   {
@@ -2053,10 +1991,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Explosive", words: ["bull", "bomb"] },
-      right: { clue: "Riddle", words: ["maiden", "solved"] },
-      left: { clue: "Soup", words: ["campbell", "guided"] },
-      bottom: { clue: "Trustworthy", words: ["honest", "executives"] },
+      top: { clue: "", words: ["bull", "bomb"] },
+      right: { clue: "", words: ["maiden", "solved"] },
+      left: { clue: "", words: ["campbell", "guided"] },
+      bottom: { clue: "", words: ["honest", "executives"] },
     },
   },
   {
@@ -2067,11 +2005,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["article", "switzerland", "quality", "nancy"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["lime", "glow", "cast", "distant"],
-      },
+      { id: "card1", rotation: 0, words: ["lime", "glow", "cast", "distant"] },
       {
         id: "card2",
         rotation: 0,
@@ -2089,10 +2023,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Journal", words: ["article", "lime"] },
-      right: { clue: "Radiant", words: ["glow", "divine"] },
-      left: { clue: "Self", words: ["nancy", "independently"] },
-      bottom: { clue: "Rough", words: ["beats", "nasty"] },
+      top: { clue: "", words: ["article", "lime"] },
+      right: { clue: "", words: ["glow", "divine"] },
+      left: { clue: "", words: ["nancy", "independently"] },
+      bottom: { clue: "", words: ["beats", "nasty"] },
     },
   },
   {
@@ -2103,11 +2037,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["password", "banking", "repeat", "breast"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["ball", "maple", "being", "worked"],
-      },
+      { id: "card1", rotation: 0, words: ["ball", "maple", "being", "worked"] },
       {
         id: "card2",
         rotation: 0,
@@ -2118,17 +2048,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["owner", "understood", "translate", "holmes"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["expedia", "volt", "shop", "broke"],
-      },
+      { id: "card4", rotation: 0, words: ["expedia", "volt", "shop", "broke"] },
     ],
     solutions: {
-      top: { clue: "Secret", words: ["password", "ball"] },
-      right: { clue: "Canoe", words: ["maple", "riverside"] },
-      left: { clue: "Milk", words: ["breast", "holmes"] },
-      bottom: { clue: "Jazz", words: ["orleans", "translate"] },
+      top: { clue: "", words: ["password", "ball"] },
+      right: { clue: "", words: ["maple", "riverside"] },
+      left: { clue: "", words: ["breast", "holmes"] },
+      bottom: { clue: "", words: ["orleans", "translate"] },
     },
   },
   {
@@ -2161,10 +2087,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Soon", words: ["determine", "recently"] },
-      right: { clue: "Terrence", words: ["williams", "directed"] },
-      left: { clue: "Complex", words: ["residential", "inner"] },
-      bottom: { clue: "Journal", words: ["favorites", "written"] },
+      top: { clue: "", words: ["determine", "recently"] },
+      right: { clue: "", words: ["williams", "directed"] },
+      left: { clue: "", words: ["residential", "inner"] },
+      bottom: { clue: "", words: ["favorites", "written"] },
     },
   },
   {
@@ -2175,11 +2101,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["bulk", "muslims", "habitat", "reflection"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["lean", "panic", "girls", "actual"],
-      },
+      { id: "card1", rotation: 0, words: ["lean", "panic", "girls", "actual"] },
       {
         id: "card2",
         rotation: 0,
@@ -2197,10 +2119,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Muscle", words: ["bulk", "lean"] },
-      right: { clue: "Crisis", words: ["panic", "filtering"] },
-      left: { clue: "Insight", words: ["reflection", "suggestion"] },
-      bottom: { clue: "Voters", words: ["majority", "talks"] },
+      top: { clue: "", words: ["bulk", "lean"] },
+      right: { clue: "", words: ["panic", "filtering"] },
+      left: { clue: "", words: ["reflection", "suggestion"] },
+      bottom: { clue: "", words: ["majority", "talks"] },
     },
   },
   {
@@ -2233,10 +2155,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Himalayas", words: ["modified", "nepal"] },
-      right: { clue: "Yacht", words: ["talk", "monaco"] },
-      left: { clue: "Spoken", words: ["happened", "verbal"] },
-      bottom: { clue: "Party", words: ["purchases", "disco"] },
+      top: { clue: "", words: ["modified", "nepal"] },
+      right: { clue: "", words: ["talk", "monaco"] },
+      left: { clue: "", words: ["happened", "verbal"] },
+      bottom: { clue: "", words: ["purchases", "disco"] },
     },
   },
   {
@@ -2262,17 +2184,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["further", "uruguay", "pipe", "circular"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["tons", "marble", "webcam", "kirk"],
-      },
+      { id: "card4", rotation: 0, words: ["tons", "marble", "webcam", "kirk"] },
     ],
     solutions: {
-      top: { clue: "Healing", words: ["developments", "remedies"] },
-      right: { clue: "Microbial", words: ["knitting", "bacteria"] },
-      left: { clue: "Dome", words: ["tall", "circular"] },
-      bottom: { clue: "Plumbing", words: ["nylon", "pipe"] },
+      top: { clue: "", words: ["developments", "remedies"] },
+      right: { clue: "", words: ["knitting", "bacteria"] },
+      left: { clue: "", words: ["tall", "circular"] },
+      bottom: { clue: "", words: ["nylon", "pipe"] },
     },
   },
   {
@@ -2305,10 +2223,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Magazine", words: ["valley", "subscribers"] },
-      right: { clue: "Italy", words: ["arrangements", "milan"] },
-      left: { clue: "Significance", words: ["important", "blank"] },
-      bottom: { clue: "Vacation", words: ["optimal", "resorts"] },
+      top: { clue: "", words: ["valley", "subscribers"] },
+      right: { clue: "", words: ["arrangements", "milan"] },
+      left: { clue: "", words: ["important", "blank"] },
+      bottom: { clue: "", words: ["optimal", "resorts"] },
     },
   },
   {
@@ -2341,10 +2259,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Blueprint", words: ["machinery", "defining"] },
-      right: { clue: "Operating", words: ["surgical", "theater"] },
-      left: { clue: "Marketing", words: ["advert", "plans"] },
-      bottom: { clue: "Network", words: ["connecting", "journalists"] },
+      top: { clue: "", words: ["machinery", "defining"] },
+      right: { clue: "", words: ["surgical", "theater"] },
+      left: { clue: "", words: ["advert", "plans"] },
+      bottom: { clue: "", words: ["connecting", "journalists"] },
     },
   },
   {
@@ -2377,10 +2295,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Shoe", words: ["gather", "foot"] },
-      right: { clue: "Mellow", words: ["climate", "smooth"] },
-      left: { clue: "Arab", words: ["israeli", "yemen"] },
-      bottom: { clue: "Customer", words: ["meets", "shoppercom"] },
+      top: { clue: "", words: ["gather", "foot"] },
+      right: { clue: "", words: ["climate", "smooth"] },
+      left: { clue: "", words: ["israeli", "yemen"] },
+      bottom: { clue: "", words: ["meets", "shoppercom"] },
     },
   },
   {
@@ -2413,10 +2331,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Angry", words: ["rage", "packed"] },
-      right: { clue: "Glass", words: ["cleared", "frost"] },
-      left: { clue: "Manner", words: ["british", "approach"] },
-      bottom: { clue: "Debut", words: ["debut", "patrol"] },
+      top: { clue: "", words: ["rage", "packed"] },
+      right: { clue: "", words: ["cleared", "frost"] },
+      left: { clue: "", words: ["british", "approach"] },
+      bottom: { clue: "", words: ["debut", "patrol"] },
     },
   },
   {
@@ -2449,10 +2367,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Calender", words: ["paraguay", "schedule"] },
-      right: { clue: "Surgical", words: ["pubmed", "knife"] },
-      left: { clue: "Community", words: ["addresses", "locale"] },
-      bottom: { clue: "Car", words: ["liverpool", "warranty"] },
+      top: { clue: "", words: ["paraguay", "schedule"] },
+      right: { clue: "", words: ["pubmed", "knife"] },
+      left: { clue: "", words: ["addresses", "locale"] },
+      bottom: { clue: "", words: ["liverpool", "warranty"] },
     },
   },
   {
@@ -2485,10 +2403,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Laptop", words: ["beans", "asus"] },
-      right: { clue: "Timber", words: ["profit", "forestry"] },
-      left: { clue: "Oak", words: ["barrel", "gilbert"] },
-      bottom: { clue: "Education", words: ["universities", "suggest"] },
+      top: { clue: "", words: ["beans", "asus"] },
+      right: { clue: "", words: ["profit", "forestry"] },
+      left: { clue: "", words: ["barrel", "gilbert"] },
+      bottom: { clue: "", words: ["universities", "suggest"] },
     },
   },
   {
@@ -2521,10 +2439,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Impatient", words: ["clicking", "expected"] },
-      right: { clue: "Dragon", words: ["armor", "asia"] },
-      left: { clue: "PORN", words: ["sexcam", "examined"] },
-      bottom: { clue: "Cells", words: ["organisms", "analytical"] },
+      top: { clue: "", words: ["clicking", "expected"] },
+      right: { clue: "", words: ["armor", "asia"] },
+      left: { clue: "", words: ["sexcam", "examined"] },
+      bottom: { clue: "", words: ["organisms", "analytical"] },
     },
   },
   {
@@ -2557,10 +2475,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cancellation", words: ["eval", "withdrawal"] },
-      right: { clue: "Harley", words: ["tracked", "davidson"] },
-      left: { clue: "Canvas", words: ["warrior", "prints"] },
-      bottom: { clue: "Bike", words: ["helmet", "courier"] },
+      top: { clue: "", words: ["eval", "withdrawal"] },
+      right: { clue: "", words: ["tracked", "davidson"] },
+      left: { clue: "", words: ["warrior", "prints"] },
+      bottom: { clue: "", words: ["helmet", "courier"] },
     },
   },
   {
@@ -2593,10 +2511,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Perfect", words: ["schedules", "ideal"] },
-      right: { clue: "Result", words: ["yields", "learn"] },
-      left: { clue: "Pirate", words: ["bristol", "commander"] },
-      bottom: { clue: "Travel", words: ["night", "airfare"] },
+      top: { clue: "", words: ["schedules", "ideal"] },
+      right: { clue: "", words: ["yields", "learn"] },
+      left: { clue: "", words: ["bristol", "commander"] },
+      bottom: { clue: "", words: ["night", "airfare"] },
     },
   },
   {
@@ -2629,10 +2547,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Waves", words: ["tuesday", "seas"] },
-      right: { clue: "Mint", words: ["initial", "verde"] },
-      left: { clue: "Limit", words: ["maximum", "http"] },
-      bottom: { clue: "Glue", words: ["thrown", "binding"] },
+      top: { clue: "", words: ["tuesday", "seas"] },
+      right: { clue: "", words: ["initial", "verde"] },
+      left: { clue: "", words: ["maximum", "http"] },
+      bottom: { clue: "", words: ["thrown", "binding"] },
     },
   },
   {
@@ -2665,10 +2583,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Nuclear", words: ["operating", "atomic"] },
-      right: { clue: "Ground", words: ["foundations", "chat"] },
-      left: { clue: "Mold", words: ["belong", "block"] },
-      bottom: { clue: "Dissonance", words: ["memphis", "disagree"] },
+      top: { clue: "", words: ["operating", "atomic"] },
+      right: { clue: "", words: ["foundations", "chat"] },
+      left: { clue: "", words: ["belong", "block"] },
+      bottom: { clue: "", words: ["memphis", "disagree"] },
     },
   },
   {
@@ -2701,10 +2619,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Startup", words: ["fr", "enterprise"] },
-      right: { clue: "Patriot", words: ["remain", "citizen"] },
-      left: { clue: "Kremlin", words: ["interstate", "russian"] },
-      bottom: { clue: "Genius", words: ["grants", "brilliant"] },
+      top: { clue: "", words: ["fr", "enterprise"] },
+      right: { clue: "", words: ["remain", "citizen"] },
+      left: { clue: "", words: ["interstate", "russian"] },
+      bottom: { clue: "", words: ["grants", "brilliant"] },
     },
   },
   {
@@ -2737,10 +2655,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Debut", words: ["previews", "announced"] },
-      right: { clue: "Excellence", words: ["serving", "perfect"] },
-      left: { clue: "View", words: ["perspective", "songs"] },
-      bottom: { clue: "Grey", words: ["commonwealth", "cloudy"] },
+      top: { clue: "", words: ["previews", "announced"] },
+      right: { clue: "", words: ["serving", "perfect"] },
+      left: { clue: "", words: ["perspective", "songs"] },
+      bottom: { clue: "", words: ["commonwealth", "cloudy"] },
     },
   },
   {
@@ -2773,10 +2691,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Innovation", words: ["france", "technological"] },
-      right: { clue: "Parade", words: ["lafayette", "activation"] },
-      left: { clue: "Protection", words: ["funds", "rights"] },
-      bottom: { clue: "Urges", words: ["encourages", "replaced"] },
+      top: { clue: "", words: ["france", "technological"] },
+      right: { clue: "", words: ["lafayette", "activation"] },
+      left: { clue: "", words: ["funds", "rights"] },
+      bottom: { clue: "", words: ["encourages", "replaced"] },
     },
   },
   {
@@ -2809,10 +2727,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Lawyer", words: ["martin", "bureau"] },
-      right: { clue: "Kool-Aid", words: ["franklin", "drinks"] },
-      left: { clue: "Emergency", words: ["meta", "hospital"] },
-      bottom: { clue: "Facial", words: ["outer", "smilies"] },
+      top: { clue: "", words: ["martin", "bureau"] },
+      right: { clue: "", words: ["franklin", "drinks"] },
+      left: { clue: "", words: ["meta", "hospital"] },
+      bottom: { clue: "", words: ["outer", "smilies"] },
     },
   },
   {
@@ -2845,10 +2763,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Secret", words: ["birthday", "disclosure"] },
-      right: { clue: "Palace", words: ["imperial", "villa"] },
-      left: { clue: "Intense", words: ["excellent", "emotional"] },
-      bottom: { clue: "Mishap", words: ["incident", "remember"] },
+      top: { clue: "", words: ["birthday", "disclosure"] },
+      right: { clue: "", words: ["imperial", "villa"] },
+      left: { clue: "", words: ["excellent", "emotional"] },
+      bottom: { clue: "", words: ["incident", "remember"] },
     },
   },
   {
@@ -2881,10 +2799,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Discount", words: ["essex", "coupons"] },
-      right: { clue: "Side", words: ["attraction", "aspect"] },
-      left: { clue: "Meeting", words: ["symphony", "consultation"] },
-      bottom: { clue: "Stitch", words: ["inter", "thread"] },
+      top: { clue: "", words: ["essex", "coupons"] },
+      right: { clue: "", words: ["attraction", "aspect"] },
+      left: { clue: "", words: ["symphony", "consultation"] },
+      bottom: { clue: "", words: ["inter", "thread"] },
     },
   },
   {
@@ -2917,10 +2835,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Plot", words: ["direction", "scripts"] },
-      right: { clue: "Week", words: ["seventh", "thursday"] },
-      left: { clue: "Photos", words: ["flickr", "relocation"] },
-      bottom: { clue: "Wheat", words: ["whole", "kent"] },
+      top: { clue: "", words: ["direction", "scripts"] },
+      right: { clue: "", words: ["seventh", "thursday"] },
+      left: { clue: "", words: ["flickr", "relocation"] },
+      bottom: { clue: "", words: ["whole", "kent"] },
     },
   },
   {
@@ -2953,10 +2871,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Curriculum", words: ["educators", "search"] },
-      right: { clue: "Coach", words: ["buddy", "instructor"] },
-      left: { clue: "Stupid", words: ["pills", "dumb"] },
-      bottom: { clue: "Unseen", words: ["access", "mysterious"] },
+      top: { clue: "", words: ["educators", "search"] },
+      right: { clue: "", words: ["buddy", "instructor"] },
+      left: { clue: "", words: ["pills", "dumb"] },
+      bottom: { clue: "", words: ["access", "mysterious"] },
     },
   },
   {
@@ -2972,11 +2890,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["trainer", "alan", "creature", "destroy"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["slots", "cole", "hang", "playboy"],
-      },
+      { id: "card2", rotation: 0, words: ["slots", "cole", "hang", "playboy"] },
       {
         id: "card3",
         rotation: 0,
@@ -2989,10 +2903,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Coach", words: ["first", "trainer"] },
-      right: { clue: "Football", words: ["alan", "cole"] },
-      left: { clue: "Soil", words: ["dirt", "buffer"] },
-      bottom: { clue: "Gates", words: ["hang", "subdivision"] },
+      top: { clue: "", words: ["first", "trainer"] },
+      right: { clue: "", words: ["alan", "cole"] },
+      left: { clue: "", words: ["dirt", "buffer"] },
+      bottom: { clue: "", words: ["hang", "subdivision"] },
     },
   },
   {
@@ -3025,10 +2939,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Walmart", words: ["carroll", "checkout"] },
-      right: { clue: "Memorial", words: ["encounter", "funeral"] },
-      left: { clue: "Outskirts", words: ["circles", "peripheral"] },
-      bottom: { clue: "Packard", words: ["hewlett", "devel"] },
+      top: { clue: "", words: ["carroll", "checkout"] },
+      right: { clue: "", words: ["encounter", "funeral"] },
+      left: { clue: "", words: ["circles", "peripheral"] },
+      bottom: { clue: "", words: ["hewlett", "devel"] },
     },
   },
   {
@@ -3044,11 +2958,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["nightlife", "disabilities", "disabled", "parking"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["cart", "queue", "tables", "rates"],
-      },
+      { id: "card2", rotation: 0, words: ["cart", "queue", "tables", "rates"] },
       {
         id: "card3",
         rotation: 0,
@@ -3061,10 +2971,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "CLUBS", words: ["collectables", "nightlife"] },
-      right: { clue: "Access", words: ["disabilities", "queue"] },
-      left: { clue: "Border", words: ["fence", "spotlight"] },
-      bottom: { clue: "Communal", words: ["tables", "others"] },
+      top: { clue: "", words: ["collectables", "nightlife"] },
+      right: { clue: "", words: ["disabilities", "queue"] },
+      left: { clue: "", words: ["fence", "spotlight"] },
+      bottom: { clue: "", words: ["tables", "others"] },
     },
   },
   {
@@ -3097,10 +3007,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Packs", words: ["several", "starter"] },
-      right: { clue: "England", words: ["taught", "victoria"] },
-      left: { clue: "Stunning", words: ["magnificent", "added"] },
-      bottom: { clue: "Audio", words: ["dm", "hearing"] },
+      top: { clue: "", words: ["several", "starter"] },
+      right: { clue: "", words: ["taught", "victoria"] },
+      left: { clue: "", words: ["magnificent", "added"] },
+      bottom: { clue: "", words: ["dm", "hearing"] },
     },
   },
   {
@@ -3133,10 +3043,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pebbles", words: ["myers", "stones"] },
-      right: { clue: "Manual", words: ["comply", "compilation"] },
-      left: { clue: "Fence", words: ["cross", "slide"] },
-      bottom: { clue: "Duplicate", words: ["carbon", "copying"] },
+      top: { clue: "", words: ["myers", "stones"] },
+      right: { clue: "", words: ["comply", "compilation"] },
+      left: { clue: "", words: ["cross", "slide"] },
+      bottom: { clue: "", words: ["carbon", "copying"] },
     },
   },
   {
@@ -3169,10 +3079,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Domestic", words: ["handled", "women"] },
-      right: { clue: "Driving", words: ["cheque", "licenses"] },
-      left: { clue: "Women", words: ["organised", "females"] },
-      bottom: { clue: "Painted", words: ["caused", "canvas"] },
+      top: { clue: "", words: ["handled", "women"] },
+      right: { clue: "", words: ["cheque", "licenses"] },
+      left: { clue: "", words: ["organised", "females"] },
+      bottom: { clue: "", words: ["caused", "canvas"] },
     },
   },
   {
@@ -3205,10 +3115,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Chlorine", words: ["toxic", "honolulu"] },
-      right: { clue: "Stain", words: ["marks", "chair"] },
-      left: { clue: "Church", words: ["financing", "parish"] },
-      bottom: { clue: "Person", words: ["individual", "response"] },
+      top: { clue: "", words: ["toxic", "honolulu"] },
+      right: { clue: "", words: ["marks", "chair"] },
+      left: { clue: "", words: ["financing", "parish"] },
+      bottom: { clue: "", words: ["individual", "response"] },
     },
   },
   {
@@ -3241,10 +3151,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Ship", words: ["mpegs", "dock"] },
-      right: { clue: "Motivate", words: ["incentive", "enlarge"] },
-      left: { clue: "Azure", words: ["deployment", "microsoft"] },
-      bottom: { clue: "Architecture", words: ["tone", "buildings"] },
+      top: { clue: "", words: ["mpegs", "dock"] },
+      right: { clue: "", words: ["incentive", "enlarge"] },
+      left: { clue: "", words: ["deployment", "microsoft"] },
+      bottom: { clue: "", words: ["tone", "buildings"] },
     },
   },
   {
@@ -3277,10 +3187,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Started", words: ["trained", "begun"] },
-      right: { clue: "Uniform", words: ["proprietary", "stripes"] },
-      left: { clue: "Royally", words: ["kings", "processed"] },
-      bottom: { clue: "Jewel", words: ["victim", "ruby"] },
+      top: { clue: "", words: ["trained", "begun"] },
+      right: { clue: "", words: ["proprietary", "stripes"] },
+      left: { clue: "", words: ["kings", "processed"] },
+      bottom: { clue: "", words: ["victim", "ruby"] },
     },
   },
   {
@@ -3313,10 +3223,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Reviews", words: ["shared", "ratings"] },
-      right: { clue: "Registration", words: ["wise", "signup"] },
-      left: { clue: "Basal", words: ["tissue", "principle"] },
-      bottom: { clue: "Liverpool", words: ["beatles", "township"] },
+      top: { clue: "", words: ["shared", "ratings"] },
+      right: { clue: "", words: ["wise", "signup"] },
+      left: { clue: "", words: ["tissue", "principle"] },
+      bottom: { clue: "", words: ["beatles", "township"] },
     },
   },
   {
@@ -3349,10 +3259,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cargo", words: ["carries", "dicke"] },
-      right: { clue: "Editor", words: ["publishers", "ruled"] },
-      left: { clue: "Employment", words: ["staffing", "samsung"] },
-      bottom: { clue: "Effort", words: ["typing", "mounting"] },
+      top: { clue: "", words: ["carries", "dicke"] },
+      right: { clue: "", words: ["publishers", "ruled"] },
+      left: { clue: "", words: ["staffing", "samsung"] },
+      bottom: { clue: "", words: ["typing", "mounting"] },
     },
   },
   {
@@ -3385,10 +3295,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Gratitude", words: ["thank", "favourites"] },
-      right: { clue: "Emotional", words: ["marketplace", "deeply"] },
-      left: { clue: "Branch", words: ["mainland", "affiliate"] },
-      bottom: { clue: "Mental", words: ["vi", "ment"] },
+      top: { clue: "", words: ["thank", "favourites"] },
+      right: { clue: "", words: ["marketplace", "deeply"] },
+      left: { clue: "", words: ["mainland", "affiliate"] },
+      bottom: { clue: "", words: ["vi", "ment"] },
     },
   },
   {
@@ -3421,10 +3331,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Type", words: ["character", "fixed"] },
-      right: { clue: "Harmony", words: ["singing", "vibrators"] },
-      left: { clue: "Object", words: ["density", "javascript"] },
-      bottom: { clue: "Island", words: ["isle", "altered"] },
+      top: { clue: "", words: ["character", "fixed"] },
+      right: { clue: "", words: ["singing", "vibrators"] },
+      left: { clue: "", words: ["density", "javascript"] },
+      bottom: { clue: "", words: ["isle", "altered"] },
     },
   },
   {
@@ -3457,10 +3367,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Gunsight", words: ["framework", "weapon"] },
-      right: { clue: "Adhesive", words: ["couple", "tape"] },
-      left: { clue: "Test", words: ["create", "sbjct"] },
-      bottom: { clue: "Platform", words: ["multimedia", "integrating"] },
+      top: { clue: "", words: ["framework", "weapon"] },
+      right: { clue: "", words: ["couple", "tape"] },
+      left: { clue: "", words: ["create", "sbjct"] },
+      bottom: { clue: "", words: ["multimedia", "integrating"] },
     },
   },
   {
@@ -3493,10 +3403,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Piano", words: ["publicly", "instruments"] },
-      right: { clue: "Road", words: ["front", "infrastructure"] },
-      left: { clue: "Trophies", words: ["drops", "awards"] },
-      bottom: { clue: "Propeller", words: ["sucking", "avi"] },
+      top: { clue: "", words: ["publicly", "instruments"] },
+      right: { clue: "", words: ["front", "infrastructure"] },
+      left: { clue: "", words: ["drops", "awards"] },
+      bottom: { clue: "", words: ["sucking", "avi"] },
     },
   },
   {
@@ -3529,10 +3439,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Tolerance", words: ["consistency", "margin"] },
-      right: { clue: "Dance", words: ["episodes", "walt"] },
-      left: { clue: "Tipping", words: ["paying", "gifts"] },
-      bottom: { clue: "Harbor", words: ["woods", "ports"] },
+      top: { clue: "", words: ["consistency", "margin"] },
+      right: { clue: "", words: ["episodes", "walt"] },
+      left: { clue: "", words: ["paying", "gifts"] },
+      bottom: { clue: "", words: ["woods", "ports"] },
     },
   },
   {
@@ -3565,13 +3475,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Waiting", words: ["john", "bufing"] },
-      right: { clue: "Jewelry", words: ["handjobs", "rings"] },
-      left: { clue: "History", words: ["past", "paths"] },
-      bottom: {
-        clue: 'Mold and Attempted can be related to the word "Fungi".',
-        words: ["mold", "attempted"],
-      },
+      top: { clue: "", words: ["john", "bufing"] },
+      right: { clue: "", words: ["handjobs", "rings"] },
+      left: { clue: "", words: ["past", "paths"] },
+      bottom: { clue: "", words: ["mold", "attempted"] },
     },
   },
   {
@@ -3604,10 +3511,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Finance", words: ["stocks", "norway"] },
-      right: { clue: "Control", words: ["explosion", "adequate"] },
-      left: { clue: "Mobile", words: ["cingular", "subject"] },
-      bottom: { clue: "Camera", words: ["expo", "filter"] },
+      top: { clue: "", words: ["stocks", "norway"] },
+      right: { clue: "", words: ["explosion", "adequate"] },
+      left: { clue: "", words: ["cingular", "subject"] },
+      bottom: { clue: "", words: ["expo", "filter"] },
     },
   },
   {
@@ -3640,10 +3547,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "St.", words: ["affair", "petersburg"] },
-      right: { clue: "Storage", words: ["manager", "reservoir"] },
-      left: { clue: "Winner", words: ["elections", "successfully"] },
-      bottom: { clue: "Litter", words: ["mailed", "pollution"] },
+      top: { clue: "", words: ["affair", "petersburg"] },
+      right: { clue: "", words: ["manager", "reservoir"] },
+      left: { clue: "", words: ["elections", "successfully"] },
+      bottom: { clue: "", words: ["mailed", "pollution"] },
     },
   },
   {
@@ -3676,10 +3583,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Grass", words: ["savannah", "heavily"] },
-      right: { clue: "Ship", words: ["cruise", "knows"] },
-      left: { clue: "Painful", words: ["anonymous", "hurt"] },
-      bottom: { clue: "Account", words: ["secrets", "finances"] },
+      top: { clue: "", words: ["savannah", "heavily"] },
+      right: { clue: "", words: ["cruise", "knows"] },
+      left: { clue: "", words: ["anonymous", "hurt"] },
+      bottom: { clue: "", words: ["secrets", "finances"] },
     },
   },
   {
@@ -3712,10 +3619,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Size", words: ["inch", "articles"] },
-      right: { clue: "Relationship", words: ["girlfriend", "dealing"] },
-      left: { clue: "Jazz", words: ["musical", "carl"] },
-      bottom: { clue: "Orchestra", words: ["bridge", "musicians"] },
+      top: { clue: "", words: ["inch", "articles"] },
+      right: { clue: "", words: ["girlfriend", "dealing"] },
+      left: { clue: "", words: ["musical", "carl"] },
+      bottom: { clue: "", words: ["bridge", "musicians"] },
     },
   },
   {
@@ -3748,10 +3655,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Software", words: ["bloomberg", "interfaces"] },
-      right: { clue: "Survey", words: ["laser", "monitoring"] },
-      left: { clue: "Intuition", words: ["say", "awareness"] },
-      bottom: { clue: "Alps", words: ["beaches", "swiss"] },
+      top: { clue: "", words: ["bloomberg", "interfaces"] },
+      right: { clue: "", words: ["laser", "monitoring"] },
+      left: { clue: "", words: ["say", "awareness"] },
+      bottom: { clue: "", words: ["beaches", "swiss"] },
     },
   },
   {
@@ -3784,10 +3691,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Aircraft", words: ["keyword", "planes"] },
-      right: { clue: "Requests", words: ["sequence", "enquiries"] },
-      left: { clue: "Track", words: ["jury", "railway"] },
-      bottom: { clue: "Calendar", words: ["cookies", "planning"] },
+      top: { clue: "", words: ["keyword", "planes"] },
+      right: { clue: "", words: ["sequence", "enquiries"] },
+      left: { clue: "", words: ["jury", "railway"] },
+      bottom: { clue: "", words: ["cookies", "planning"] },
     },
   },
   {
@@ -3820,10 +3727,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Corrective", words: ["rehabilitation", "amend"] },
-      right: { clue: "Pay", words: ["upload", "money"] },
-      left: { clue: "Cool", words: ["funky", "competent"] },
-      bottom: { clue: "Execute", words: ["implement", "accepting"] },
+      top: { clue: "", words: ["rehabilitation", "amend"] },
+      right: { clue: "", words: ["upload", "money"] },
+      left: { clue: "", words: ["funky", "competent"] },
+      bottom: { clue: "", words: ["implement", "accepting"] },
     },
   },
   {
@@ -3856,10 +3763,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Flexibility", words: ["vary", "diet"] },
-      right: { clue: "Verse", words: ["dating", "poetry"] },
-      left: { clue: "Rite", words: ["trains", "holy"] },
-      bottom: { clue: "Gift", words: ["favour", "offer"] },
+      top: { clue: "", words: ["vary", "diet"] },
+      right: { clue: "", words: ["dating", "poetry"] },
+      left: { clue: "", words: ["trains", "holy"] },
+      bottom: { clue: "", words: ["favour", "offer"] },
     },
   },
   {
@@ -3892,10 +3799,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Exclusivity", words: ["outside", "elite"] },
-      right: { clue: "Mechanisms", words: ["gadgets", "indirect"] },
-      left: { clue: '"Words"', words: ["wn", "respectively"] },
-      bottom: { clue: "Eau", words: ["founder", "perfume"] },
+      top: { clue: "", words: ["outside", "elite"] },
+      right: { clue: "", words: ["gadgets", "indirect"] },
+      left: { clue: "", words: ["wn", "respectively"] },
+      bottom: { clue: "", words: ["founder", "perfume"] },
     },
   },
   {
@@ -3928,10 +3835,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Inspection", words: ["coating", "calibration"] },
-      right: { clue: "Asia", words: ["profits", "eastern"] },
-      left: { clue: "Luxury", words: ["crystal", "carpet"] },
-      bottom: { clue: "Dark", words: ["cave", "lite"] },
+      top: { clue: "", words: ["coating", "calibration"] },
+      right: { clue: "", words: ["profits", "eastern"] },
+      left: { clue: "", words: ["crystal", "carpet"] },
+      bottom: { clue: "", words: ["cave", "lite"] },
     },
   },
   {
@@ -3964,10 +3871,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Digestion", words: ["stomach", "raise"] },
-      right: { clue: "Design", words: ["dress", "configuring"] },
-      left: { clue: "Salaries", words: ["paid", "benefits"] },
-      bottom: { clue: "Healthcare", words: ["medical", "ministry"] },
+      top: { clue: "", words: ["stomach", "raise"] },
+      right: { clue: "", words: ["dress", "configuring"] },
+      left: { clue: "", words: ["paid", "benefits"] },
+      bottom: { clue: "", words: ["medical", "ministry"] },
     },
   },
   {
@@ -4000,10 +3907,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Product", words: ["schema", "goods"] },
-      right: { clue: "Map", words: ["road", "beth"] },
-      left: { clue: "Poverty", words: ["homeless", "before"] },
-      bottom: { clue: "Next", words: ["everyone", "subsequent"] },
+      top: { clue: "", words: ["schema", "goods"] },
+      right: { clue: "", words: ["road", "beth"] },
+      left: { clue: "", words: ["homeless", "before"] },
+      bottom: { clue: "", words: ["everyone", "subsequent"] },
     },
   },
   {
@@ -4019,11 +3926,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["confidential", "gbp", "fully", "pick"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["miami", "bdsm", "poor", "chem"],
-      },
+      { id: "card2", rotation: 0, words: ["miami", "bdsm", "poor", "chem"] },
       {
         id: "card3",
         rotation: 0,
@@ -4036,20 +3939,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Secret", words: ["transcription", "confidential"] },
-      right: { clue: "Kink", words: ["gbp", "bdsm"] },
-      left: { clue: "Races", words: ["pushed", "contests"] },
-      bottom: { clue: "Inaccurate", words: ["poor", "estimated"] },
+      top: { clue: "", words: ["transcription", "confidential"] },
+      right: { clue: "", words: ["gbp", "bdsm"] },
+      left: { clue: "", words: ["pushed", "contests"] },
+      bottom: { clue: "", words: ["poor", "estimated"] },
     },
   },
   {
     id: "0-5-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["counts", "full", "told", "saint"],
-      },
+      { id: "card0", rotation: 0, words: ["counts", "full", "told", "saint"] },
       {
         id: "card1",
         rotation: 0,
@@ -4072,10 +3971,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Inconsistent", words: ["counts", "unavailable"] },
-      right: { clue: "Knights", words: ["hood", "prayers"] },
-      left: { clue: "Canon", words: ["saint", "constitute"] },
-      bottom: { clue: "Toxic", words: ["metropolitan", "hazardous"] },
+      top: { clue: "", words: ["counts", "unavailable"] },
+      right: { clue: "", words: ["hood", "prayers"] },
+      left: { clue: "", words: ["saint", "constitute"] },
+      bottom: { clue: "", words: ["metropolitan", "hazardous"] },
     },
   },
   {
@@ -4108,20 +4007,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Unique", words: ["newest", "special"] },
-      right: { clue: "Uplift", words: ["referenced", "rise"] },
-      left: { clue: "Grazing", words: ["lamb", "stay"] },
-      bottom: { clue: "Location", words: ["auckland", "convenient"] },
+      top: { clue: "", words: ["newest", "special"] },
+      right: { clue: "", words: ["referenced", "rise"] },
+      left: { clue: "", words: ["lamb", "stay"] },
+      bottom: { clue: "", words: ["auckland", "convenient"] },
     },
   },
   {
     id: "1-0-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["poet", "shower", "char", "payday"],
-      },
+      { id: "card0", rotation: 0, words: ["poet", "shower", "char", "payday"] },
       {
         id: "card1",
         rotation: 0,
@@ -4144,10 +4039,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Portrait", words: ["poet", "photo"] },
-      right: { clue: "Data", words: ["emotions", "numeric"] },
-      left: { clue: "Payroll", words: ["payday", "computation"] },
-      bottom: { clue: "Mail", words: ["envelope", "quit"] },
+      top: { clue: "", words: ["poet", "photo"] },
+      right: { clue: "", words: ["emotions", "numeric"] },
+      left: { clue: "", words: ["payday", "computation"] },
+      bottom: { clue: "", words: ["envelope", "quit"] },
     },
   },
   {
@@ -4180,10 +4075,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Route", words: ["taxi", "longitude"] },
-      right: { clue: "Office", words: ["ste", "chairs"] },
-      left: { clue: "Maintenance", words: ["services", "keeping"] },
-      bottom: { clue: "Roman", words: ["helena", "which"] },
+      top: { clue: "", words: ["taxi", "longitude"] },
+      right: { clue: "", words: ["ste", "chairs"] },
+      left: { clue: "", words: ["services", "keeping"] },
+      bottom: { clue: "", words: ["helena", "which"] },
     },
   },
   {
@@ -4216,10 +4111,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Skill", words: ["compromise", "craft"] },
-      right: { clue: "Hotel", words: ["francisco", "lodging"] },
-      left: { clue: "Los", words: ["immigration", "angeles"] },
-      bottom: { clue: "Fence", words: ["profile", "wall"] },
+      top: { clue: "", words: ["compromise", "craft"] },
+      right: { clue: "", words: ["francisco", "lodging"] },
+      left: { clue: "", words: ["immigration", "angeles"] },
+      bottom: { clue: "", words: ["profile", "wall"] },
     },
   },
   {
@@ -4252,10 +4147,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pipe", words: ["born", "drain"] },
-      right: { clue: "Notice", words: ["reservations", "inform"] },
-      left: { clue: "Amphitheater", words: ["sheffield", "theaters"] },
-      bottom: { clue: "Boat", words: ["backing", "fisher"] },
+      top: { clue: "", words: ["born", "drain"] },
+      right: { clue: "", words: ["reservations", "inform"] },
+      left: { clue: "", words: ["sheffield", "theaters"] },
+      bottom: { clue: "", words: ["backing", "fisher"] },
     },
   },
   {
@@ -4276,11 +4171,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["estate", "fifteen", "crossword", "sword"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["often", "travis", "solar", "hawk"],
-      },
+      { id: "card3", rotation: 0, words: ["often", "travis", "solar", "hawk"] },
       {
         id: "card4",
         rotation: 0,
@@ -4288,10 +4179,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Analysis", words: ["indicators", "breakdown"] },
-      right: { clue: "Teenagers", words: ["males", "fifteen"] },
-      left: { clue: "Building", words: ["concrete", "hawk"] },
-      bottom: { clue: "Panel", words: ["crossword", "solar"] },
+      top: { clue: "", words: ["indicators", "breakdown"] },
+      right: { clue: "", words: ["males", "fifteen"] },
+      left: { clue: "", words: ["concrete", "hawk"] },
+      bottom: { clue: "", words: ["crossword", "solar"] },
     },
   },
   {
@@ -4324,10 +4215,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Map", words: ["show", "countries"] },
-      right: { clue: "Medicine", words: ["health", "african"] },
-      left: { clue: "Incentive", words: ["reward", "transformation"] },
-      bottom: { clue: "Drilling", words: ["conflict", "petroleum"] },
+      top: { clue: "", words: ["show", "countries"] },
+      right: { clue: "", words: ["health", "african"] },
+      left: { clue: "", words: ["reward", "transformation"] },
+      bottom: { clue: "", words: ["conflict", "petroleum"] },
     },
   },
   {
@@ -4360,10 +4251,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "People", words: ["entities", "cindy"] },
-      right: { clue: "Acceptance", words: ["office", "confirmation"] },
-      left: { clue: "Clinic", words: ["stat", "veterinary"] },
-      bottom: { clue: "Scope", words: ["aspnet", "distance"] },
+      top: { clue: "", words: ["entities", "cindy"] },
+      right: { clue: "", words: ["office", "confirmation"] },
+      left: { clue: "", words: ["stat", "veterinary"] },
+      bottom: { clue: "", words: ["aspnet", "distance"] },
     },
   },
   {
@@ -4396,10 +4287,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Accomplishments", words: ["achievements", "them"] },
-      right: { clue: "Brand", words: ["teddy", "marketing"] },
-      left: { clue: "Screen", words: ["visual", "motorola"] },
-      bottom: { clue: "Intelligent", words: ["looksmart", "missions"] },
+      top: { clue: "", words: ["achievements", "them"] },
+      right: { clue: "", words: ["teddy", "marketing"] },
+      left: { clue: "", words: ["visual", "motorola"] },
+      bottom: { clue: "", words: ["looksmart", "missions"] },
     },
   },
   {
@@ -4432,10 +4323,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Prank", words: ["comic", "revenge"] },
-      right: { clue: "Island", words: ["aruba", "logo"] },
-      left: { clue: "Driver", words: ["motor", "whom"] },
-      bottom: { clue: "Avenue", words: ["organizing", "boulevard"] },
+      top: { clue: "", words: ["comic", "revenge"] },
+      right: { clue: "", words: ["aruba", "logo"] },
+      left: { clue: "", words: ["motor", "whom"] },
+      bottom: { clue: "", words: ["organizing", "boulevard"] },
     },
   },
   {
@@ -4468,10 +4359,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Portrait", words: ["announces", "photographer"] },
-      right: { clue: "Coaster!", words: ["something", "roller"] },
-      left: { clue: "Tradition", words: ["jewish", "solely"] },
-      bottom: { clue: "Dance", words: ["morris", "closure"] },
+      top: { clue: "", words: ["announces", "photographer"] },
+      right: { clue: "", words: ["something", "roller"] },
+      left: { clue: "", words: ["jewish", "solely"] },
+      bottom: { clue: "", words: ["morris", "closure"] },
     },
   },
   {
@@ -4504,10 +4395,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Summary", words: ["avatar", "report"] },
-      right: { clue: "Freebie", words: ["guaranteed", "beer"] },
-      left: { clue: "Cells", words: ["seekers", "cellular"] },
-      bottom: { clue: "Air", words: ["breath", "unto"] },
+      top: { clue: "", words: ["avatar", "report"] },
+      right: { clue: "", words: ["guaranteed", "beer"] },
+      left: { clue: "", words: ["seekers", "cellular"] },
+      bottom: { clue: "", words: ["breath", "unto"] },
     },
   },
   {
@@ -4540,10 +4431,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Theme", words: ["shoes", "orlando"] },
-      right: { clue: "Small", words: ["many", "liechtenstein"] },
-      left: { clue: "Sign", words: ["indexes", "miracle"] },
-      bottom: { clue: "Guided", words: ["star", "safely"] },
+      top: { clue: "", words: ["shoes", "orlando"] },
+      right: { clue: "", words: ["many", "liechtenstein"] },
+      left: { clue: "", words: ["indexes", "miracle"] },
+      bottom: { clue: "", words: ["star", "safely"] },
     },
   },
   {
@@ -4576,10 +4467,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Waste", words: ["collected", "decline"] },
-      right: { clue: "Recorded", words: ["appeared", "measured"] },
-      left: { clue: "Wise", words: ["otherwise", "advice"] },
-      bottom: { clue: "Wealth", words: ["outcomes", "rich"] },
+      top: { clue: "", words: ["collected", "decline"] },
+      right: { clue: "", words: ["appeared", "measured"] },
+      left: { clue: "", words: ["otherwise", "advice"] },
+      bottom: { clue: "", words: ["outcomes", "rich"] },
     },
   },
   {
@@ -4612,10 +4503,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Buffet", words: ["large", "portions"] },
-      right: { clue: "Racing", words: ["mile", "promo"] },
-      left: { clue: "Rome", words: ["italy", "bookstore"] },
-      bottom: { clue: "Film", words: ["situation", "starring"] },
+      top: { clue: "", words: ["large", "portions"] },
+      right: { clue: "", words: ["mile", "promo"] },
+      left: { clue: "", words: ["italy", "bookstore"] },
+      bottom: { clue: "", words: ["situation", "starring"] },
     },
   },
   {
@@ -4648,10 +4539,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Simulation", words: ["recorded", "modelling"] },
-      right: { clue: "Management", words: ["chan", "implies"] },
-      left: { clue: "Herb", words: ["baking", "green"] },
-      bottom: { clue: "Testing", words: ["screening", "products"] },
+      top: { clue: "", words: ["recorded", "modelling"] },
+      right: { clue: "", words: ["chan", "implies"] },
+      left: { clue: "", words: ["baking", "green"] },
+      bottom: { clue: "", words: ["screening", "products"] },
     },
   },
   {
@@ -4684,10 +4575,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Library", words: ["transsexual", "worldcat"] },
-      right: { clue: "Surveys", words: ["hitting", "questionnaire"] },
-      left: { clue: "Applications", words: ["claims", "participating"] },
-      bottom: { clue: "Perch", words: ["opinion", "cradle"] },
+      top: { clue: "", words: ["transsexual", "worldcat"] },
+      right: { clue: "", words: ["hitting", "questionnaire"] },
+      left: { clue: "", words: ["claims", "participating"] },
+      bottom: { clue: "", words: ["opinion", "cradle"] },
     },
   },
   {
@@ -4713,27 +4604,19 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["adipex", "arguments", "bulgarian", "coaches"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["jews", "sperm", "shake", "clinic"],
-      },
+      { id: "card4", rotation: 0, words: ["jews", "sperm", "shake", "clinic"] },
     ],
     solutions: {
-      top: { clue: "Women", words: ["brunette", "managers"] },
-      right: { clue: "Phone", words: ["nokia", "include"] },
-      left: { clue: "Train", words: ["soldiers", "coaches"] },
-      bottom: { clue: "Software", words: ["telecharger", "bulgarian"] },
+      top: { clue: "", words: ["brunette", "managers"] },
+      right: { clue: "", words: ["nokia", "include"] },
+      left: { clue: "", words: ["soldiers", "coaches"] },
+      bottom: { clue: "", words: ["telecharger", "bulgarian"] },
     },
   },
   {
     id: "1-3-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["goals", "global", "fg", "feeling"],
-      },
+      { id: "card0", rotation: 0, words: ["goals", "global", "fg", "feeling"] },
       {
         id: "card1",
         rotation: 0,
@@ -4756,10 +4639,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Remind", words: ["goals", "notify"] },
-      right: { clue: "Grain", words: ["obviously", "mill"] },
-      left: { clue: "Emotion", words: ["feeling", "thumbnails"] },
-      bottom: { clue: "Lutheran", words: ["christ", "sweden"] },
+      top: { clue: "", words: ["goals", "notify"] },
+      right: { clue: "", words: ["obviously", "mill"] },
+      left: { clue: "", words: ["feeling", "thumbnails"] },
+      bottom: { clue: "", words: ["christ", "sweden"] },
     },
   },
   {
@@ -4792,10 +4675,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Vacation", words: ["failed", "bermuda"] },
-      right: { clue: "Voting", words: ["marathon", "elect"] },
-      left: { clue: "Voter", words: ["camping", "democrat"] },
-      bottom: { clue: "Pixels", words: ["digital", "spears"] },
+      top: { clue: "", words: ["failed", "bermuda"] },
+      right: { clue: "", words: ["marathon", "elect"] },
+      left: { clue: "", words: ["camping", "democrat"] },
+      bottom: { clue: "", words: ["digital", "spears"] },
     },
   },
   {
@@ -4828,10 +4711,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Camera", words: ["nikon", "elements"] },
-      right: { clue: "Measurement", words: ["furthermore", "ppm"] },
-      left: { clue: "Threshold", words: ["tournaments", "watershed"] },
-      bottom: { clue: "Sunday", words: ["monday", "chicken"] },
+      top: { clue: "", words: ["nikon", "elements"] },
+      right: { clue: "", words: ["furthermore", "ppm"] },
+      left: { clue: "", words: ["tournaments", "watershed"] },
+      bottom: { clue: "", words: ["monday", "chicken"] },
     },
   },
   {
@@ -4864,10 +4747,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Ladies", words: ["plenty", "female"] },
-      right: { clue: "Soldiers", words: ["guards", "divided"] },
-      left: { clue: "History", words: ["lookup", "background"] },
-      bottom: { clue: "Motivation", words: ["fishing", "reason"] },
+      top: { clue: "", words: ["plenty", "female"] },
+      right: { clue: "", words: ["guards", "divided"] },
+      left: { clue: "", words: ["lookup", "background"] },
+      bottom: { clue: "", words: ["fishing", "reason"] },
     },
   },
   {
@@ -4900,10 +4783,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Organized", words: ["surname", "systematic"] },
-      right: { clue: "NHL", words: ["popular", "hockey"] },
-      left: { clue: "Noble", words: ["duke", "qualifications"] },
-      bottom: { clue: "Public", words: ["audience", "regarded"] },
+      top: { clue: "", words: ["surname", "systematic"] },
+      right: { clue: "", words: ["popular", "hockey"] },
+      left: { clue: "", words: ["duke", "qualifications"] },
+      bottom: { clue: "", words: ["audience", "regarded"] },
     },
   },
   {
@@ -4936,10 +4819,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Scope", words: ["namespace", "typically"] },
-      right: { clue: "Halfpipe", words: ["skating", "gaps"] },
-      left: { clue: "Threat", words: ["controller", "attacks"] },
-      bottom: { clue: "Conflict", words: ["breeding", "bosnia"] },
+      top: { clue: "", words: ["namespace", "typically"] },
+      right: { clue: "", words: ["skating", "gaps"] },
+      left: { clue: "", words: ["controller", "attacks"] },
+      bottom: { clue: "", words: ["breeding", "bosnia"] },
     },
   },
   {
@@ -4972,10 +4855,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Equipment", words: ["charger", "considerations"] },
-      right: { clue: "Doctor", words: ["surgeon", "brandon"] },
-      left: { clue: "Alerts", words: ["notifications", "refine"] },
-      bottom: { clue: "Records", words: ["filing", "constitutes"] },
+      top: { clue: "", words: ["charger", "considerations"] },
+      right: { clue: "", words: ["surgeon", "brandon"] },
+      left: { clue: "", words: ["notifications", "refine"] },
+      bottom: { clue: "", words: ["filing", "constitutes"] },
     },
   },
   {
@@ -5008,10 +4891,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Hitchcock", words: ["connectors", "alfred"] },
-      right: { clue: "People", words: ["purse", "individuals"] },
-      left: { clue: "Rocks", words: ["podcasts", "geological"] },
-      bottom: { clue: "Practice", words: ["curve", "prepare"] },
+      top: { clue: "", words: ["connectors", "alfred"] },
+      right: { clue: "", words: ["purse", "individuals"] },
+      left: { clue: "", words: ["podcasts", "geological"] },
+      bottom: { clue: "", words: ["curve", "prepare"] },
     },
   },
   {
@@ -5044,10 +4927,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Ship", words: ["extract", "portland"] },
-      right: { clue: "Resolver", words: ["evaluate", "dns"] },
-      left: { clue: "Mystery", words: ["enjoy", "thriller"] },
-      bottom: { clue: "Murder", words: ["settle", "killer"] },
+      top: { clue: "", words: ["extract", "portland"] },
+      right: { clue: "", words: ["evaluate", "dns"] },
+      left: { clue: "", words: ["enjoy", "thriller"] },
+      bottom: { clue: "", words: ["settle", "killer"] },
     },
   },
   {
@@ -5080,10 +4963,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Scotland", words: ["edinburgh", "carlos"] },
-      right: { clue: "Tax", words: ["dictionaries", "tariff"] },
-      left: { clue: "Racket", words: ["innovative", "tennis"] },
-      bottom: { clue: "Letting", words: ["throw", "release"] },
+      top: { clue: "", words: ["edinburgh", "carlos"] },
+      right: { clue: "", words: ["dictionaries", "tariff"] },
+      left: { clue: "", words: ["innovative", "tennis"] },
+      bottom: { clue: "", words: ["throw", "release"] },
     },
   },
   {
@@ -5104,11 +4987,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["approval", "news", "mines", "lace"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["fiji", "fresh", "icons", "panama"],
-      },
+      { id: "card3", rotation: 0, words: ["fiji", "fresh", "icons", "panama"] },
       {
         id: "card4",
         rotation: 0,
@@ -5116,10 +4995,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Island", words: ["restaurant", "tropical"] },
-      right: { clue: "Coverage", words: ["inclusion", "news"] },
-      left: { clue: "Hats", words: ["wrestling", "panama"] },
-      bottom: { clue: "Miner", words: ["mines", "icons"] },
+      top: { clue: "", words: ["restaurant", "tropical"] },
+      right: { clue: "", words: ["inclusion", "news"] },
+      left: { clue: "", words: ["wrestling", "panama"] },
+      bottom: { clue: "", words: ["mines", "icons"] },
     },
   },
   {
@@ -5152,10 +5031,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Application", words: ["resumes", "teacher"] },
-      right: { clue: "Tennis", words: ["davis", "serves"] },
-      left: { clue: "Download", words: ["purchasing", "uploaded"] },
-      bottom: { clue: "Package", words: ["conclude", "usps"] },
+      top: { clue: "", words: ["resumes", "teacher"] },
+      right: { clue: "", words: ["davis", "serves"] },
+      left: { clue: "", words: ["purchasing", "uploaded"] },
+      bottom: { clue: "", words: ["conclude", "usps"] },
     },
   },
   {
@@ -5188,10 +5067,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Hint", words: ["pregnant", "signal"] },
-      right: { clue: "Rite", words: ["discover", "ceremony"] },
-      left: { clue: "Cheetah", words: ["skilled", "leon"] },
-      bottom: { clue: "Journal", words: ["work", "writings"] },
+      top: { clue: "", words: ["pregnant", "signal"] },
+      right: { clue: "", words: ["discover", "ceremony"] },
+      left: { clue: "", words: ["skilled", "leon"] },
+      bottom: { clue: "", words: ["work", "writings"] },
     },
   },
   {
@@ -5224,10 +5103,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Orphaned", words: ["abandoned", "named"] },
-      right: { clue: "Premiere", words: ["opera", "announcement"] },
-      left: { clue: "Relaxed", words: ["logic", "casual"] },
-      bottom: { clue: "Capital", words: ["raleigh", "getting"] },
+      top: { clue: "", words: ["abandoned", "named"] },
+      right: { clue: "", words: ["opera", "announcement"] },
+      left: { clue: "", words: ["logic", "casual"] },
+      bottom: { clue: "", words: ["raleigh", "getting"] },
     },
   },
   {
@@ -5260,10 +5139,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Years", words: ["teenage", "consecutive"] },
-      right: { clue: "Free", words: ["gratuit", "browsers"] },
-      left: { clue: "Script", words: ["commented", "roles"] },
-      bottom: { clue: "Biker", words: ["user", "rider"] },
+      top: { clue: "", words: ["teenage", "consecutive"] },
+      right: { clue: "", words: ["gratuit", "browsers"] },
+      left: { clue: "", words: ["commented", "roles"] },
+      bottom: { clue: "", words: ["user", "rider"] },
     },
   },
   {
@@ -5296,10 +5175,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Painful", words: ["near", "trauma"] },
-      right: { clue: "Intercession", words: ["governor", "prayer"] },
-      left: { clue: "Aspect", words: ["presented", "feature"] },
-      bottom: { clue: "Tabernacle", words: ["toll", "sacred"] },
+      top: { clue: "", words: ["near", "trauma"] },
+      right: { clue: "", words: ["governor", "prayer"] },
+      left: { clue: "", words: ["presented", "feature"] },
+      bottom: { clue: "", words: ["toll", "sacred"] },
     },
   },
   {
@@ -5332,20 +5211,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Protector", words: ["guardian", "physics"] },
-      right: { clue: "Boundaries", words: ["territories", "questions"] },
-      left: { clue: "Beach", words: ["swimming", "cuba"] },
-      bottom: { clue: "Nervous", words: ["wires", "laura"] },
+      top: { clue: "", words: ["guardian", "physics"] },
+      right: { clue: "", words: ["territories", "questions"] },
+      left: { clue: "", words: ["swimming", "cuba"] },
+      bottom: { clue: "", words: ["wires", "laura"] },
     },
   },
   {
     id: "2-6-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["blue", "hunter", "scored", "days"],
-      },
+      { id: "card0", rotation: 0, words: ["blue", "hunter", "scored", "days"] },
       {
         id: "card1",
         rotation: 0,
@@ -5368,10 +5243,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pact", words: ["blue", "agreement"] },
-      right: { clue: "Regulate", words: ["appliance", "governing"] },
-      left: { clue: "Warfare", words: ["days", "attack"] },
-      bottom: { clue: "Formula", words: ["chemical", "option"] },
+      top: { clue: "", words: ["blue", "agreement"] },
+      right: { clue: "", words: ["appliance", "governing"] },
+      left: { clue: "", words: ["days", "attack"] },
+      bottom: { clue: "", words: ["chemical", "option"] },
     },
   },
   {
@@ -5404,10 +5279,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Health", words: ["ongoing", "medicaid"] },
-      right: { clue: "Contract", words: ["tapes", "termination"] },
-      left: { clue: "Cable", words: ["adsl", "twisted"] },
-      bottom: { clue: "Deal", words: ["bros", "negotiation"] },
+      top: { clue: "", words: ["ongoing", "medicaid"] },
+      right: { clue: "", words: ["tapes", "termination"] },
+      left: { clue: "", words: ["adsl", "twisted"] },
+      bottom: { clue: "", words: ["bros", "negotiation"] },
     },
   },
   {
@@ -5440,10 +5315,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Prescription", words: ["hydrocodone", "email"] },
-      right: { clue: "Hurricane", words: ["making", "katrina"] },
-      left: { clue: "Fake", words: ["spray", "replica"] },
-      bottom: { clue: "Finished", words: ["done", "plus"] },
+      top: { clue: "", words: ["hydrocodone", "email"] },
+      right: { clue: "", words: ["making", "katrina"] },
+      left: { clue: "", words: ["spray", "replica"] },
+      bottom: { clue: "", words: ["done", "plus"] },
     },
   },
   {
@@ -5476,10 +5351,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Weight", words: ["develops", "gravity"] },
-      right: { clue: "Perfume", words: ["fragrance", "consist"] },
-      left: { clue: "Captain", words: ["seafood", "lee"] },
-      bottom: { clue: "Astronaut", words: ["neil", "trader"] },
+      top: { clue: "", words: ["develops", "gravity"] },
+      right: { clue: "", words: ["fragrance", "consist"] },
+      left: { clue: "", words: ["seafood", "lee"] },
+      bottom: { clue: "", words: ["neil", "trader"] },
     },
   },
   {
@@ -5512,10 +5387,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Airport", words: ["drill", "frankfurt"] },
-      right: { clue: "Maintenance", words: ["stations", "badly"] },
-      left: { clue: "Sport", words: ["msgid", "competitions"] },
-      bottom: { clue: "Investment", words: ["collection", "finance"] },
+      top: { clue: "", words: ["drill", "frankfurt"] },
+      right: { clue: "", words: ["stations", "badly"] },
+      left: { clue: "", words: ["msgid", "competitions"] },
+      bottom: { clue: "", words: ["collection", "finance"] },
     },
   },
   {
@@ -5548,20 +5423,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Shelf", words: ["tied", "library"] },
-      right: { clue: "Ceremony", words: ["occasions", "emperor"] },
-      left: { clue: "Mosaic", words: ["ethiopia", "floor"] },
-      bottom: { clue: "Chance", words: ["liberty", "poker"] },
+      top: { clue: "", words: ["tied", "library"] },
+      right: { clue: "", words: ["occasions", "emperor"] },
+      left: { clue: "", words: ["ethiopia", "floor"] },
+      bottom: { clue: "", words: ["liberty", "poker"] },
     },
   },
   {
     id: "2-5-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["chelsea", "rent", "ne", "employ"],
-      },
+      { id: "card0", rotation: 0, words: ["chelsea", "rent", "ne", "employ"] },
       {
         id: "card1",
         rotation: 0,
@@ -5577,17 +5448,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["recruiting", "annex", "risk", "amazoncom"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["rhode", "nice", "genes", "hughes"],
-      },
+      { id: "card4", rotation: 0, words: ["rhode", "nice", "genes", "hughes"] },
     ],
     solutions: {
-      top: { clue: "Vault", words: ["chelsea", "hide"] },
-      right: { clue: "Achieve", words: ["realize", "accomplish"] },
-      left: { clue: "Online", words: ["employ", "amazoncom"] },
-      bottom: { clue: "Investment", words: ["receipt", "risk"] },
+      top: { clue: "", words: ["chelsea", "hide"] },
+      right: { clue: "", words: ["realize", "accomplish"] },
+      left: { clue: "", words: ["employ", "amazoncom"] },
+      bottom: { clue: "", words: ["receipt", "risk"] },
     },
   },
   {
@@ -5620,10 +5487,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Thriller", words: ["engaging", "serial"] },
-      right: { clue: "Guilty", words: ["comfortable", "shame"] },
-      left: { clue: "Spectacle", words: ["view", "examines"] },
-      bottom: { clue: "Refuge", words: ["shelter", "credits"] },
+      top: { clue: "", words: ["engaging", "serial"] },
+      right: { clue: "", words: ["comfortable", "shame"] },
+      left: { clue: "", words: ["view", "examines"] },
+      bottom: { clue: "", words: ["shelter", "credits"] },
     },
   },
   {
@@ -5649,17 +5516,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["walker", "sugar", "hosts", "install"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["upskirt", "gays", "milk", "butts"],
-      },
+      { id: "card4", rotation: 0, words: ["upskirt", "gays", "milk", "butts"] },
     ],
     solutions: {
-      top: { clue: "Assured", words: ["east", "convinced"] },
-      right: { clue: "Glacier", words: ["discharge", "iceland"] },
-      left: { clue: "Sneaky", words: ["trick", "install"] },
-      bottom: { clue: "Reality", words: ["camera", "hosts"] },
+      top: { clue: "", words: ["east", "convinced"] },
+      right: { clue: "", words: ["discharge", "iceland"] },
+      left: { clue: "", words: ["trick", "install"] },
+      bottom: { clue: "", words: ["camera", "hosts"] },
     },
   },
   {
@@ -5692,10 +5555,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Label", words: ["homepage", "designation"] },
-      right: { clue: "Nurse", words: ["kathy", "cells"] },
-      left: { clue: "Design", words: ["fashion", "submitting"] },
-      bottom: { clue: "Cable", words: ["wire", "andy"] },
+      top: { clue: "", words: ["homepage", "designation"] },
+      right: { clue: "", words: ["kathy", "cells"] },
+      left: { clue: "", words: ["fashion", "submitting"] },
+      bottom: { clue: "", words: ["wire", "andy"] },
     },
   },
   {
@@ -5728,10 +5591,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Advice", words: ["counsel", "cliff"] },
-      right: { clue: "Role", words: ["travesti", "assigned"] },
-      left: { clue: "Retire", words: ["senior", "default"] },
-      bottom: { clue: "Overcome", words: ["sing", "struggle"] },
+      top: { clue: "", words: ["counsel", "cliff"] },
+      right: { clue: "", words: ["travesti", "assigned"] },
+      left: { clue: "", words: ["senior", "default"] },
+      bottom: { clue: "", words: ["sing", "struggle"] },
     },
   },
   {
@@ -5764,10 +5627,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "School", words: ["sixth", "institutional"] },
-      right: { clue: "Womb", words: ["creatures", "pregnancy"] },
-      left: { clue: "Truth", words: ["lie", "moment"] },
-      bottom: { clue: "Seal", words: ["crack", "specially"] },
+      top: { clue: "", words: ["sixth", "institutional"] },
+      right: { clue: "", words: ["creatures", "pregnancy"] },
+      left: { clue: "", words: ["lie", "moment"] },
+      bottom: { clue: "", words: ["crack", "specially"] },
     },
   },
   {
@@ -5800,10 +5663,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Marketers", words: ["advertisers", "someone"] },
-      right: { clue: "Steps", words: ["simple", "measures"] },
-      left: { clue: "Regulation", words: ["laws", "dildo"] },
-      bottom: { clue: "Election", words: ["municipal", "contest"] },
+      top: { clue: "", words: ["advertisers", "someone"] },
+      right: { clue: "", words: ["simple", "measures"] },
+      left: { clue: "", words: ["laws", "dildo"] },
+      bottom: { clue: "", words: ["municipal", "contest"] },
     },
   },
   {
@@ -5836,10 +5699,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Culture", words: ["diversity", "thing"] },
-      right: { clue: "Highway", words: ["rapid", "beijing"] },
-      left: { clue: "Fashion", words: ["displaying", "shirt"] },
-      bottom: { clue: "Staff", words: ["lawyers", "admin"] },
+      top: { clue: "", words: ["diversity", "thing"] },
+      right: { clue: "", words: ["rapid", "beijing"] },
+      left: { clue: "", words: ["displaying", "shirt"] },
+      bottom: { clue: "", words: ["lawyers", "admin"] },
     },
   },
   {
@@ -5872,10 +5735,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Controller", words: ["cables", "game"] },
-      right: { clue: "Golfers", words: ["johns", "competitive"] },
-      left: { clue: "Whimsy", words: ["humor", "possession"] },
-      bottom: { clue: "Illinois", words: ["vendors", "springfield"] },
+      top: { clue: "", words: ["cables", "game"] },
+      right: { clue: "", words: ["johns", "competitive"] },
+      left: { clue: "", words: ["humor", "possession"] },
+      bottom: { clue: "", words: ["vendors", "springfield"] },
     },
   },
   {
@@ -5908,10 +5771,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Classical", words: ["suzuki", "music"] },
-      right: { clue: "Script", words: ["lyrics", "scheduling"] },
-      left: { clue: "Episode", words: ["simpson", "download"] },
-      bottom: { clue: "Structure", words: ["five", "build"] },
+      top: { clue: "", words: ["suzuki", "music"] },
+      right: { clue: "", words: ["lyrics", "scheduling"] },
+      left: { clue: "", words: ["simpson", "download"] },
+      bottom: { clue: "", words: ["five", "build"] },
     },
   },
   {
@@ -5922,11 +5785,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["appointments", "fragrances", "hints", "trailer"],
       },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["went", "desire", "boxing", "dose"],
-      },
+      { id: "card1", rotation: 0, words: ["went", "desire", "boxing", "dose"] },
       {
         id: "card2",
         rotation: 0,
@@ -5944,10 +5803,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Schedule", words: ["appointments", "went"] },
-      right: { clue: "Goal", words: ["desire", "correctly"] },
-      left: { clue: "Stream", words: ["trailer", "rivers"] },
-      bottom: { clue: "Honesty", words: ["accordance", "transparency"] },
+      top: { clue: "", words: ["appointments", "went"] },
+      right: { clue: "", words: ["desire", "correctly"] },
+      left: { clue: "", words: ["trailer", "rivers"] },
+      bottom: { clue: "", words: ["accordance", "transparency"] },
     },
   },
   {
@@ -5980,10 +5839,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Schedule", words: ["hourly", "stop"] },
-      right: { clue: "Coinage", words: ["translation", "brass"] },
-      left: { clue: "Solution", words: ["solve", "closing"] },
-      bottom: { clue: "Informed", words: ["engaged", "sources"] },
+      top: { clue: "", words: ["hourly", "stop"] },
+      right: { clue: "", words: ["translation", "brass"] },
+      left: { clue: "", words: ["solve", "closing"] },
+      bottom: { clue: "", words: ["engaged", "sources"] },
     },
   },
   {
@@ -6016,10 +5875,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "HSBC", words: ["subsidiary", "taiwan"] },
-      right: { clue: "Ruin", words: ["frontier", "damage"] },
-      left: { clue: "Adjustment", words: ["rankings", "correction"] },
-      bottom: { clue: "Route", words: ["compute", "destination"] },
+      top: { clue: "", words: ["subsidiary", "taiwan"] },
+      right: { clue: "", words: ["frontier", "damage"] },
+      left: { clue: "", words: ["rankings", "correction"] },
+      bottom: { clue: "", words: ["compute", "destination"] },
     },
   },
   {
@@ -6045,17 +5904,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["quantum", "petite", "continue", "afraid"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["state", "bags", "inputs", "score"],
-      },
+      { id: "card4", rotation: 0, words: ["state", "bags", "inputs", "score"] },
     ],
     solutions: {
-      top: { clue: "Effectiveness", words: ["consent", "efficiency"] },
-      right: { clue: "Lawyers", words: ["arch", "attorneys"] },
-      left: { clue: "Scared", words: ["until", "afraid"] },
-      bottom: { clue: "Go", words: ["provided", "continue"] },
+      top: { clue: "", words: ["consent", "efficiency"] },
+      right: { clue: "", words: ["arch", "attorneys"] },
+      left: { clue: "", words: ["until", "afraid"] },
+      bottom: { clue: "", words: ["provided", "continue"] },
     },
   },
   {
@@ -6088,10 +5943,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Sun", words: ["closely", "rays"] },
-      right: { clue: "Gift", words: ["stationery", "treating"] },
-      left: { clue: "Stadium", words: ["colleagues", "anaheim"] },
-      bottom: { clue: "Gaze", words: ["eyes", "monster"] },
+      top: { clue: "", words: ["closely", "rays"] },
+      right: { clue: "", words: ["stationery", "treating"] },
+      left: { clue: "", words: ["colleagues", "anaheim"] },
+      bottom: { clue: "", words: ["eyes", "monster"] },
     },
   },
   {
@@ -6124,10 +5979,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Flavor", words: ["collaboration", "salt"] },
-      right: { clue: "Fatty", words: ["crisis", "liver"] },
-      left: { clue: "Stroller", words: ["automobiles", "baby"] },
-      bottom: { clue: "Tuning", words: ["guitars", "matching"] },
+      top: { clue: "", words: ["collaboration", "salt"] },
+      right: { clue: "", words: ["crisis", "liver"] },
+      left: { clue: "", words: ["automobiles", "baby"] },
+      bottom: { clue: "", words: ["guitars", "matching"] },
     },
   },
   {
@@ -6160,10 +6015,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Kaunas", words: ["relating", "lithuania"] },
-      right: { clue: "Romance", words: ["kiss", "wright"] },
-      left: { clue: "Control", words: ["rover", "remote"] },
-      bottom: { clue: "Renovated", words: ["rooms", "adapted"] },
+      top: { clue: "", words: ["relating", "lithuania"] },
+      right: { clue: "", words: ["kiss", "wright"] },
+      left: { clue: "", words: ["rover", "remote"] },
+      bottom: { clue: "", words: ["rooms", "adapted"] },
     },
   },
   {
@@ -6179,16 +6034,8 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["deputy", "supply", "pork", "basket"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["ml", "hate", "merchants", "bids"],
-      },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["menu", "easy", "folks", "actress"],
-      },
+      { id: "card2", rotation: 0, words: ["ml", "hate", "merchants", "bids"] },
+      { id: "card3", rotation: 0, words: ["menu", "easy", "folks", "actress"] },
       {
         id: "card4",
         rotation: 0,
@@ -6196,10 +6043,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Sheriff", words: ["meet", "deputy"] },
-      right: { clue: "Malice", words: ["supply", "hate"] },
-      left: { clue: "Star", words: ["acoustic", "actress"] },
-      bottom: { clue: "Traders", words: ["merchants", "folks"] },
+      top: { clue: "", words: ["meet", "deputy"] },
+      right: { clue: "", words: ["supply", "hate"] },
+      left: { clue: "", words: ["acoustic", "actress"] },
+      bottom: { clue: "", words: ["merchants", "folks"] },
     },
   },
   {
@@ -6232,10 +6079,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Task", words: ["illustration", "assign"] },
-      right: { clue: "Radio", words: ["soldier", "transmission"] },
-      left: { clue: "Coffee", words: ["preference", "mug"] },
-      bottom: { clue: "Spoken", words: ["previously", "words"] },
+      top: { clue: "", words: ["illustration", "assign"] },
+      right: { clue: "", words: ["soldier", "transmission"] },
+      left: { clue: "", words: ["preference", "mug"] },
+      bottom: { clue: "", words: ["previously", "words"] },
     },
   },
   {
@@ -6268,10 +6115,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Property", words: ["trust", "owns"] },
-      right: { clue: "Airborne", words: ["certainly", "wings"] },
-      left: { clue: "Safety", words: ["ensuring", "accident"] },
-      bottom: { clue: "Catering", words: ["sectors", "dishes"] },
+      top: { clue: "", words: ["trust", "owns"] },
+      right: { clue: "", words: ["certainly", "wings"] },
+      left: { clue: "", words: ["ensuring", "accident"] },
+      bottom: { clue: "", words: ["sectors", "dishes"] },
     },
   },
   {
@@ -6304,10 +6151,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Plug", words: ["upon", "adapter"] },
-      right: { clue: "Cable", words: ["site", "fibre"] },
-      left: { clue: "Completed", words: ["satisfied", "building"] },
-      bottom: { clue: "Radical", words: ["techno", "awesome"] },
+      top: { clue: "", words: ["upon", "adapter"] },
+      right: { clue: "", words: ["site", "fibre"] },
+      left: { clue: "", words: ["satisfied", "building"] },
+      bottom: { clue: "", words: ["techno", "awesome"] },
     },
   },
   {
@@ -6340,13 +6187,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Master", words: ["provider", "chess"] },
-      right: {
-        clue: "Response: Immunoglobulin",
-        words: ["heat", "antibody"],
-      },
-      left: { clue: "Canada", words: ["forgot", "provinces"] },
-      bottom: { clue: "Metabolism", words: ["complicated", "absorption"] },
+      top: { clue: "", words: ["provider", "chess"] },
+      right: { clue: "", words: ["heat", "antibody"] },
+      left: { clue: "", words: ["forgot", "provinces"] },
+      bottom: { clue: "", words: ["complicated", "absorption"] },
     },
   },
   {
@@ -6367,22 +6211,14 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["mice", "tonight", "down", "religious"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["burner", "byte", "plays", "trade"],
-      },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["paris", "lang", "mason", "marked"],
-      },
+      { id: "card3", rotation: 0, words: ["burner", "byte", "plays", "trade"] },
+      { id: "card4", rotation: 0, words: ["paris", "lang", "mason", "marked"] },
     ],
     solutions: {
-      top: { clue: "Materials", words: ["supplies", "nano"] },
-      right: { clue: "Evening", words: ["phase", "tonight"] },
-      left: { clue: "Shipyards", words: ["belfast", "trade"] },
-      bottom: { clue: "Undermines", words: ["down", "plays"] },
+      top: { clue: "", words: ["supplies", "nano"] },
+      right: { clue: "", words: ["phase", "tonight"] },
+      left: { clue: "", words: ["belfast", "trade"] },
+      bottom: { clue: "", words: ["down", "plays"] },
     },
   },
   {
@@ -6415,10 +6251,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Care", words: ["phrase", "nursing"] },
-      right: { clue: "Environment", words: ["spending", "surround"] },
-      left: { clue: "Police", words: ["stockholm", "guard"] },
-      bottom: { clue: "Sequence", words: ["reject", "alphabetical"] },
+      top: { clue: "", words: ["phrase", "nursing"] },
+      right: { clue: "", words: ["spending", "surround"] },
+      left: { clue: "", words: ["stockholm", "guard"] },
+      bottom: { clue: "", words: ["reject", "alphabetical"] },
     },
   },
   {
@@ -6439,11 +6275,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["statistics", "arms", "advantage", "dublin"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["moses", "poem", "sells", "ellen"],
-      },
+      { id: "card3", rotation: 0, words: ["moses", "poem", "sells", "ellen"] },
       {
         id: "card4",
         rotation: 0,
@@ -6451,10 +6283,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Coffee", words: ["nicaragua", "crop"] },
-      right: { clue: "Militia", words: ["editions", "arms"] },
-      left: { clue: "DeGeneres", words: ["thinkpad", "ellen"] },
-      bottom: { clue: "Profit", words: ["advantage", "sells"] },
+      top: { clue: "", words: ["nicaragua", "crop"] },
+      right: { clue: "", words: ["editions", "arms"] },
+      left: { clue: "", words: ["thinkpad", "ellen"] },
+      bottom: { clue: "", words: ["advantage", "sells"] },
     },
   },
   {
@@ -6487,10 +6319,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Loyal", words: ["democrats", "consistent"] },
-      right: { clue: "Morsels", words: ["promised", "bits"] },
-      left: { clue: "Work", words: ["salary", "skype"] },
-      bottom: { clue: "Wilderness", words: ["alaska", "emphasis"] },
+      top: { clue: "", words: ["democrats", "consistent"] },
+      right: { clue: "", words: ["promised", "bits"] },
+      left: { clue: "", words: ["salary", "skype"] },
+      bottom: { clue: "", words: ["alaska", "emphasis"] },
     },
   },
   {
@@ -6506,11 +6338,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["districts", "marco", "income", "plates"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["erik", "nodes", "wooden", "file"],
-      },
+      { id: "card2", rotation: 0, words: ["erik", "nodes", "wooden", "file"] },
       {
         id: "card3",
         rotation: 0,
@@ -6523,10 +6351,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Boundaries", words: ["reviewing", "districts"] },
-      right: { clue: "Polo", words: ["marco", "nodes"] },
-      left: { clue: "Efficiency", words: ["embedded", "optimization"] },
-      bottom: { clue: "Tree", words: ["wooden", "live"] },
+      top: { clue: "", words: ["reviewing", "districts"] },
+      right: { clue: "", words: ["marco", "nodes"] },
+      left: { clue: "", words: ["embedded", "optimization"] },
+      bottom: { clue: "", words: ["wooden", "live"] },
     },
   },
   {
@@ -6559,10 +6387,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Heart", words: ["genuine", "organ"] },
-      right: { clue: "Headache", words: ["fioricet", "pdt"] },
-      left: { clue: "Warmth", words: ["satisfaction", "amber"] },
-      bottom: { clue: "Notice", words: ["cube", "bulletin"] },
+      top: { clue: "", words: ["genuine", "organ"] },
+      right: { clue: "", words: ["fioricet", "pdt"] },
+      left: { clue: "", words: ["satisfaction", "amber"] },
+      bottom: { clue: "", words: ["cube", "bulletin"] },
     },
   },
   {
@@ -6595,10 +6423,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Mentor", words: ["principles", "advisor"] },
-      right: { clue: "Sneaker", words: ["formed", "adidas"] },
-      left: { clue: "Structure", words: ["industries", "hierarchy"] },
-      bottom: { clue: "Minimal", words: ["least", "modifications"] },
+      top: { clue: "", words: ["principles", "advisor"] },
+      right: { clue: "", words: ["formed", "adidas"] },
+      left: { clue: "", words: ["industries", "hierarchy"] },
+      bottom: { clue: "", words: ["least", "modifications"] },
     },
   },
   {
@@ -6631,10 +6459,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Challenges", words: ["errors", "situations"] },
-      right: { clue: "Gardens", words: ["properties", "growing"] },
-      left: { clue: "Rock", words: ["song", "bold"] },
-      bottom: { clue: "Meditation", words: ["cemetery", "yoga"] },
+      top: { clue: "", words: ["errors", "situations"] },
+      right: { clue: "", words: ["properties", "growing"] },
+      left: { clue: "", words: ["song", "bold"] },
+      bottom: { clue: "", words: ["cemetery", "yoga"] },
     },
   },
   {
@@ -6667,10 +6495,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Data", words: ["analyses", "variable"] },
-      right: { clue: "Courier", words: ["charleston", "messenger"] },
-      left: { clue: "Agreement", words: ["consensus", "ty"] },
-      bottom: { clue: "Home", words: ["stability", "resident"] },
+      top: { clue: "", words: ["analyses", "variable"] },
+      right: { clue: "", words: ["charleston", "messenger"] },
+      left: { clue: "", words: ["consensus", "ty"] },
+      bottom: { clue: "", words: ["stability", "resident"] },
     },
   },
   {
@@ -6691,11 +6519,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["gambling", "pools", "should", "portugal"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["kids", "again", "church", "comm"],
-      },
+      { id: "card3", rotation: 0, words: ["kids", "again", "church", "comm"] },
       {
         id: "card4",
         rotation: 0,
@@ -6703,10 +6527,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Expense", words: ["incurred", "shelf"] },
-      right: { clue: "Waterslide", words: ["launches", "pools"] },
-      left: { clue: "Beck", words: ["glenn", "comm"] },
-      bottom: { clue: "Sunday", words: ["should", "church"] },
+      top: { clue: "", words: ["incurred", "shelf"] },
+      right: { clue: "", words: ["launches", "pools"] },
+      left: { clue: "", words: ["glenn", "comm"] },
+      bottom: { clue: "", words: ["should", "church"] },
     },
   },
   {
@@ -6739,10 +6563,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Pedal", words: ["recipe", "cycling"] },
-      right: { clue: "Secret", words: ["forbidden", "silent"] },
-      left: { clue: "Portal", words: ["login", "calgary"] },
-      bottom: { clue: "Branding", words: ["ministries", "trademarks"] },
+      top: { clue: "", words: ["recipe", "cycling"] },
+      right: { clue: "", words: ["forbidden", "silent"] },
+      left: { clue: "", words: ["login", "calgary"] },
+      bottom: { clue: "", words: ["ministries", "trademarks"] },
     },
   },
   {
@@ -6775,10 +6599,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Heritage", words: ["valued", "somerset"] },
-      right: { clue: "Protocol", words: ["runner", "procedure"] },
-      left: { clue: "Outstanding", words: ["insider", "exceptional"] },
-      bottom: { clue: "Cable", words: ["private", "hdtv"] },
+      top: { clue: "", words: ["valued", "somerset"] },
+      right: { clue: "", words: ["runner", "procedure"] },
+      left: { clue: "", words: ["insider", "exceptional"] },
+      bottom: { clue: "", words: ["private", "hdtv"] },
     },
   },
   {
@@ -6811,10 +6635,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Map", words: ["spot", "india"] },
-      right: { clue: "Florida", words: ["tampa", "village"] },
-      left: { clue: "Aid", words: ["guidance", "bangladesh"] },
-      bottom: { clue: "Spy", words: ["intel", "lightweight"] },
+      top: { clue: "", words: ["spot", "india"] },
+      right: { clue: "", words: ["tampa", "village"] },
+      left: { clue: "", words: ["guidance", "bangladesh"] },
+      bottom: { clue: "", words: ["intel", "lightweight"] },
     },
   },
   {
@@ -6830,11 +6654,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["railroad", "spirit", "obesity", "vaccine"],
       },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["enough", "operates", "lone", "lu"],
-      },
+      { id: "card2", rotation: 0, words: ["enough", "operates", "lone", "lu"] },
       {
         id: "card3",
         rotation: 0,
@@ -6847,10 +6667,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Schedule", words: ["publication", "railroad"] },
-      right: { clue: "Guides", words: ["spirit", "operates"] },
-      left: { clue: "School", words: ["shot", "campus"] },
-      bottom: { clue: "Beach", words: ["lone", "hampton"] },
+      top: { clue: "", words: ["publication", "railroad"] },
+      right: { clue: "", words: ["spirit", "operates"] },
+      left: { clue: "", words: ["shot", "campus"] },
+      bottom: { clue: "", words: ["lone", "hampton"] },
     },
   },
   {
@@ -6883,10 +6703,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Together", words: ["save", "likewise"] },
-      right: { clue: "Trampoline", words: ["detector", "springs"] },
-      left: { clue: "Arabian", words: ["physician", "saudi"] },
-      bottom: { clue: "Capitol", words: ["albany", "functioning"] },
+      top: { clue: "", words: ["save", "likewise"] },
+      right: { clue: "", words: ["detector", "springs"] },
+      left: { clue: "", words: ["physician", "saudi"] },
+      bottom: { clue: "", words: ["albany", "functioning"] },
     },
   },
   {
@@ -6919,10 +6739,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Professor", words: ["teaching", "lady"] },
-      right: { clue: "Practical", words: ["functional", "quote"] },
-      left: { clue: "Hostel", words: ["charles", "accommodation"] },
-      bottom: { clue: "Liberty", words: ["covered", "freedom"] },
+      top: { clue: "", words: ["teaching", "lady"] },
+      right: { clue: "", words: ["functional", "quote"] },
+      left: { clue: "", words: ["charles", "accommodation"] },
+      bottom: { clue: "", words: ["covered", "freedom"] },
     },
   },
   {
@@ -6943,11 +6763,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["jeans", "accommodations", "proceed", "hello"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["hull", "query", "guest", "crime"],
-      },
+      { id: "card3", rotation: 0, words: ["hull", "query", "guest", "crime"] },
       {
         id: "card4",
         rotation: 0,
@@ -6955,10 +6771,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cold", words: ["exam", "arctic"] },
-      right: { clue: "Hotels", words: ["locations", "accommodations"] },
-      left: { clue: "Violence", words: ["hostels", "crime"] },
-      bottom: { clue: "Welcome", words: ["proceed", "guest"] },
+      top: { clue: "", words: ["exam", "arctic"] },
+      right: { clue: "", words: ["locations", "accommodations"] },
+      left: { clue: "", words: ["hostels", "crime"] },
+      bottom: { clue: "", words: ["proceed", "guest"] },
     },
   },
   {
@@ -6991,10 +6807,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Environment", words: ["apps", "conditions"] },
-      right: { clue: "White", words: ["teeth", "still"] },
-      left: { clue: "Maintenance", words: ["homes", "cleaner"] },
-      bottom: { clue: "Tenderly", words: ["caring", "conversations"] },
+      top: { clue: "", words: ["apps", "conditions"] },
+      right: { clue: "", words: ["teeth", "still"] },
+      left: { clue: "", words: ["homes", "cleaner"] },
+      bottom: { clue: "", words: ["caring", "conversations"] },
     },
   },
   {
@@ -7027,20 +6843,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Talent", words: ["tagged", "ability"] },
-      right: { clue: "Power", words: ["extra", "punch"] },
-      left: { clue: "Threshold", words: ["lc", "baseline"] },
-      bottom: { clue: "Civil", words: ["municipality", "ancient"] },
+      top: { clue: "", words: ["tagged", "ability"] },
+      right: { clue: "", words: ["extra", "punch"] },
+      left: { clue: "", words: ["lc", "baseline"] },
+      bottom: { clue: "", words: ["municipality", "ancient"] },
     },
   },
   {
     id: "3-4-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["soup", "banner", "pack", "exceed"],
-      },
+      { id: "card0", rotation: 0, words: ["soup", "banner", "pack", "exceed"] },
       {
         id: "card1",
         rotation: 0,
@@ -7063,10 +6875,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Restaurant", words: ["soup", "certified"] },
-      right: { clue: "Township", words: ["vision", "settlement"] },
-      left: { clue: "Powerful", words: ["exceed", "dynamic"] },
-      bottom: { clue: "Secret", words: ["passwords", "survive"] },
+      top: { clue: "", words: ["soup", "certified"] },
+      right: { clue: "", words: ["vision", "settlement"] },
+      left: { clue: "", words: ["exceed", "dynamic"] },
+      bottom: { clue: "", words: ["passwords", "survive"] },
     },
   },
   {
@@ -7099,10 +6911,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Camping", words: ["momentum", "tent"] },
-      right: { clue: "Online", words: ["mode", "website"] },
-      left: { clue: "Islam", words: ["allah", "norm"] },
-      bottom: { clue: "Auditorium", words: ["speeches", "place"] },
+      top: { clue: "", words: ["momentum", "tent"] },
+      right: { clue: "", words: ["mode", "website"] },
+      left: { clue: "", words: ["allah", "norm"] },
+      bottom: { clue: "", words: ["speeches", "place"] },
     },
   },
   {
@@ -7135,10 +6947,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Portfolios", words: ["pictures", "jobs"] },
-      right: { clue: "Motivated", words: ["driven", "advertiser"] },
-      left: { clue: "Nutrition", words: ["intake", "supplemental"] },
-      bottom: { clue: "Page", words: ["thee", "reads"] },
+      top: { clue: "", words: ["pictures", "jobs"] },
+      right: { clue: "", words: ["driven", "advertiser"] },
+      left: { clue: "", words: ["intake", "supplemental"] },
+      bottom: { clue: "", words: ["thee", "reads"] },
     },
   },
   {
@@ -7171,20 +6983,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Shortest", words: ["jesse", "lowest"] },
-      right: { clue: "Gossip", words: ["tells", "celebs"] },
-      left: { clue: "Discover", words: ["marc", "explore"] },
-      bottom: { clue: "Licit", words: ["thehun", "legitimate"] },
+      top: { clue: "", words: ["jesse", "lowest"] },
+      right: { clue: "", words: ["tells", "celebs"] },
+      left: { clue: "", words: ["marc", "explore"] },
+      bottom: { clue: "", words: ["thehun", "legitimate"] },
     },
   },
   {
     id: "3-1-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["reach", "dame", "spend", "only"],
-      },
+      { id: "card0", rotation: 0, words: ["reach", "dame", "spend", "only"] },
       {
         id: "card1",
         rotation: 0,
@@ -7207,20 +7015,16 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Underwear", words: ["reach", "briefs"] },
-      right: { clue: "Separation", words: ["deficit", "individually"] },
-      left: { clue: "Scientist", words: ["only", "experiment"] },
-      bottom: { clue: "Code", words: ["accessories", "binary"] },
+      top: { clue: "", words: ["reach", "briefs"] },
+      right: { clue: "", words: ["deficit", "individually"] },
+      left: { clue: "", words: ["only", "experiment"] },
+      bottom: { clue: "", words: ["accessories", "binary"] },
     },
   },
   {
     id: "3-2-2026",
     cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["tile", "fear", "scenes", "newly"],
-      },
+      { id: "card0", rotation: 0, words: ["tile", "fear", "scenes", "newly"] },
       {
         id: "card1",
         rotation: 0,
@@ -7243,10 +7047,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Fabric", words: ["tile", "satin"] },
-      right: { clue: "Orchestra", words: ["courts", "musician"] },
-      left: { clue: "Victor", words: ["newly", "champion"] },
-      bottom: { clue: "Website", words: ["jelsoft", "areas"] },
+      top: { clue: "", words: ["tile", "satin"] },
+      right: { clue: "", words: ["courts", "musician"] },
+      left: { clue: "", words: ["newly", "champion"] },
+      bottom: { clue: "", words: ["jelsoft", "areas"] },
     },
   },
   {
@@ -7279,10 +7083,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Success", words: ["achievement", "ashley"] },
-      right: { clue: "Trust", words: ["payments", "believed"] },
-      left: { clue: "Weather", words: ["fixes", "seasonal"] },
-      bottom: { clue: "Vintage", words: ["antiques", "generation"] },
+      top: { clue: "", words: ["achievement", "ashley"] },
+      right: { clue: "", words: ["payments", "believed"] },
+      left: { clue: "", words: ["fixes", "seasonal"] },
+      bottom: { clue: "", words: ["antiques", "generation"] },
     },
   },
   {
@@ -7315,10 +7119,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Bowl", words: ["portable", "mixing"] },
-      right: { clue: "Yard", words: ["trackback", "patio"] },
-      left: { clue: "School", words: ["honor", "elementary"] },
-      bottom: { clue: "Cords", words: ["strings", "cheap"] },
+      top: { clue: "", words: ["portable", "mixing"] },
+      right: { clue: "", words: ["trackback", "patio"] },
+      left: { clue: "", words: ["honor", "elementary"] },
+      bottom: { clue: "", words: ["strings", "cheap"] },
     },
   },
   {
@@ -7351,10 +7155,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Briefcase", words: ["convertible", "organizer"] },
-      right: { clue: "Diagnosis", words: ["proved", "imaging"] },
-      left: { clue: "Cabinets", words: ["painted", "corners"] },
-      bottom: { clue: "Videos", words: ["composed", "vids"] },
+      top: { clue: "", words: ["convertible", "organizer"] },
+      right: { clue: "", words: ["proved", "imaging"] },
+      left: { clue: "", words: ["painted", "corners"] },
+      bottom: { clue: "", words: ["composed", "vids"] },
     },
   },
   {
@@ -7387,10 +7191,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Organized", words: ["tend", "compiled"] },
-      right: { clue: "Luxury", words: ["dubai", "custom"] },
-      left: { clue: "Observing", words: ["scientists", "viewing"] },
-      bottom: { clue: "Office", words: ["foam", "administrators"] },
+      top: { clue: "", words: ["tend", "compiled"] },
+      right: { clue: "", words: ["dubai", "custom"] },
+      left: { clue: "", words: ["scientists", "viewing"] },
+      bottom: { clue: "", words: ["foam", "administrators"] },
     },
   },
   {
@@ -7423,13 +7227,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Scale", words: ["demonstration", "inches"] },
-      right: { clue: "Complication", words: ["webmaster", "injury"] },
-      left: { clue: "Hairdresser", words: ["auburn", "cutting"] },
-      bottom: {
-        clue: 'Here is a single-word response that relates "strongly" and "somewhere":\n\nThere',
-        words: ["strongly", "somewhere"],
-      },
+      top: { clue: "", words: ["demonstration", "inches"] },
+      right: { clue: "", words: ["webmaster", "injury"] },
+      left: { clue: "", words: ["auburn", "cutting"] },
+      bottom: { clue: "", words: ["strongly", "somewhere"] },
     },
   },
   {
@@ -7462,13 +7263,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Submarine", words: ["cruises", "dive"] },
-      right: { clue: "Doll", words: ["virginia", "fairy"] },
-      left: { clue: "Mailman", words: ["post", "anderson"] },
-      bottom: {
-        clue: "Donation",
-        words: ["contributions", "deutschland"],
-      },
+      top: { clue: "", words: ["cruises", "dive"] },
+      right: { clue: "", words: ["virginia", "fairy"] },
+      left: { clue: "", words: ["post", "anderson"] },
+      bottom: { clue: "", words: ["contributions", "deutschland"] },
     },
   },
   {
@@ -7501,10 +7299,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Corrupt", words: ["committees", "wicked"] },
-      right: { clue: "Hospitals", words: ["interventions", "montreal"] },
-      left: { clue: "Coffee", words: ["euros", "beverage"] },
-      bottom: { clue: "Fiction", words: ["alice", "erotica"] },
+      top: { clue: "", words: ["committees", "wicked"] },
+      right: { clue: "", words: ["interventions", "montreal"] },
+      left: { clue: "", words: ["euros", "beverage"] },
+      bottom: { clue: "", words: ["alice", "erotica"] },
     },
   },
   {
@@ -7537,10 +7335,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Driver", words: ["automobile", "brave"] },
-      right: { clue: "Data", words: ["police", "input"] },
-      left: { clue: "Suitcases", words: ["packing", "seattle"] },
-      bottom: { clue: "Crane", words: ["robinson", "diesel"] },
+      top: { clue: "", words: ["automobile", "brave"] },
+      right: { clue: "", words: ["police", "input"] },
+      left: { clue: "", words: ["packing", "seattle"] },
+      bottom: { clue: "", words: ["robinson", "diesel"] },
     },
   },
   {
@@ -7573,10 +7371,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Deadly", words: ["naughty", "fatal"] },
-      right: { clue: "Tea", words: ["mint", "producer"] },
-      left: { clue: "Stable", words: ["electron", "depot"] },
-      bottom: { clue: "Territory", words: ["scale", "regions"] },
+      top: { clue: "", words: ["naughty", "fatal"] },
+      right: { clue: "", words: ["mint", "producer"] },
+      left: { clue: "", words: ["electron", "depot"] },
+      bottom: { clue: "", words: ["scale", "regions"] },
     },
   },
   {
@@ -7609,10 +7407,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Meal", words: ["foods", "presence"] },
-      right: { clue: "Kimchi", words: ["fountain", "korean"] },
-      left: { clue: "Economy", words: ["unemployment", "insert"] },
-      bottom: { clue: "Reforms", words: ["amended", "cambodia"] },
+      top: { clue: "", words: ["foods", "presence"] },
+      right: { clue: "", words: ["fountain", "korean"] },
+      left: { clue: "", words: ["unemployment", "insert"] },
+      bottom: { clue: "", words: ["amended", "cambodia"] },
     },
   },
   {
@@ -7645,13 +7443,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: {
-        clue: "Conversation",
-        words: ["expectations", "discussion"],
-      },
-      right: { clue: "Timberlake", words: ["newspapers", "justin"] },
-      left: { clue: "Consistently", words: ["ethical", "continuously"] },
-      bottom: { clue: "Light", words: ["performed", "lamp"] },
+      top: { clue: "", words: ["expectations", "discussion"] },
+      right: { clue: "", words: ["newspapers", "justin"] },
+      left: { clue: "", words: ["ethical", "continuously"] },
+      bottom: { clue: "", words: ["performed", "lamp"] },
     },
   },
   {
@@ -7677,17 +7472,13 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["url", "powder", "enjoyed", "elder"],
       },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["brain", "pipes", "barnes", "oven"],
-      },
+      { id: "card4", rotation: 0, words: ["brain", "pipes", "barnes", "oven"] },
     ],
     solutions: {
-      top: { clue: "State", words: ["province", "comes"] },
-      right: { clue: "Performance", words: ["exhibition", "ensemble"] },
-      left: { clue: "Scam", words: ["cheat", "elder"] },
-      bottom: { clue: "Delight", words: ["arising", "enjoyed"] },
+      top: { clue: "", words: ["province", "comes"] },
+      right: { clue: "", words: ["exhibition", "ensemble"] },
+      left: { clue: "", words: ["cheat", "elder"] },
+      bottom: { clue: "", words: ["arising", "enjoyed"] },
     },
   },
   {
@@ -7720,10 +7511,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Book", words: ["pages", "contributed"] },
-      right: { clue: "Graph", words: ["chart", "pull"] },
-      left: { clue: "Citizen", words: ["americans", "sofa"] },
-      bottom: { clue: "Mouse", words: ["arab", "cursor"] },
+      top: { clue: "", words: ["pages", "contributed"] },
+      right: { clue: "", words: ["chart", "pull"] },
+      left: { clue: "", words: ["americans", "sofa"] },
+      bottom: { clue: "", words: ["arab", "cursor"] },
     },
   },
   {
@@ -7756,10 +7547,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Model", words: ["donna", "less"] },
-      right: { clue: "Contract", words: ["outsourcing", "proceeds"] },
-      left: { clue: "Database", words: ["connections", "records"] },
-      bottom: { clue: "Stream", words: ["interest", "creek"] },
+      top: { clue: "", words: ["donna", "less"] },
+      right: { clue: "", words: ["outsourcing", "proceeds"] },
+      left: { clue: "", words: ["connections", "records"] },
+      bottom: { clue: "", words: ["interest", "creek"] },
     },
   },
   {
@@ -7792,10 +7583,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "ORDER", words: ["cyprus", "sorted"] },
-      right: { clue: "Explanation", words: ["diagram", "admitted"] },
-      left: { clue: "Contact", words: ["minimum", "interact"] },
-      bottom: { clue: "Mowing", words: ["finishing", "lawn"] },
+      top: { clue: "", words: ["cyprus", "sorted"] },
+      right: { clue: "", words: ["diagram", "admitted"] },
+      left: { clue: "", words: ["minimum", "interact"] },
+      bottom: { clue: "", words: ["finishing", "lawn"] },
     },
   },
   {
@@ -7816,11 +7607,7 @@ const data: PuzzleType[] = [
         rotation: 0,
         words: ["existence", "marker", "deer", "communist"],
       },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["mails", "premium", "math", "gd"],
-      },
+      { id: "card3", rotation: 0, words: ["mails", "premium", "math", "gd"] },
       {
         id: "card4",
         rotation: 0,
@@ -7828,10 +7615,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Catalogue", words: ["exhibitions", "printed"] },
-      right: { clue: "Label", words: ["remainder", "marker"] },
-      left: { clue: "Prescription", words: ["medications", "gd"] },
-      bottom: { clue: "Pattern", words: ["deer", "math"] },
+      top: { clue: "", words: ["exhibitions", "printed"] },
+      right: { clue: "", words: ["remainder", "marker"] },
+      left: { clue: "", words: ["medications", "gd"] },
+      bottom: { clue: "", words: ["deer", "math"] },
     },
   },
   {
@@ -7864,10 +7651,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Cozy", words: ["warming", "numerous"] },
-      right: { clue: "Hiking", words: ["vista", "pants"] },
-      left: { clue: "Wings", words: ["served", "dakota"] },
-      bottom: { clue: "Brochure", words: ["easily", "scanned"] },
+      top: { clue: "", words: ["warming", "numerous"] },
+      right: { clue: "", words: ["vista", "pants"] },
+      left: { clue: "", words: ["served", "dakota"] },
+      bottom: { clue: "", words: ["easily", "scanned"] },
     },
   },
   {
@@ -7900,10 +7687,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Components", words: ["hundreds", "hardware"] },
-      right: { clue: "Silver", words: ["mercury", "pure"] },
-      left: { clue: "Finger", words: ["jamie", "thumb"] },
-      bottom: { clue: "Buckle", words: ["magic", "strap"] },
+      top: { clue: "", words: ["hundreds", "hardware"] },
+      right: { clue: "", words: ["mercury", "pure"] },
+      left: { clue: "", words: ["jamie", "thumb"] },
+      bottom: { clue: "", words: ["magic", "strap"] },
     },
   },
   {
@@ -7936,10 +7723,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Ambiguity", words: ["gotten", "uncertainty"] },
-      right: { clue: "Constraints", words: ["boundaries", "algorithms"] },
-      left: { clue: "Mental", words: ["disorders", "advised"] },
-      bottom: { clue: "Calibration", words: ["tank", "adjustment"] },
+      top: { clue: "", words: ["gotten", "uncertainty"] },
+      right: { clue: "", words: ["boundaries", "algorithms"] },
+      left: { clue: "", words: ["disorders", "advised"] },
+      bottom: { clue: "", words: ["tank", "adjustment"] },
     },
   },
   {
@@ -7972,10 +7759,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Strive", words: ["comfort", "effort"] },
-      right: { clue: "Country", words: ["radius", "luxembourg"] },
-      left: { clue: "Survivors", words: ["recipients", "alive"] },
-      bottom: { clue: "Losses", words: ["beds", "compensation"] },
+      top: { clue: "", words: ["comfort", "effort"] },
+      right: { clue: "", words: ["radius", "luxembourg"] },
+      left: { clue: "", words: ["recipients", "alive"] },
+      bottom: { clue: "", words: ["beds", "compensation"] },
     },
   },
   {
@@ -8008,10 +7795,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Tough", words: ["chrome", "rugby"] },
-      right: { clue: "Marine", words: ["boats", "granted"] },
-      left: { clue: "Shield", words: ["defense", "autumn"] },
-      bottom: { clue: "Exposed", words: ["piss", "vulnerable"] },
+      top: { clue: "", words: ["chrome", "rugby"] },
+      right: { clue: "", words: ["boats", "granted"] },
+      left: { clue: "", words: ["defense", "autumn"] },
+      bottom: { clue: "", words: ["piss", "vulnerable"] },
     },
   },
   {
@@ -8039,12 +7826,79 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Invasive", words: ["sticky", "endangered"] },
-      right: { clue: "Allan", words: ["edgar", "korea"] },
-      left: { clue: "Paths", words: ["holes", "walks"] },
-      bottom: { clue: "Ruined", words: ["disturbed", "cities"] },
+      top: { clue: "", words: ["sticky", "endangered"] },
+      right: { clue: "", words: ["edgar", "korea"] },
+      left: { clue: "", words: ["holes", "walks"] },
+      bottom: { clue: "", words: ["disturbed", "cities"] },
     },
   },
 ];
 
-export default data;
+// let date = new Date();
+
+// data.forEach((element) => {
+//   // console.log(element.id);
+//   date.setDate(date.getDate() + 1);
+//   element.id = `${date.getMonth()}-${date.getDay()}-${date.getFullYear()}`;
+
+//   const cards = element.cards;
+//   cards.forEach((card, index) => {
+//     card.id = `card${index}`;
+//   });
+
+//   const solutions = {
+//     top: {
+//       clue: "",
+//       words: [],
+//     },
+//     right: { clue: "", words: [] },
+//     left: {
+//       clue: "",
+//       words: [],
+//     },
+//     bottom: {
+//       clue: "",
+//       words: [],
+//     },
+//   };
+
+//   solutions.top.words = [cards[0].words[0], cards[1].words[0]];
+//   solutions.right.words = [cards[1].words[1], cards[2].words[1]];
+//   solutions.left.words = [cards[0].words[3], cards[3].words[3]];
+//   solutions.bottom.words = [cards[2].words[2], cards[3].words[2]];
+
+//   element.solutions = solutions;
+// });
+
+async function queryOllama(clues) {
+  try {
+    const response = await axios.post("http://localhost:11434/api/generate", {
+      stream: false,
+      model: "llama3",
+      prompt: `Given these two words give me back a word that relates the 2. Please keep your response to a single word. \n ${clues}`,
+    });
+
+    // console.log(response);
+    return response.data.response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const doThings = async () => {
+  result = data;
+  const selectedData = data;
+  for (let index = 0; index < selectedData.length; index++) {
+    const row = selectedData[index];
+    const sides = Object.keys(row.solutions);
+    for (const key of sides) {
+      card = row.solutions[key];
+      const answer = await queryOllama(`${card.words[0]} ${card.words[1]}`);
+      result[index].solutions[key].clue = answer;
+    }
+  }
+
+  console.log(JSON.stringify(result));
+};
+
+doThings();
