@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Card from "./Card";
 import Puzzle from "./Puzzle";
 import { useGameLogic } from "@/hooks/useGameLogic";
-import { Puzzle as PuzzleType } from "@/types/game";
+import { PuzzleType } from "@/types/game";
 import gameData from "@/data/puzzles";
 import styles from "./WordPuzzleGame.module.css";
 

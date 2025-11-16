@@ -16,14 +16,14 @@ export interface PuzzleSlots {
   left: PuzzleSlot;
 }
 
-export interface Puzzle {
+export interface PuzzleType {
   id: string;
   cards: Card[];
   solutions: PuzzleSlots;
 }
 
 export interface GameData {
-  puzzles: Puzzle[];
+  puzzles: PuzzleType[];
 }
 
 export interface CardCorrectnessType {
@@ -40,7 +40,7 @@ export interface PlacedCardsType {
   bottomLeft: Card | null;
 }
 export interface GameState {
-  currentPuzzle: Puzzle | null;
+  currentPuzzle: PuzzleType | null;
   placedCards: PlacedCardsType;
   attempts: number;
   score: number;
