@@ -1,7 +1,12 @@
 "use client";
 
 import { useDrop } from "react-dnd";
-import { Card as CardType, PlacedCardsType, SlotPosition } from "@/types/game";
+import {
+  CardCorrectnessType,
+  Card as CardType,
+  PlacedCardsType,
+  SlotPosition,
+} from "@/types/game";
 import Card from "./Card";
 import styles from "./Puzzle.module.css";
 
@@ -15,6 +20,7 @@ interface PuzzleProps {
   placedCards: PlacedCardsType;
   onCardDrop: (card: CardType, position: SlotPosition) => void;
   onCardRemove: (position: SlotPosition) => void;
+  cardsCorrectness: CardCorrectnessType | null | undefined;
 }
 
 export default function Puzzle({
@@ -22,6 +28,7 @@ export default function Puzzle({
   placedCards,
   onCardDrop,
   onCardRemove,
+  cardsCorrectness,
 }: PuzzleProps) {
   const [{ isOver: isOverTopLeft }, dropTopLeft] = useDrop({
     accept: "card",
@@ -58,10 +65,22 @@ export default function Puzzle({
   const renderSlot = (position: SlotPosition, isOver: boolean) => {
     const placedCard = placedCards[position];
 
+    const getClassBasedOnCardCorrectness = () => {
+      if (cardsCorrectness === null || cardsCorrectness === undefined) {
+        return styles.unsubmitted;
+      }
+
+      return cardsCorrectness[position] === true
+        ? styles.correct
+        : styles.incorrect;
+    };
+
     return (
       <div
         key={position}
-        className={`${styles.slot} ${styles[position]} ${
+        className={`${styles.slot} ${
+          styles[position]
+        } ${getClassBasedOnCardCorrectness()} ${
           isOver ? styles.dropTarget : ""
         }`}
         ref={
@@ -76,7 +95,7 @@ export default function Puzzle({
         onClick={() => placedCard && onCardRemove(position)}
       >
         {placedCard ? (
-          <div className={styles.cardContainer}>
+          <div className={`${styles.cardContainer}`}>
             <Card card={placedCard} isPlaced={true} />
             <div className={styles.removeHint}>Click to remove</div>
           </div>

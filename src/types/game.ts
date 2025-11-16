@@ -1,9 +1,10 @@
 export interface Card {
   id: string;
   words: [string, string, string, string]; // top, right, bottom, left
-  rotation: 0 | 90 | 180 | 270;
+  rotation: RotationOptionsType;
 }
 
+export type RotationOptionsType = 0 | 90 | 180 | 270;
 export interface PuzzleSlot {
   clue: string;
   words: [string, string]; // two words that should match

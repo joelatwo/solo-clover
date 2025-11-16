@@ -1,7 +1,10 @@
 import Link from "next/link";
 import styles from "./HomePage.module.css";
+import { getDateKey } from "@/utils/Dates";
 
 export default function HomePage() {
+  const dailyPuzzle = getDateKey(new Date());
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -82,17 +85,7 @@ export default function HomePage() {
         <section className={styles.gameModes}>
           <h2>Choose Your Game Mode</h2>
           <div className={styles.modeCards}>
-            <Link href="/puzzle" className={styles.modeCard}>
-              <div className={styles.modeIcon}>🎯</div>
-              <h3>Practice Puzzle</h3>
-              <p>
-                Play with the default puzzle to learn the game mechanics and
-                practice your skills.
-              </p>
-              <div className={styles.modeButton}>Start Practice</div>
-            </Link>
-
-            <Link href="/daily" className={styles.modeCard}>
+            <Link href={`/puzzle/${dailyPuzzle}`} className={styles.modeCard}>
               <div className={styles.modeIcon}>📅</div>
               <h3>Daily Challenge</h3>
               <p>
