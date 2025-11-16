@@ -2,7 +2,6 @@
 
 import { useGameLogic } from "@/hooks/useGameLogic";
 import { PuzzleType } from "@/types/game";
-import { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Card from "./Card";
@@ -14,11 +13,6 @@ type Props = {
 };
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
-  const [showResult, setShowResult] = useState<{
-    isCorrect: boolean;
-    pointsEarned: number;
-  } | null>(null);
-
   const {
     placedCards,
     cardsCorrectness,
@@ -33,18 +27,11 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
   } = useGameLogic(initialPuzzle);
 
   const handleSubmit = () => {
-    const result = submitSolution();
-    // setShowResult(result);
-
-    // Hide result after 3 seconds
-    setTimeout(() => {
-      setShowResult(null);
-    }, 3000);
+    submitSolution();
   };
 
   const handleReset = () => {
     resetGame();
-    setShowResult(null);
   };
 
   return (
@@ -60,15 +47,13 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           </div>
         </div>
 
-        {showResult && (
+        {score !== null && (
           <div
             className={`${styles.result} ${
-              showResult.isCorrect ? styles.correct : styles.incorrect
+              score > 0 ? styles.correct : styles.incorrect
             }`}
           >
-            {showResult.isCorrect ? "Correct!" : "Incorrect!"}
-            {showResult.pointsEarned > 0 &&
-              ` +${showResult.pointsEarned} points`}
+            {`Score: ${score} points`}
           </div>
         )}
 

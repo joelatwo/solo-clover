@@ -56,8 +56,9 @@ export default function HomePage() {
               <div className={styles.ruleContent}>
                 <h3>Submit & Score</h3>
                 <p>
-                  Submit your solution to check if it's correct. Earn 6 points
-                  for first try, 5 for second, or 1 point per correct match.
+                  Submit your solution to check if it&apos;s correct. Earn 6
+                  points for first try, 5 for second, or 1 point per correct
+                  match.
                 </p>
               </div>
             </div>
@@ -89,7 +90,7 @@ export default function HomePage() {
               <div className={styles.modeIcon}>📅</div>
               <h3>Daily Challenge</h3>
               <p>
-                Take on today's unique puzzle. New challenges every day with
+                Take on today@aposs unique puzzle. New challenges every day with
                 different word combinations.
               </p>
               <div className={styles.modeButton}>Daily Challenge</div>

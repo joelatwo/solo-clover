@@ -16,7 +16,7 @@ const defaultPlacedCards = {
 };
 
 export function useGameLogic(initialPuzzle: PuzzleType | null) {
-  const [score, setScore] = useState<number | null>();
+  const [score, setScore] = useState<number | null>(null);
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
