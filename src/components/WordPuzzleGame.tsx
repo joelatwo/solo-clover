@@ -84,7 +84,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
             disabled={numberOfAttempts === 3}
             className={styles.submitButton}
           >
-            {score ? "Game Complete!" : "Submit Solution"}
+            {score === null ? "Game Complete!" : "Submit Solution"}
           </button>
 
           <button onClick={handleReset} className={styles.resetButton}>
@@ -92,7 +92,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           </button>
         </div>
 
-        {score && (
+        {score !== null && (
           <div className={styles.gameComplete}>
             <h2>Game Complete!</h2>
             <p>Final Score: {score}</p>

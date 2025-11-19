@@ -18,8 +18,6 @@ export default function Card({
   isIncorrect = false,
   onRotate,
 }: CardProps) {
-  const [isDragging, setIsDragging] = useState(false);
-
   const [{ isDragging: isDragActive }, drag] = useDrag({
     type: "card",
     item: { id: card.id, card },
@@ -52,13 +50,21 @@ export default function Card({
     >
       <div
         className={styles.word}
-        style={{ top: "10px", left: "50%", transform: "translateX(-50%)" }}
+        style={{
+          top: "10px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
       >
         {getWordAtPosition("top")}
       </div>
       <div
         className={styles.word}
-        style={{ right: "10px", top: "50%", transform: "translateY(-50%)" }}
+        style={{
+          right: "10px",
+          top: "50%",
+          transform: "rotate(90deg) translateY(-50%)",
+        }}
       >
         {getWordAtPosition("right")}
       </div>
@@ -70,7 +76,11 @@ export default function Card({
       </div>
       <div
         className={styles.word}
-        style={{ left: "10px", top: "50%", transform: "translateY(-50%)" }}
+        style={{
+          left: "10px",
+          top: "50%",
+          transform: "rotate(-90deg) translateY(-50%)",
+        }}
       >
         {getWordAtPosition("left")}
       </div>

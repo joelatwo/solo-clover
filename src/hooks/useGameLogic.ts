@@ -32,10 +32,10 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   // Load score from localStorage on mount
   useEffect(() => {
-    const savedScore = localStorage.getItem("wordPuzzleScore");
-    if (savedScore) {
-      setScore(parseInt(savedScore));
-    }
+    // const savedScore = localStorage.getItem("wordPuzzleScore");
+    // if (savedScore) {
+    //   setScore(parseInt(savedScore));
+    // }
   }, []);
 
   // Update available cards when puzzle changes
