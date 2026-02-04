@@ -5,9 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // If your repository name is not the root, uncomment and set the basePath
-  basePath: process.env.NODE_ENV === "production" ? "/solo_clover" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/solo_clover" : "",
+  // GitHub Pages project sites are served at /repo-name - BASE_PATH is set in CI
+  basePath: process.env.BASE_PATH ?? "",
+  assetPrefix: process.env.BASE_PATH ?? "",
+  trailingSlash: true, // Helps GitHub Pages resolve routes correctly
 };
 
 export default nextConfig;
