@@ -5,9 +5,13 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // GitHub Pages project sites are served at /repo-name - BASE_PATH is set in CI
-  basePath: process.env.BASE_PATH ?? "",
-  assetPrefix: process.env.BASE_PATH ?? "",
+  // GitHub Pages project sites are served at /repo-name - BASE_PATH set in CI, fallback for joelatwo.github.io/solo_clover
+  basePath:
+    process.env.BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/solo_clover" : ""),
+  assetPrefix:
+    process.env.BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/solo_clover" : ""),
   trailingSlash: true, // Helps GitHub Pages resolve routes correctly
 };
 

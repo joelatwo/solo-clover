@@ -34,8 +34,7 @@ jobs:
 
       - name: Build
         env:
-          # Project sites: /repo-name. User/org sites (repo *.github.io): root
-          BASE_PATH: ${{ contains(github.event.repository.name, '.github.io') && '' || format('/{0}', github.event.repository.name) }}
+          BASE_PATH: /${{ github.event.repository.name }}
         run: npm run export
 
       - name: Setup Pages
