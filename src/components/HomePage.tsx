@@ -1,7 +1,10 @@
 import Link from "next/link";
 import styles from "./HomePage.module.css";
+import { getDateKey } from "@/utils/Dates";
 
 export default function HomePage() {
+  const dailyPuzzle = getDateKey(new Date());
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -53,8 +56,9 @@ export default function HomePage() {
               <div className={styles.ruleContent}>
                 <h3>Submit & Score</h3>
                 <p>
-                  Submit your solution to check if it's correct. Earn 6 points
-                  for first try, 5 for second, or 1 point per correct match.
+                  Submit your solution to check if it&apos;s correct. Earn 6
+                  points for first try, 5 for second, or 1 point per correct
+                  match.
                 </p>
               </div>
             </div>
@@ -82,21 +86,11 @@ export default function HomePage() {
         <section className={styles.gameModes}>
           <h2>Choose Your Game Mode</h2>
           <div className={styles.modeCards}>
-            <Link href="/puzzle" className={styles.modeCard}>
-              <div className={styles.modeIcon}>🎯</div>
-              <h3>Practice Puzzle</h3>
-              <p>
-                Play with the default puzzle to learn the game mechanics and
-                practice your skills.
-              </p>
-              <div className={styles.modeButton}>Start Practice</div>
-            </Link>
-
-            <Link href="/daily" className={styles.modeCard}>
+            <Link href={`/puzzle/${dailyPuzzle}`} className={styles.modeCard}>
               <div className={styles.modeIcon}>📅</div>
               <h3>Daily Challenge</h3>
               <p>
-                Take on today's unique puzzle. New challenges every day with
+                Take on today@aposs unique puzzle. New challenges every day with
                 different word combinations.
               </p>
               <div className={styles.modeButton}>Daily Challenge</div>

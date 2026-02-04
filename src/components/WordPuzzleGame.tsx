@@ -1,13 +1,11 @@
 "use client";
 
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useState, useEffect } from "react";
-import Card from "./Card";
-import Puzzle from "./Puzzle";
 import { useGameLogic } from "@/hooks/useGameLogic";
 import { PuzzleType } from "@/types/game";
-import gameData from "@/data/puzzles";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Card from "./Card";
+import Puzzle from "./Puzzle";
 import styles from "./WordPuzzleGame.module.css";
 
 type Props = {
@@ -15,12 +13,6 @@ type Props = {
 };
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
-  const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType>(initialPuzzle);
-  const [showResult, setShowResult] = useState<{
-    isCorrect: boolean;
-    pointsEarned: number;
-  } | null>(null);
-
   const {
     placedCards,
     cardsCorrectness,
@@ -32,26 +24,15 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     removeCard,
     submitSolution,
     resetGame,
-  } = useGameLogic(currentPuzzle);
+  } = useGameLogic(initialPuzzle);
 
   const handleSubmit = () => {
-    const result = submitSolution();
-    // setShowResult(result);
-
-    // Hide result after 3 seconds
-    setTimeout(() => {
-      setShowResult(null);
-    }, 3000);
+    submitSolution();
   };
 
   const handleReset = () => {
     resetGame();
-    setShowResult(null);
   };
-
-  if (!currentPuzzle) {
-    return <div className={styles.loading}>Loading puzzle...</div>;
-  }
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -66,22 +47,21 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           </div>
         </div>
 
-        {showResult && (
+        {score !== null && (
           <div
             className={`${styles.result} ${
-              showResult.isCorrect ? styles.correct : styles.incorrect
+              score > 0 ? styles.correct : styles.incorrect
             }`}
           >
-            {showResult.isCorrect ? "Correct!" : "Incorrect!"}
-            {showResult.pointsEarned > 0 &&
-              ` +${showResult.pointsEarned} points`}
+            {`Score: ${score} points`}
           </div>
         )}
 
         <div className={styles.gameArea}>
           <div className={styles.puzzleArea}>
             <Puzzle
-              solutions={currentPuzzle.solutions}
+              cardsCorrectness={cardsCorrectness}
+              solutions={initialPuzzle.solutions}
               placedCards={placedCards}
               onCardDrop={placeCard}
               onCardRemove={removeCard}
@@ -101,15 +81,10 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <div className={styles.controls}>
           <button
             onClick={handleSubmit}
-            // disabled={
-            //   gameLogic.gameState.isComplete ||
-            //   Object.values(gameLogic.gameState.placedCards).some(
-            //     (card) => card === null
-            //   )
-            // }
+            disabled={numberOfAttempts === 3}
             className={styles.submitButton}
           >
-            {score ? "Game Complete!" : "Submit Solution"}
+            {score === null ? "Game Complete!" : "Submit Solution"}
           </button>
 
           <button onClick={handleReset} className={styles.resetButton}>
@@ -117,7 +92,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           </button>
         </div>
 
-        {score && (
+        {score !== null && (
           <div className={styles.gameComplete}>
             <h2>Game Complete!</h2>
             <p>Final Score: {score}</p>

@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
 import {
-  GameState,
   Card,
-  SlotPosition,
-  PuzzleType,
-  PuzzleSlot,
-  PuzzleSlots,
   CardCorrectnessType,
   PlacedCardsType,
+  PuzzleSlots,
+  PuzzleType,
+  SlotPosition,
 } from "@/types/game";
-import { Bodoni_Moda } from "next/font/google";
-import { Interface } from "readline";
+import { useEffect, useState } from "react";
 
 const defaultPlacedCards = {
   topLeft: null,
@@ -20,7 +16,7 @@ const defaultPlacedCards = {
 };
 
 export function useGameLogic(initialPuzzle: PuzzleType | null) {
-  const [score, setScore] = useState<number | null>();
+  const [score, setScore] = useState<number | null>(null);
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
@@ -36,10 +32,10 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   // Load score from localStorage on mount
   useEffect(() => {
-    const savedScore = localStorage.getItem("wordPuzzleScore");
-    if (savedScore) {
-      setScore(parseInt(savedScore));
-    }
+    // const savedScore = localStorage.getItem("wordPuzzleScore");
+    // if (savedScore) {
+    //   setScore(parseInt(savedScore));
+    // }
   }, []);
 
   // Update available cards when puzzle changes
@@ -63,7 +59,6 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const placeCard = (card: Card, position: SlotPosition) => {
-    console.log(position);
     const existingCard = placedCards[position];
     if (existingCard) {
       setAvailableCards((prev) => {
@@ -132,28 +127,26 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const validateTopLeft = (solutions: PuzzleSlots, card: Card) => {
-    const { top, right, bottom, left } = getCardByRotation(card);
+    const { top, left } = getCardByRotation(card);
     return solutions.left.words[0] === left && solutions.top.words[0] === top;
   };
 
   const validateTopRight = (solutions: PuzzleSlots, card: Card) => {
-    const { top, right, bottom, left } = getCardByRotation(card);
+    const { top, right } = getCardByRotation(card);
     return solutions.top.words[1] === top && solutions.right.words[0] === right;
   };
 
   const validateBottomLeft = (solutions: PuzzleSlots, card: Card) => {
-    const { top, right, bottom, left } = getCardByRotation(card);
+    const { bottom, left } = getCardByRotation(card);
 
-    console.log(left, solutions.left.words, bottom, solutions.bottom.words);
     return (
       solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
     );
   };
 
   const validateBottomRight = (solutions: PuzzleSlots, card: Card) => {
-    const { top, right, bottom, left } = getCardByRotation(card);
+    const { bottom, left } = getCardByRotation(card);
 
-    console.log(left, solutions.left.words, bottom, solutions.bottom.words);
     return (
       solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
     );

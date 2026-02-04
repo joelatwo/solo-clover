@@ -108,3 +108,15 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
+
+.unsubmitted {
+  border-color: #007bff;
+}
+
+.correct {
+  border-color: green;
+}
+
+.incorrect {
+  border-color: red;
+}
