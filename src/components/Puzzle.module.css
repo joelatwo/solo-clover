@@ -7,13 +7,13 @@
 
 .puzzleGrid {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: var(--puzzle-grid-size);
+  height: var(--puzzle-grid-size);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 20px;
-  padding: 40px;
+  gap: var(--puzzle-grid-gap);
+  padding: var(--puzzle-grid-padding);
 }
 
 .slot {
@@ -27,7 +27,7 @@
   background: #f8f9fa;
   transition: all 0.2s ease;
   cursor: pointer;
-  min-height: 120px;
+  min-height: var(--puzzle-card-size);
   position: relative;
 }
 

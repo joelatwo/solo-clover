@@ -1,6 +1,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Puzzle grid – change these to resize the grid and cards dynamically */
+  --puzzle-card-size: 240px;
+  --puzzle-grid-size: 780px;
+  --puzzle-grid-gap: 36px;
+  --puzzle-grid-padding: 72px;
 }
 
 @media (prefers-color-scheme: dark) {
