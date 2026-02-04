@@ -1,5 +1,3 @@
-"use client";
-
 import WordPuzzleGame from "@/components/WordPuzzleGame";
 import gameData from "@/data/puzzles";
 import { PuzzleType } from "@/types/game";
