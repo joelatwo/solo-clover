@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useGameLogic } from "@/hooks/useGameLogic";
 import { PuzzleType } from "@/types/game";
 import { DndProvider } from "react-dnd";
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
+  const [isCardBarOpen, setIsCardBarOpen] = useState(true);
   const {
     placedCards,
     cardsCorrectness,
@@ -67,9 +69,25 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               onCardRemove={removeCard}
             />
           </div>
+        </div>
 
-          <div className={styles.cardsArea}>
-            <h3>Available Cards</h3>
+        <div
+          className={`${styles.cardBar} ${
+            isCardBarOpen ? styles.cardBarOpen : styles.cardBarClosed
+          }`}
+        >
+          <button
+            type="button"
+            className={styles.cardBarToggle}
+            onClick={() => setIsCardBarOpen((open) => !open)}
+            aria-expanded={isCardBarOpen}
+          >
+            <span className={styles.cardBarTitle}>Available Cards</span>
+            <span className={styles.cardBarChevron}>
+              {isCardBarOpen ? "▼" : "▲"}
+            </span>
+          </button>
+          <div className={styles.cardBarContent}>
             <div className={styles.cardsGrid}>
               {availableCards.map((card) => (
                 <Card key={card.id} card={card} onRotate={rotateCard} />
