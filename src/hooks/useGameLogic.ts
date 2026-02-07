@@ -49,7 +49,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   }, [initialPuzzle]);
 
   const rotateCard = (cardId: string, direction: RotateDirection) => {
-    const delta = direction === "right" ? 90 : -90;
+    const delta = direction === "right" ? -90 : 90;
     setAvailableCards((prev) =>
       prev.map((card) =>
         card.id === cardId
@@ -67,7 +67,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     position: SlotPosition,
     direction: RotateDirection
   ) => {
-    const delta = direction === "right" ? 90 : -90;
+    const delta = direction === "right" ? -90 : 90;
     setPlacedCards((prev) => {
       const card = prev[position];
       if (!card) return prev;
@@ -105,47 +105,14 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const getCardByRotation = (card: Card) => {
-    switch (card.rotation) {
-      case 0:
-        return {
-          top: card.words[0],
-          right: card.words[1],
-          bottom: card.words[2],
-          left: card.words[3],
-        };
-
-      case 90:
-        return {
-          top: card.words[1],
-          right: card.words[2],
-          bottom: card.words[3],
-          left: card.words[0],
-        };
-
-      case 180:
-        return {
-          top: card.words[2],
-          right: card.words[3],
-          bottom: card.words[0],
-          left: card.words[1],
-        };
-
-      case 270:
-        return {
-          top: card.words[3],
-          right: card.words[0],
-          bottom: card.words[1],
-          left: card.words[2],
-        };
-
-      default:
-        return {
-          top: card.words[0],
-          right: card.words[1],
-          bottom: card.words[2],
-          left: card.words[3],
-        };
-    }
+    const r = card.rotation / 90;
+    const at = (slotIndex: number) => card.words[(slotIndex - r + 4) % 4];
+    return {
+      top: at(0),
+      right: at(1),
+      bottom: at(2),
+      left: at(3),
+    };
   };
 
   const validateTopLeft = (solutions: PuzzleSlots, card: Card) => {

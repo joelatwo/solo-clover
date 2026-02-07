@@ -23,21 +23,22 @@
   transform: rotate(5deg);
 }
 
+/* Animate from "previous" angle to 0° so words are already correct and don't shift */
 @keyframes spinRight {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-90deg);
   }
   to {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
   }
 }
 
 @keyframes spinLeft {
   from {
-    transform: rotate(0deg);
+    transform: rotate(90deg);
   }
   to {
-    transform: rotate(-90deg);
+    transform: rotate(0deg);
   }
 }
 

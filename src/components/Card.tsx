@@ -68,20 +68,22 @@ export default function Card({
   const handleAnimationEnd = useCallback(
     (e: React.AnimationEvent) => {
       if (e.target !== e.currentTarget || !rotating) return;
-      if (rotating === "right") {
-        onRotateRight?.();
-      } else if (rotating === "left") {
-        onRotateLeft?.();
-      }
       setRotating(null);
     },
-    [rotating, onRotateLeft, onRotateRight]
+    [rotating]
   );
 
   const getWordAtPosition = (position: "top" | "right" | "bottom" | "left") => {
-    const positions = ["top", "right", "bottom", "left"];
+    const positions: ("top" | "right" | "bottom" | "left")[] = [
+      "top",
+      "right",
+      "bottom",
+      "left",
+    ];
     const currentIndex = positions.indexOf(position);
-    const rotatedIndex = (currentIndex + card.rotation / 90) % 4;
+    // Rotation: top→left, left→bottom, bottom→right, right→top (words move with the card)
+    const r = card.rotation / 90;
+    const rotatedIndex = (currentIndex - r + 4) % 4;
     return card.words[rotatedIndex];
   };
 
@@ -117,7 +119,10 @@ export default function Card({
             disabled={!!rotating}
             onClick={(e) => {
               e.stopPropagation();
-              if (onRotateLeft && !rotating) setRotating("left");
+              if (onRotateLeft && !rotating) {
+                onRotateLeft();
+                setRotating("left");
+              }
             }}
             aria-label="Rotate left"
           >
@@ -129,7 +134,10 @@ export default function Card({
             disabled={!!rotating}
             onClick={(e) => {
               e.stopPropagation();
-              if (onRotateRight && !rotating) setRotating("right");
+              if (onRotateRight && !rotating) {
+                onRotateRight();
+                setRotating("right");
+              }
             }}
             aria-label="Rotate right"
           >
