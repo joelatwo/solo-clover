@@ -48,40 +48,16 @@ export default function Card({
       } ${isIncorrect ? styles.incorrect : ""}`}
       onClick={handleRotate}
     >
-      <div
-        className={styles.word}
-        style={{
-          top: "10px",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      >
+      <div className={`${styles.word} ${styles.wordTop}`}>
         {getWordAtPosition("top")}
       </div>
-      <div
-        className={styles.word}
-        style={{
-          right: "10px",
-          top: "50%",
-          transform: "rotate(90deg) translateY(-50%)",
-        }}
-      >
+      <div className={`${styles.word} ${styles.wordRight}`}>
         {getWordAtPosition("right")}
       </div>
-      <div
-        className={styles.word}
-        style={{ bottom: "10px", left: "50%", transform: "translateX(-50%)" }}
-      >
+      <div className={`${styles.word} ${styles.wordBottom}`}>
         {getWordAtPosition("bottom")}
       </div>
-      <div
-        className={styles.word}
-        style={{
-          left: "10px",
-          top: "50%",
-          transform: "rotate(-90deg) translateY(-50%)",
-        }}
-      >
+      <div className={`${styles.word} ${styles.wordLeft}`}>
         {getWordAtPosition("left")}
       </div>
       {!isPlaced && <div className={styles.rotateHint}>Click to rotate</div>}
