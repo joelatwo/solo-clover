@@ -23,6 +23,34 @@
   transform: rotate(5deg);
 }
 
+@keyframes spinRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes spinLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+
+.card.rotatingRight {
+  animation: spinRight 0.28s ease-out forwards;
+  transition: none;
+}
+
+.card.rotatingLeft {
+  animation: spinLeft 0.28s ease-out forwards;
+  transition: none;
+}
+
 .card.placed {
   cursor: default;
   background: #e8f5e8;
@@ -76,12 +104,40 @@
   transform: rotate(-90deg) translateY(-50%);
 }
 
-.rotateHint {
+.rotateBtnLeft,
+.rotateBtnRight {
   position: absolute;
-  bottom: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: #666;
-  white-space: nowrap;
+  bottom: 4px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.rotateBtnLeft:hover:not(:disabled),
+.rotateBtnRight:hover:not(:disabled) {
+  background: rgba(0, 123, 255, 0.2);
+  color: #007bff;
+}
+
+.rotateBtnLeft:disabled,
+.rotateBtnRight:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rotateBtnLeft {
+  left: 4px;
+}
+
+.rotateBtnRight {
+  right: 4px;
 }

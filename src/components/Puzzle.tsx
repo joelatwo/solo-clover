@@ -7,6 +7,7 @@ import {
   PlacedCardsType,
   SlotPosition,
 } from "@/types/game";
+import { RotateDirection } from "@/hooks/useGameLogic";
 import Card from "./Card";
 import styles from "./Puzzle.module.css";
 
@@ -20,6 +21,10 @@ interface PuzzleProps {
   placedCards: PlacedCardsType;
   onCardDrop: (card: CardType, position: SlotPosition) => void;
   onCardRemove: (position: SlotPosition) => void;
+  onRotatePlacedCard?: (
+    position: SlotPosition,
+    direction: RotateDirection
+  ) => void;
   cardsCorrectness: CardCorrectnessType | null | undefined;
 }
 
@@ -28,6 +33,7 @@ export default function Puzzle({
   placedCards,
   onCardDrop,
   onCardRemove,
+  onRotatePlacedCard,
   cardsCorrectness,
 }: PuzzleProps) {
   const [{ isOver: isOverTopLeft }, dropTopLeft] = useDrop({
@@ -96,7 +102,21 @@ export default function Puzzle({
       >
         {placedCard ? (
           <div className={`${styles.cardContainer}`}>
-            <Card card={placedCard} isPlaced={true} />
+            <Card
+              card={placedCard}
+              isPlaced={true}
+              isIncorrect={cardsCorrectness?.[position] === false}
+              onRotateLeft={
+                onRotatePlacedCard
+                  ? () => onRotatePlacedCard(position, "left")
+                  : undefined
+              }
+              onRotateRight={
+                onRotatePlacedCard
+                  ? () => onRotatePlacedCard(position, "right")
+                  : undefined
+              }
+            />
             <div className={styles.removeHint}>Click to remove</div>
           </div>
         ) : (

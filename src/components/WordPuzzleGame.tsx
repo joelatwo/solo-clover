@@ -22,6 +22,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     numberOfAttempts,
     availableCards,
     rotateCard,
+    rotatePlacedCard,
     placeCard,
     removeCard,
     submitSolution,
@@ -67,6 +68,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               placedCards={placedCards}
               onCardDrop={placeCard}
               onCardRemove={removeCard}
+              onRotatePlacedCard={rotatePlacedCard}
             />
           </div>
         </div>
@@ -90,7 +92,12 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           <div className={styles.cardBarContent}>
             <div className={styles.cardsGrid}>
               {availableCards.map((card) => (
-                <Card key={card.id} card={card} onRotate={rotateCard} />
+                <Card
+                  key={card.id}
+                  card={card}
+                  onRotateLeft={() => rotateCard(card.id, "left")}
+                  onRotateRight={() => rotateCard(card.id, "right")}
+                />
               ))}
             </div>
           </div>

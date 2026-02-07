@@ -4,8 +4,11 @@ import {
   PlacedCardsType,
   PuzzleSlots,
   PuzzleType,
+  RotationOptionsType,
   SlotPosition,
 } from "@/types/game";
+
+export type RotateDirection = "left" | "right";
 import { useEffect, useState } from "react";
 
 const defaultPlacedCards = {
@@ -45,17 +48,36 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     }
   }, [initialPuzzle]);
 
-  const rotateCard = (cardId: string) => {
+  const rotateCard = (cardId: string, direction: RotateDirection) => {
+    const delta = direction === "right" ? 90 : -90;
     setAvailableCards((prev) =>
       prev.map((card) =>
         card.id === cardId
           ? {
               ...card,
-              rotation: ((card.rotation + 90) % 360) as 0 | 90 | 180 | 270,
+              rotation: ((card.rotation + delta + 360) % 360 ||
+                0) as RotationOptionsType,
             }
           : card
       )
     );
+  };
+
+  const rotatePlacedCard = (
+    position: SlotPosition,
+    direction: RotateDirection
+  ) => {
+    const delta = direction === "right" ? 90 : -90;
+    setPlacedCards((prev) => {
+      const card = prev[position];
+      if (!card) return prev;
+      const newRotation = ((card.rotation + delta + 360) % 360 ||
+        0) as RotationOptionsType;
+      return {
+        ...prev,
+        [position]: { ...card, rotation: newRotation },
+      };
+    });
   };
 
   const placeCard = (card: Card, position: SlotPosition) => {
@@ -228,6 +250,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     numberOfAttempts,
     availableCards,
     rotateCard,
+    rotatePlacedCard,
     placeCard,
     removeCard,
     submitSolution,
