@@ -134,10 +134,10 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const validateBottomRight = (solutions: PuzzleSlots, card: Card) => {
-    const { bottom, left } = getCardByRotation(card);
+    const { bottom, right } = getCardByRotation(card);
 
     return (
-      solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
+      solutions.right.words[1] === right && solutions.bottom.words[0] === bottom
     );
   };
 
@@ -171,8 +171,8 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     return {
       topLeft: validateTopLeft(solutions, placedCards.topLeft),
       topRight: validateTopRight(solutions, placedCards.topRight),
-      bottomRight: validateBottomLeft(solutions, placedCards.bottomLeft),
-      bottomLeft: validateBottomRight(solutions, placedCards.bottomRight),
+      bottomLeft: validateBottomLeft(solutions, placedCards.bottomLeft),
+      bottomRight: validateBottomRight(solutions, placedCards.bottomRight),
     };
   };
 

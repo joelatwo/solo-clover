@@ -63,13 +63,13 @@
 .wordTop {
   top: 6%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(180deg);
 }
 
 .wordRight {
   right: 6%;
   top: 50%;
-  transform: rotate(90deg) translateY(-50%);
+  transform: rotate(270deg) translateY(-50%);
 }
 
 .wordBottom {
@@ -80,8 +80,8 @@
 
 .wordLeft {
   left: 6%;
-  top: 50%;
-  transform: rotate(-90deg) translateY(-50%);
+  /* top: 50%; */
+  transform: rotate(90deg);
 }
 
 .rotateBtnLeft,
