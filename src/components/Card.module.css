@@ -1,12 +1,19 @@
-.card {
+.cardWrapper {
+  position: relative;
   width: var(--puzzle-card-size);
   height: var(--puzzle-card-size);
+  cursor: pointer;
+  user-select: none;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
   border: 2px solid #333;
   border-radius: 8px;
   background: #f9f9f9;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
+  position: absolute;
+  inset: 0;
   transition: border-color 0.2s ease, box-shadow 0.2s ease,
     transform 0.28s ease-out;
   display: flex;
@@ -93,6 +100,7 @@
   align-items: center;
   justify-content: center;
   transition: background 0.15s ease, color 0.15s ease;
+  z-index: 1;
 }
 
 .rotateBtnLeft:hover,

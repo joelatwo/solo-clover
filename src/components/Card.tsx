@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
 import { Card as CardType } from "@/types/game";
 import styles from "./Card.module.css";
@@ -62,6 +63,14 @@ export default function Card({
     canDrag: !isPlaced,
   });
 
+  // Animation: add/subtract 90 from current position on each rotate (no sync to card.rotation, so no full spin).
+  const [displayRotation, setDisplayRotation] = useState<number>(card.rotation);
+  useEffect(() => {
+    setDisplayRotation(card.rotation);
+  }, [card.id]);
+
+  const rotationDeg = displayRotation + (isDragActive ? 5 : 0);
+
   // Data is fixed: words[0]=top, words[1]=right, words[2]=bottom, words[3]=left.
   // Rotation is visual only (CSS transform on the card).
   const getWordAtPosition = (position: "top" | "right" | "bottom" | "left") => {
@@ -70,26 +79,27 @@ export default function Card({
   };
 
   return (
-    <div
-      ref={drag as any}
-      className={`${styles.card} ${isDragActive ? styles.dragging : ""} ${
-        isPlaced ? styles.placed : ""
-      } ${isIncorrect ? styles.incorrect : ""}`}
-      style={{
-        transform: `rotate(${card.rotation + (isDragActive ? 5 : 0)}deg)`,
-      }}
-    >
-      <div className={`${styles.word} ${styles.wordTop}`}>
-        {getWordAtPosition("top")}
-      </div>
-      <div className={`${styles.word} ${styles.wordRight}`}>
-        {getWordAtPosition("right")}
-      </div>
-      <div className={`${styles.word} ${styles.wordBottom}`}>
-        {getWordAtPosition("bottom")}
-      </div>
-      <div className={`${styles.word} ${styles.wordLeft}`}>
-        {getWordAtPosition("left")}
+    <div ref={drag as any} className={styles.cardWrapper}>
+      <div
+        className={`${styles.card} ${isDragActive ? styles.dragging : ""} ${
+          isPlaced ? styles.placed : ""
+        } ${isIncorrect ? styles.incorrect : ""}`}
+        style={{
+          transform: `rotate(${rotationDeg}deg)`,
+        }}
+      >
+        <div className={`${styles.word} ${styles.wordTop}`}>
+          {getWordAtPosition("top")}
+        </div>
+        <div className={`${styles.word} ${styles.wordRight}`}>
+          {getWordAtPosition("right")}
+        </div>
+        <div className={`${styles.word} ${styles.wordBottom}`}>
+          {getWordAtPosition("bottom")}
+        </div>
+        <div className={`${styles.word} ${styles.wordLeft}`}>
+          {getWordAtPosition("left")}
+        </div>
       </div>
       {(onRotateLeft || onRotateRight) && (
         <>
@@ -98,6 +108,7 @@ export default function Card({
             className={styles.rotateBtnLeft}
             onClick={(e) => {
               e.stopPropagation();
+              setDisplayRotation((prev) => prev - 90);
               onRotateLeft?.();
             }}
             aria-label="Rotate left"
@@ -109,6 +120,7 @@ export default function Card({
             className={styles.rotateBtnRight}
             onClick={(e) => {
               e.stopPropagation();
+              setDisplayRotation((prev) => prev + 90);
               onRotateRight?.();
             }}
             aria-label="Rotate right"
