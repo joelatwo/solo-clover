@@ -2,7 +2,6 @@
 
 import { useDrag } from "react-dnd";
 import { Card as CardType } from "@/types/game";
-import { useState, useCallback } from "react";
 import styles from "./Card.module.css";
 
 interface CardProps {
@@ -54,8 +53,6 @@ export default function Card({
   onRotateLeft,
   onRotateRight,
 }: CardProps) {
-  const [rotating, setRotating] = useState<"left" | "right" | null>(null);
-
   const [{ isDragging: isDragActive }, drag] = useDrag({
     type: "card",
     item: { id: card.id, card },
@@ -65,26 +62,11 @@ export default function Card({
     canDrag: !isPlaced,
   });
 
-  const handleAnimationEnd = useCallback(
-    (e: React.AnimationEvent) => {
-      if (e.target !== e.currentTarget || !rotating) return;
-      setRotating(null);
-    },
-    [rotating]
-  );
-
+  // Data is fixed: words[0]=top, words[1]=right, words[2]=bottom, words[3]=left.
+  // Rotation is visual only (CSS transform on the card).
   const getWordAtPosition = (position: "top" | "right" | "bottom" | "left") => {
-    const positions: ("top" | "right" | "bottom" | "left")[] = [
-      "top",
-      "right",
-      "bottom",
-      "left",
-    ];
-    const currentIndex = positions.indexOf(position);
-    // Rotation: top→left, left→bottom, bottom→right, right→top (words move with the card)
-    const r = card.rotation / 90;
-    const rotatedIndex = (currentIndex - r + 4) % 4;
-    return card.words[rotatedIndex];
+    const index = { top: 0, right: 1, bottom: 2, left: 3 }[position];
+    return card.words[index];
   };
 
   return (
@@ -92,12 +74,10 @@ export default function Card({
       ref={drag as any}
       className={`${styles.card} ${isDragActive ? styles.dragging : ""} ${
         isPlaced ? styles.placed : ""
-      } ${isIncorrect ? styles.incorrect : ""} ${
-        rotating
-          ? styles[rotating === "right" ? "rotatingRight" : "rotatingLeft"]
-          : ""
-      }`}
-      onAnimationEnd={handleAnimationEnd}
+      } ${isIncorrect ? styles.incorrect : ""}`}
+      style={{
+        transform: `rotate(${card.rotation + (isDragActive ? 5 : 0)}deg)`,
+      }}
     >
       <div className={`${styles.word} ${styles.wordTop}`}>
         {getWordAtPosition("top")}
@@ -116,13 +96,9 @@ export default function Card({
           <button
             type="button"
             className={styles.rotateBtnLeft}
-            disabled={!!rotating}
             onClick={(e) => {
               e.stopPropagation();
-              if (onRotateLeft && !rotating) {
-                onRotateLeft();
-                setRotating("left");
-              }
+              onRotateLeft?.();
             }}
             aria-label="Rotate left"
           >
@@ -131,13 +107,9 @@ export default function Card({
           <button
             type="button"
             className={styles.rotateBtnRight}
-            disabled={!!rotating}
             onClick={(e) => {
               e.stopPropagation();
-              if (onRotateRight && !rotating) {
-                onRotateRight();
-                setRotating("right");
-              }
+              onRotateRight?.();
             }}
             aria-label="Rotate right"
           >

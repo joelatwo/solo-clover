@@ -49,7 +49,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   }, [initialPuzzle]);
 
   const rotateCard = (cardId: string, direction: RotateDirection) => {
-    const delta = direction === "right" ? -90 : 90;
+    const delta = direction === "right" ? 90 : -90;
     setAvailableCards((prev) =>
       prev.map((card) =>
         card.id === cardId
@@ -67,7 +67,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     position: SlotPosition,
     direction: RotateDirection
   ) => {
-    const delta = direction === "right" ? -90 : 90;
+    const delta = direction === "right" ? 90 : -90;
     setPlacedCards((prev) => {
       const card = prev[position];
       if (!card) return prev;
