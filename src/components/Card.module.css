@@ -43,45 +43,52 @@
   box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
 }
 
-.word {
+.edge {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
+  bottom: 0;
   text-align: center;
-  max-width: 75%;
-  max-height: 75%;
-  word-wrap: break-word;
-  line-height: 1.3;
-  padding: 4px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform-origin: center;
+}
+
+.word {
+  transform: rotate(180deg);
+  display: inline-block;
+  color: black;
+}
+
+.edgeTop {
+  transform: rotate(0);
+}
+
+.edgeBottom {
+  transform: rotate(180deg);
+}
+
+.edgeRight {
+  transform: rotate(90deg);
+}
+
+.edgeLeft {
+  transform: rotate(-90deg);
+  /* background-color: black; */
 }
 
 .wordTop {
-  top: 6%;
-  left: 50%;
-  transform: translateX(-50%) rotate(180deg);
+  font-size: var(--inner-word-size);
 }
 
 .wordRight {
-  right: 6%;
-  top: 50%;
-  transform: rotate(270deg) translateY(-50%);
+  font-size: var(--inner-word-size);
 }
 
 .wordBottom {
-  bottom: 6%;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: var(--inner-word-size);
 }
 
 .wordLeft {
-  left: 6%;
-  /* top: 50%; */
-  transform: rotate(90deg);
+  font-size: var(--inner-word-size);
 }
 
 .rotateBtnLeft,

@@ -88,17 +88,25 @@ export default function Card({
           transform: `rotate(${rotationDeg}deg)`,
         }}
       >
-        <div className={`${styles.word} ${styles.wordTop}`}>
-          {getWordAtPosition("top")}
+        <div className={`${styles.edge} ${styles.edgeTop}`}>
+          <span className={`${styles.word} ${styles.wordTop}`}>
+            {getWordAtPosition("top")}
+          </span>
         </div>
-        <div className={`${styles.word} ${styles.wordRight}`}>
-          {getWordAtPosition("right")}
+        <div className={`${styles.edge} ${styles.edgeRight}`}>
+          <span className={`${styles.word} ${styles.wordRight}`}>
+            {getWordAtPosition("right")}
+          </span>
         </div>
-        <div className={`${styles.word} ${styles.wordBottom}`}>
-          {getWordAtPosition("bottom")}
+        <div className={`${styles.edge} ${styles.edgeBottom}`}>
+          <span className={`${styles.word} ${styles.wordBottom}`}>
+            {getWordAtPosition("bottom")}
+          </span>
         </div>
-        <div className={`${styles.word} ${styles.wordLeft}`}>
-          {getWordAtPosition("left")}
+        <div className={`${styles.edge} ${styles.edgeLeft}`}>
+          <span className={`${styles.word} ${styles.wordLeft}`}>
+            {getWordAtPosition("left")}
+          </span>
         </div>
       </div>
       {(onRotateLeft || onRotateRight) && (

@@ -117,6 +117,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   const validateTopLeft = (solutions: PuzzleSlots, card: Card) => {
     const { top, left } = getCardByRotation(card);
+    console.log(getCardByRotation(card));
     return solutions.left.words[0] === left && solutions.top.words[0] === top;
   };
 
@@ -154,6 +155,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
     const { solutions } = currentPuzzle;
 
+    console.log(solutions, placedCards.topLeft);
     if (
       !placedCards.topLeft ||
       !placedCards.topRight ||

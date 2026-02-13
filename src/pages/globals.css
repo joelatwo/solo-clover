@@ -4,9 +4,11 @@
 
   /* Puzzle grid – change these to resize the grid and cards dynamically */
   --puzzle-card-size: 240px;
-  --puzzle-grid-size: 780px;
+  --puzzle-grid-size: 680px;
   --puzzle-grid-gap: 36px;
   --puzzle-grid-padding: 72px;
+  --outer-word-size: 24px;
+  --inner-word-size: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
