@@ -95,6 +95,34 @@
 
 .outerWord {
   position: absolute;
+  z-index: 10;
+}
+
+.outerWordTop {
+  top: calc(-1 * var(--puzzle-outer-word-distance));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.outerWordRight {
+  right: calc(-1 * var(--puzzle-outer-word-distance));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.outerWordBottom {
+  bottom: calc(-1 * var(--puzzle-outer-word-distance));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.outerWordLeft {
+  left: calc(-1 * var(--puzzle-outer-word-distance));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.outerWordLabel {
   font-size: var(--outer-word-size);
   font-weight: bold;
   color: #333;
@@ -102,11 +130,10 @@
   padding: 8px 12px;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 10;
   white-space: nowrap;
 }
 
-.outerWord.rotated {
+.outerWordLabel.rotated {
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }

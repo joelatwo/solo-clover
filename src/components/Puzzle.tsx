@@ -131,30 +131,22 @@ export default function Puzzle({
       <div className={styles.puzzleGrid}>
         {/* Words positioned outside the grid */}
         <div
-          className={styles.outerWord}
-          style={{ top: "-10px", left: "50%", transform: "translateX(-50%)" }}
+          className={`${styles.outerWord} ${styles.outerWordTop} ${styles.outerWordLabel}`}
         >
           {solutions.top.clue}
         </div>
         <div
-          className={`${styles.outerWord} ${styles.rotated}`}
-          style={{ right: "-10px", top: "50%", transform: "translateY(-50%)" }}
+          className={`${styles.outerWord} ${styles.outerWordRight} ${styles.outerWordLabel} ${styles.rotated}`}
         >
           {solutions.right.clue}
         </div>
         <div
-          className={styles.outerWord}
-          style={{
-            bottom: "-10px",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
+          className={`${styles.outerWord} ${styles.outerWordBottom} ${styles.outerWordLabel}`}
         >
           {solutions.bottom.clue}
         </div>
         <div
-          className={`${styles.outerWord} ${styles.rotated}`}
-          style={{ left: "-10px", top: "50%", transform: "translateY(-50%)" }}
+          className={`${styles.outerWord} ${styles.outerWordLeft} ${styles.outerWordLabel} ${styles.rotated}`}
         >
           {solutions.left.clue}
         </div>
