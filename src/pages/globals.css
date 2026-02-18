@@ -15,6 +15,7 @@
   --outer-word-size: 24px;
   --inner-word-size: 24px;
   --puzzle-outer-word-distance: 24px;
+  --cardBar-size: 360px;
 }
 
 @media (prefers-color-scheme: dark) {

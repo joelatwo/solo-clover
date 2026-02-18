@@ -96,23 +96,22 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               className={styles.cardBarToggle}
               onClick={() => setIsCardBarOpen((open) => !open)}
               aria-expanded={isCardBarOpen}
+              aria-label="Toggle available cards"
             >
-              <span className={styles.cardBarTitle}>Available Cards</span>
               <span className={styles.cardBarChevron}>
-                {isCardBarOpen ? "▼" : "▲"}
+                {isCardBarOpen ? "▶" : "◀"}
               </span>
+              <span className={styles.cardBarTitle}>Available Cards</span>
             </button>
             <div className={styles.cardBarContent}>
-              <div className={styles.cardsGrid}>
-                {availableCards.map((card) => (
-                  <Card
-                    key={card.id}
-                    card={card}
-                    onRotateLeft={() => rotateCard(card.id, "left")}
-                    onRotateRight={() => rotateCard(card.id, "right")}
-                  />
-                ))}
-              </div>
+              {availableCards.map((card) => (
+                <Card
+                  key={card.id}
+                  card={card}
+                  onRotateLeft={() => rotateCard(card.id, "left")}
+                  onRotateRight={() => rotateCard(card.id, "right")}
+                />
+              ))}
             </div>
           </div>
 

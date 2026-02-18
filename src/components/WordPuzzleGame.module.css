@@ -90,42 +90,51 @@
   align-items: center;
 }
 
-/* Bottom card bar – horizontal, open/close */
 .cardBar {
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 0;
   right: 0;
-  background: #f8f9fa;
-  border-top: 2px solid #e9ecef;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
-  z-index: 100;
-  transition: box-shadow 0.2s ease;
+  height: 100%;
+  max-width: var(--cardBar-size);
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding: 1rem;
+  height: 100%;
+}
+
+.cardBar.cardBarOpen {
+  transform: translateX(0);
 }
 
 .cardBarToggle {
-  width: 100%;
+  position: absolute;
+  left: -40px; /* sticks out from drawer */
+  top: 0;
+  height: 100%;
+  width: 40px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-right: none;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
+  font-size: 18px;
+}
+
+.cardBarTitle {
+  color: #666;
+  transform: rotate(180deg);
+  padding: 8px 0;
 }
 
 .cardBarToggle:hover {
   background: #e9ecef;
-}
-
-.cardBarTitle {
-  flex: 1;
-  text-align: center;
 }
 
 .cardBarChevron {
@@ -134,31 +143,16 @@
 }
 
 .cardBarContent {
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.2s ease;
-}
-
-.cardBarOpen .cardBarContent {
-  max-height: 320px;
-  opacity: 1;
-  padding: 16px;
-  border-top: 1px solid #e9ecef;
-}
-
-.cardsGrid {
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  flex-wrap: nowrap;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.cardsGrid > * {
-  flex: 0 0 auto;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 16px;
 }
 
 .controls {

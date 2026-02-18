@@ -2,6 +2,8 @@
   position: relative;
   width: var(--puzzle-card-size);
   height: var(--puzzle-card-size);
+  min-width: var(--puzzle-card-size);
+  min-height: var(--puzzle-card-size);
   cursor: pointer;
   user-select: none;
 }
