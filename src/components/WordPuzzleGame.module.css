@@ -8,12 +8,24 @@
 }
 
 .header {
+  padding: 20px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
   border-bottom: 2px solid #e9ecef;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .header h1 {

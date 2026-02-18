@@ -1,3 +1,5 @@
+"use client";
+
 import WordPuzzleGame from "@/components/WordPuzzleGame";
 import gameData from "@/data/puzzles";
 import { PuzzleType } from "@/types/game";
@@ -32,22 +34,6 @@ type Props = {
 const Page = ({ puzzle }: Props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Link href="/" className={styles.backButton}>
-          ← Back to Home
-        </Link>
-        <div className={styles.titleSection}>
-          <h1>Daily Challenge</h1>
-          <p className={styles.date}>
-            {new Date().toLocaleDateString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-        </div>
-      </div>
       {<WordPuzzleGame initialPuzzle={puzzle} />}
     </div>
   );

@@ -2,11 +2,14 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Puzzle grid – change these to resize the grid and cards dynamically */
-  --puzzle-card-size: 240px;
-  --puzzle-grid-size: 680px;
+  /* Puzzle grid – card size is the source of truth; grid size is derived from it */
+  --puzzle-card-size: 200px;
   --puzzle-grid-gap: 36px;
-  --puzzle-grid-padding: 72px;
+  --puzzle-grid-padding: 32px;
+  --puzzle-grid-size: calc(
+    2 * var(--puzzle-card-size) + var(--puzzle-grid-gap) + 2 *
+      var(--puzzle-grid-padding)
+  );
   --outer-word-size: 24px;
   --inner-word-size: 24px;
 }
