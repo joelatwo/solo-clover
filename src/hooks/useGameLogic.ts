@@ -212,6 +212,48 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     }
   };
 
+  const showAnswer = () => {
+    if (!initialPuzzle) return;
+
+    const { cards, solutions } = initialPuzzle;
+
+    // Work on a shallow copy of the cards so we can remove used ones
+    const remaining = [...cards];
+
+    const tryFindFor = (
+      validate: (solutions: PuzzleSlots, card: Card) => boolean
+    ): Card | null => {
+      for (let i = 0; i < remaining.length; i++) {
+        const card = remaining[i];
+        const rotations: RotationOptionsType[] = [0, 90, 180, 270];
+        for (const rot of rotations) {
+          const candidate = { ...card, rotation: rot } as Card;
+          if (validate(solutions, candidate)) {
+            // remove from remaining so it isn't reused
+            remaining.splice(i, 1);
+            return candidate;
+          }
+        }
+      }
+      return null;
+    };
+
+    const topLeft = tryFindFor(validateTopLeft);
+    const topRight = tryFindFor(validateTopRight);
+    const bottomRight = tryFindFor(validateBottomRight);
+    const bottomLeft = tryFindFor(validateBottomLeft);
+
+    setPlacedCards({ topLeft, topRight, bottomRight, bottomLeft });
+    setAvailableCards(remaining);
+    setCurrentPuzzle(initialPuzzle);
+    setCardsCorrectness({
+      topLeft: !!topLeft,
+      topRight: !!topRight,
+      bottomLeft: !!bottomLeft,
+      bottomRight: !!bottomRight,
+    });
+  };
+
   return {
     placedCards,
     cardsCorrectness,
@@ -224,5 +266,6 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     removeCard,
     submitSolution,
     resetGame,
+    showAnswer,
   };
 }

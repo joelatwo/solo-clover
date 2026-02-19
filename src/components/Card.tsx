@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
 import { Card as CardType } from "@/types/game";
 import styles from "./Card.module.css";
+import { IterationCcw, IterationCw, X } from "lucide-react";
 
 interface CardProps {
   card: CardType;
@@ -11,41 +12,12 @@ interface CardProps {
   isIncorrect?: boolean;
   onRotateLeft?: () => void;
   onRotateRight?: () => void;
+  onCardRemove?: () => void;
 }
 
-const RotateLeftIcon = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-    <path d="M3 3v5h5" />
-  </svg>
-);
+const RotateLeftIcon = () => <IterationCcw />;
 
-const RotateRightIcon = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L21 8" />
-    <path d="M21 3v5h-5" />
-  </svg>
-);
+const RotateRightIcon = () => <IterationCw />;
 
 export default function Card({
   card,
@@ -53,6 +25,7 @@ export default function Card({
   isIncorrect = false,
   onRotateLeft,
   onRotateRight,
+  onCardRemove,
 }: CardProps) {
   const [{ isDragging: isDragActive }, drag] = useDrag({
     type: "card",
@@ -109,6 +82,18 @@ export default function Card({
           </span>
         </div>
       </div>
+      {isPlaced && onCardRemove ? (
+        <button
+          type="button"
+          className={styles.removeCardButton}
+          onClick={(e) => {
+            e.stopPropagation();
+            onCardRemove();
+          }}
+        >
+          <X />
+        </button>
+      ) : null}
       {(onRotateLeft || onRotateRight) && (
         <>
           <button

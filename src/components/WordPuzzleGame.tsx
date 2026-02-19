@@ -28,6 +28,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     removeCard,
     submitSolution,
     resetGame,
+    showAnswer,
   } = useGameLogic(initialPuzzle);
 
   const handleSubmit = () => {
@@ -38,18 +39,36 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     resetGame();
   };
 
-  const getScore = () => {
-    return (
-      score !== null && (
-        <div
-          className={`${styles.result} ${
-            score > 0 ? styles.correct : styles.incorrect
-          }`}
-        >
-          {`Score: ${score} points`}
-        </div>
-      )
-    );
+  const isSubmissionDisabled = () => {
+    // Validate that all slots are filled. & that we have a valid puzzle
+    if (!placedCards) {
+      return true;
+    }
+
+    if (
+      !placedCards.topLeft ||
+      !placedCards.topRight ||
+      !placedCards.bottomLeft ||
+      !placedCards.bottomRight
+    ) {
+      return true;
+    }
+
+    console.log("score", score);
+
+    if (score === null) {
+      return false;
+    }
+
+    return score > 0 || numberOfAttempts === 3;
+  };
+
+  const isGameComplete = () => {
+    if (score === null) {
+      return false;
+    }
+
+    return score > 0 || numberOfAttempts === 3;
   };
 
   return (
@@ -118,15 +137,23 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           <div className={styles.controls}>
             <button
               onClick={handleSubmit}
-              disabled={numberOfAttempts === 3}
+              disabled={isGameComplete() || isSubmissionDisabled()}
               className={styles.submitButton}
             >
-              {score === null ? "Game Complete!" : "Submit Solution"}
+              {isGameComplete() ? "Game Complete!" : "Submit Solution"}
             </button>
 
-            <button onClick={handleReset} className={styles.resetButton}>
-              Reset Game
-            </button>
+            {!isGameComplete() ? (
+              <button onClick={handleReset} className={styles.resetButton}>
+                Reset Game
+              </button>
+            ) : null}
+
+            {isGameComplete() ? (
+              <button onClick={showAnswer} className={styles.showAnswerButton}>
+                Show Solution
+              </button>
+            ) : null}
           </div>
 
           {score !== null && (

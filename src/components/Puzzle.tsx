@@ -93,10 +93,10 @@ export default function Puzzle({
           position === "topLeft"
             ? (dropTopLeft as any)
             : position === "topRight"
-            ? (dropTopRight as any)
-            : position === "bottomRight"
-            ? (dropBottomRight as any)
-            : (dropBottomLeft as any)
+              ? (dropTopRight as any)
+              : position === "bottomRight"
+                ? (dropBottomRight as any)
+                : (dropBottomLeft as any)
         }
         onClick={() => placedCard && onCardRemove(position)}
       >
@@ -116,6 +116,9 @@ export default function Puzzle({
                   ? () => onRotatePlacedCard(position, "right")
                   : undefined
               }
+              onCardRemove={() => {
+                onCardRemove(position);
+              }}
             />
             <div className={styles.removeHint}>Click to remove</div>
           </div>

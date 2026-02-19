@@ -163,6 +163,7 @@
 }
 
 .submitButton,
+.showAnswerButton,
 .resetButton {
   padding: 12px 24px;
   font-size: 1.1rem;
@@ -174,6 +175,11 @@
 }
 
 .submitButton {
+  background: #007bff;
+  color: white;
+}
+
+.showAnswerButton {
   background: #007bff;
   color: white;
 }
