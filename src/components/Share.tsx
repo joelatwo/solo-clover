@@ -1,6 +1,6 @@
-import { CardCorrectnessType, SavedGameState } from "@/types/game";
-import styles from "./Share.module.css";
+import { SavedGameState } from "@/types/game";
 import { useState } from "react";
+import styles from "./Share.module.css";
 
 type Props = {
   getLocalStorage: () => {
@@ -12,13 +12,11 @@ type Props = {
 };
 
 export const ShareButton = ({ getLocalStorage }: Props) => {
-  const [savedGameState, setSavedGameState] = useState<SavedGameState[]>([]);
   const [copied, setCopied] = useState(false);
 
   const formatSavedGameStates = (
     states: SavedGameState[],
     dateKey?: string,
-    maxAttempts?: number,
   ) => {
     const map = (v: boolean) => (v ? "🟩" : "🟥");
 
@@ -87,11 +85,9 @@ export const ShareButton = ({ getLocalStorage }: Props) => {
         className={styles.shareButton}
         onClick={() => {
           const localStorage = getLocalStorage();
-          setSavedGameState(localStorage.savedGameState);
           const formatted = formatSavedGameStates(
             localStorage.savedGameState || [],
             localStorage.dateKey,
-            localStorage.numberOfAttempts,
           );
           if (formatted) {
             copyToClipboard(formatted);

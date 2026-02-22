@@ -1,10 +1,10 @@
 "use client";
 
+import { Card as CardType } from "@/types/game";
+import { IterationCcw, IterationCw, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
-import { Card as CardType } from "@/types/game";
 import styles from "./Card.module.css";
-import { IterationCcw, IterationCw, X } from "lucide-react";
 
 interface CardProps {
   card: CardType;

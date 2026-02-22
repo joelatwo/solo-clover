@@ -5,7 +5,6 @@ import gameData from "@/data/puzzles";
 import { PuzzleType } from "@/types/game";
 import { RandomizePuzzleSetup } from "@/utils/Initialization";
 import { GetStaticProps } from "next";
-import Link from "next/link";
 import styles from "./page.module.css";
 
 export function getStaticPaths() {
