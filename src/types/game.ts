@@ -54,6 +54,12 @@ export interface GameState {
   };
 }
 
+export interface SavedGameState {
+  placedCards: PlacedCardsType;
+  attempts: number;
+  cardsCorrectness: CardCorrectnessType;
+}
+
 export type SlotPosition =
   | "topLeft"
   | "topRight"

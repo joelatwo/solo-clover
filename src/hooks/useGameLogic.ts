@@ -5,6 +5,7 @@ import {
   PuzzleSlots,
   PuzzleType,
   RotationOptionsType,
+  SavedGameState,
   SlotPosition,
 } from "@/types/game";
 import { getDateKey } from "@/utils/Dates";
@@ -23,9 +24,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   const [score, setScore] = useState<number | null>(null);
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
-  const [numberOfAttempts, setNumberOfAttempts] = useState<
-    CardCorrectnessType[]
-  >([]);
+  const [numberOfAttempts, setNumberOfAttempts] = useState<number>(0);
   const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType | null>(
     initialPuzzle,
   );
@@ -173,40 +172,38 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     };
   };
 
+  const getScore = () => {
+    if (numberOfAttempts === 0) {
+      return 6;
+    } else if (numberOfAttempts === 1) {
+      return 5;
+    } else {
+      return 4; // All 4 pairs are correct
+    }
+  };
+
   const submitSolution = () => {
     const checkedSolutions = checkSolution();
-    const newAttemptsList = [...numberOfAttempts, checkedSolutions];
     const isCorrect =
       checkedSolutions.topLeft &&
       checkedSolutions.topRight &&
       checkedSolutions.bottomLeft &&
       checkedSolutions.bottomRight;
-    let pointsEarned = 0;
     if (isCorrect) {
-      if (newAttemptsList.length === 1) {
-        pointsEarned = 6;
-      } else if (newAttemptsList.length === 2) {
-        pointsEarned = 5;
-      } else {
-        pointsEarned = 4; // All 4 pairs are correct
-      }
+      let pointsEarned = getScore();
+
+      setScore(pointsEarned);
     }
 
-    setScore(pointsEarned);
     setCardsCorrectness(checkedSolutions);
-    setNumberOfAttempts(newAttemptsList);
+    setNumberOfAttempts(numberOfAttempts + 1);
 
     const { dateKey, savedGameState, storageKey } = getLocalStorage();
 
-    // Only save if there are placed cards and correctness data exists
-    const hasPlacedCards = Object.values(placedCards).some(
-      (card) => card !== null,
-    );
-
-    const gameState = {
+    const gameState: SavedGameState = {
       placedCards,
       attempts: numberOfAttempts,
-      cardsCorrectness,
+      cardsCorrectness: checkedSolutions,
     };
 
     console.log(savedGameState);
@@ -220,7 +217,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     const dateKey = getDateKey(new Date());
     const storageKey = `puzzle-${dateKey}`;
     const savedGameStateUnprocessed = localStorage.getItem(storageKey);
-    let processedGameState = [];
+    let processedGameState: SavedGameState[] = [];
 
     if (savedGameStateUnprocessed !== null) {
       try {
@@ -230,7 +227,12 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
       }
     }
 
-    return { dateKey, storageKey, savedGameState: processedGameState };
+    return {
+      dateKey,
+      storageKey,
+      savedGameState: processedGameState,
+      numberOfAttempts: processedGameState.length,
+    };
   };
 
   const resetGame = () => {
@@ -284,27 +286,27 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const restoreGameState = (
-    savedPlacedCards: PlacedCardsType,
-    savedAttempts: CardCorrectnessType[],
-    savedCardsCorrectness: CardCorrectnessType,
-    savedScore?: number | null,
+    savedGameState: SavedGameState,
+    numberOfAttempts: number,
   ) => {
-    console.log("🔄 restoreGameState called with:");
-    console.log("  - placedCards:", savedPlacedCards);
-    console.log("  - attempts:", savedAttempts);
-    console.log("  - cardsCorrectness:", savedCardsCorrectness);
-    console.log("  - score:", savedScore);
+    setPlacedCards(savedGameState.placedCards);
+    setNumberOfAttempts(numberOfAttempts);
+    setCardsCorrectness(savedGameState.cardsCorrectness);
 
-    setPlacedCards(savedPlacedCards);
-    setNumberOfAttempts(savedAttempts);
-    setCardsCorrectness(savedCardsCorrectness);
-    if (savedScore !== undefined) {
-      setScore(savedScore);
+    const isCorrect =
+      cardsCorrectness?.topLeft &&
+      cardsCorrectness?.topRight &&
+      cardsCorrectness?.bottomLeft &&
+      cardsCorrectness?.bottomRight;
+    if (isCorrect) {
+      let pointsEarned = getScore();
+
+      setScore(pointsEarned);
     }
 
     // Update available cards by removing placed cards
     if (initialPuzzle) {
-      const placedIds = Object.values(savedPlacedCards)
+      const placedIds = Object.values(savedGameState.placedCards)
         .filter((card) => card !== null)
         .map((card) => card!.id);
       const remaining = initialPuzzle.cards.filter(
