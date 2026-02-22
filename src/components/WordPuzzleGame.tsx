@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGameLogic } from "@/hooks/useGameLogic";
 import { PuzzleType } from "@/types/game";
 import { DndProvider } from "react-dnd";
@@ -9,6 +9,7 @@ import Card from "./Card";
 import Puzzle from "./Puzzle";
 import styles from "./WordPuzzleGame.module.css";
 import Link from "next/link";
+import { getDateKey } from "@/utils/Dates";
 
 type Props = {
   initialPuzzle: PuzzleType;
@@ -29,6 +30,8 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     submitSolution,
     resetGame,
     showAnswer,
+    restoreGameState,
+    getLocalStorage,
   } = useGameLogic(initialPuzzle);
 
   const handleSubmit = () => {
@@ -60,7 +63,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
       return false;
     }
 
-    return score > 0 || numberOfAttempts === 3;
+    return score > 0 || numberOfAttempts.length === 3;
   };
 
   const isGameComplete = () => {
@@ -68,8 +71,55 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
       return false;
     }
 
-    return score > 0 || numberOfAttempts === 3;
+    return score > 0 || numberOfAttempts.length === 3;
   };
+
+  useEffect(() => {
+    // Load the current day puzzle from local storage
+    const { dateKey, storageKey, savedGameState } = getLocalStorage();
+
+    console.log("📂 Loading game state for date:", dateKey);
+    console.log("🔍 Storage key:", storageKey);
+    console.log("💾 Saved game state:", savedGameState);
+
+    if (savedGameState) {
+      try {
+        const {
+          placedCards: savedPlacedCards,
+          attempts: savedAttempts,
+          cardsCorrectness: savedCardsCorrectness,
+        } = savedGameState;
+
+        console.log("✅ Parsed game state:", savedGameState);
+        console.log("📍 Placed cards:", savedPlacedCards);
+        console.log("🎯 Attempts:", savedAttempts);
+        console.log("✔️ Cards correctness:", savedCardsCorrectness);
+
+        // Restore the game state with placed cards, attempts, and correctness
+        if (
+          savedPlacedCards &&
+          savedAttempts !== undefined &&
+          savedCardsCorrectness
+        ) {
+          console.log("🔄 Restoring game state...");
+          restoreGameState(
+            savedPlacedCards,
+            savedAttempts,
+            savedCardsCorrectness,
+          );
+        } else {
+          console.warn("⚠️ Missing required game state data");
+        }
+      } catch (error) {
+        console.error(
+          "❌ Failed to restore game state from localStorage:",
+          error,
+        );
+      }
+    } else {
+      console.log("ℹ️ No saved game state found. Starting fresh.");
+    }
+  }, []);
 
   return (
     <>
@@ -86,7 +136,9 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         </h1>
         <div className={styles.scoreInfo}>
           <div className={styles.score}>Score: {score}</div>
-          <div className={styles.attempts}>Attempts: {numberOfAttempts}/3</div>
+          <div className={styles.attempts}>
+            Attempts: {numberOfAttempts.length}/3
+          </div>
         </div>
       </div>
       <DndProvider backend={HTML5Backend}>
@@ -159,7 +211,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
             <div className={styles.gameComplete}>
               <h2>Game Complete!</h2>
               <p>Final Score: {score}</p>
-              <p>Attempts Used: {numberOfAttempts}</p>
+              <p>Attempts Used: {numberOfAttempts.length}</p>
             </div>
           )}
         </div>

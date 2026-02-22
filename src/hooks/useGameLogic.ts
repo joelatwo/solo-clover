@@ -7,6 +7,7 @@ import {
   RotationOptionsType,
   SlotPosition,
 } from "@/types/game";
+import { getDateKey } from "@/utils/Dates";
 
 export type RotateDirection = "left" | "right";
 import { useEffect, useState } from "react";
@@ -22,24 +23,18 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   const [score, setScore] = useState<number | null>(null);
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
-  const [numberOfAttempts, setNumberOfAttempts] = useState(0);
+  const [numberOfAttempts, setNumberOfAttempts] = useState<
+    CardCorrectnessType[]
+  >([]);
   const [currentPuzzle, setCurrentPuzzle] = useState<PuzzleType | null>(
-    initialPuzzle
+    initialPuzzle,
   );
   const [placedCards, setPlacedCards] =
     useState<PlacedCardsType>(defaultPlacedCards);
 
   const [availableCards, setAvailableCards] = useState<Card[]>(
-    initialPuzzle?.cards || []
+    initialPuzzle?.cards || [],
   );
-
-  // Load score from localStorage on mount
-  useEffect(() => {
-    // const savedScore = localStorage.getItem("wordPuzzleScore");
-    // if (savedScore) {
-    //   setScore(parseInt(savedScore));
-    // }
-  }, []);
 
   // Update available cards when puzzle changes
   useEffect(() => {
@@ -58,14 +53,14 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
               rotation: ((card.rotation + delta + 360) % 360 ||
                 0) as RotationOptionsType,
             }
-          : card
-      )
+          : card,
+      ),
     );
   };
 
   const rotatePlacedCard = (
     position: SlotPosition,
-    direction: RotateDirection
+    direction: RotateDirection,
   ) => {
     const delta = direction === "right" ? 90 : -90;
     setPlacedCards((prev) => {
@@ -180,7 +175,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   const submitSolution = () => {
     const checkedSolutions = checkSolution();
-    const newAttempts = numberOfAttempts + 1;
+    const newAttemptsList = [...numberOfAttempts, checkedSolutions];
     const isCorrect =
       checkedSolutions.topLeft &&
       checkedSolutions.topRight &&
@@ -188,9 +183,9 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
       checkedSolutions.bottomRight;
     let pointsEarned = 0;
     if (isCorrect) {
-      if (newAttempts === 1) {
+      if (newAttemptsList.length === 1) {
         pointsEarned = 6;
-      } else if (newAttempts === 2) {
+      } else if (newAttemptsList.length === 2) {
         pointsEarned = 5;
       } else {
         pointsEarned = 4; // All 4 pairs are correct
@@ -199,9 +194,43 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
     setScore(pointsEarned);
     setCardsCorrectness(checkedSolutions);
-    setNumberOfAttempts(newAttempts);
+    setNumberOfAttempts(newAttemptsList);
 
-    localStorage.setItem("wordPuzzleScore", pointsEarned.toString());
+    const { dateKey, savedGameState, storageKey } = getLocalStorage();
+
+    // Only save if there are placed cards and correctness data exists
+    const hasPlacedCards = Object.values(placedCards).some(
+      (card) => card !== null,
+    );
+
+    const gameState = {
+      placedCards,
+      attempts: numberOfAttempts,
+      cardsCorrectness,
+    };
+
+    console.log(savedGameState);
+
+    savedGameState.push(gameState);
+
+    localStorage.setItem(storageKey, JSON.stringify(savedGameState));
+  };
+
+  const getLocalStorage = () => {
+    const dateKey = getDateKey(new Date());
+    const storageKey = `puzzle-${dateKey}`;
+    const savedGameStateUnprocessed = localStorage.getItem(storageKey);
+    let processedGameState = [];
+
+    if (savedGameStateUnprocessed !== null) {
+      try {
+        processedGameState = JSON.parse(savedGameStateUnprocessed);
+      } catch (error) {
+        processedGameState = [];
+      }
+    }
+
+    return { dateKey, storageKey, savedGameState: processedGameState };
   };
 
   const resetGame = () => {
@@ -221,7 +250,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     const remaining = [...cards];
 
     const tryFindFor = (
-      validate: (solutions: PuzzleSlots, card: Card) => boolean
+      validate: (solutions: PuzzleSlots, card: Card) => boolean,
     ): Card | null => {
       for (let i = 0; i < remaining.length; i++) {
         const card = remaining[i];
@@ -254,6 +283,41 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     });
   };
 
+  const restoreGameState = (
+    savedPlacedCards: PlacedCardsType,
+    savedAttempts: CardCorrectnessType[],
+    savedCardsCorrectness: CardCorrectnessType,
+    savedScore?: number | null,
+  ) => {
+    console.log("🔄 restoreGameState called with:");
+    console.log("  - placedCards:", savedPlacedCards);
+    console.log("  - attempts:", savedAttempts);
+    console.log("  - cardsCorrectness:", savedCardsCorrectness);
+    console.log("  - score:", savedScore);
+
+    setPlacedCards(savedPlacedCards);
+    setNumberOfAttempts(savedAttempts);
+    setCardsCorrectness(savedCardsCorrectness);
+    if (savedScore !== undefined) {
+      setScore(savedScore);
+    }
+
+    // Update available cards by removing placed cards
+    if (initialPuzzle) {
+      const placedIds = Object.values(savedPlacedCards)
+        .filter((card) => card !== null)
+        .map((card) => card!.id);
+      const remaining = initialPuzzle.cards.filter(
+        (card) => !placedIds.includes(card.id),
+      );
+      console.log("  - Placed card IDs:", placedIds);
+      console.log("  - Remaining available cards:", remaining);
+      setAvailableCards(remaining);
+    }
+
+    console.log("✅ Game state restored successfully");
+  };
+
   return {
     placedCards,
     cardsCorrectness,
@@ -267,5 +331,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     submitSolution,
     resetGame,
     showAnswer,
+    restoreGameState,
+    getLocalStorage,
   };
 }
