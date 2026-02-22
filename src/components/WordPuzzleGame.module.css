@@ -232,18 +232,114 @@
 }
 
 @media (max-width: 768px) {
+  .gameContainer {
+    padding: 16px;
+    padding-bottom: 80px;
+  }
+
   .header {
     flex-direction: column;
     gap: 15px;
     text-align: center;
+    padding: 16px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
   }
 
   .scoreInfo {
     gap: 15px;
+    font-size: 1rem;
   }
 
   .controls {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+  }
+
+  .submitButton,
+  .showAnswerButton,
+  .resetButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .result {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .gameComplete {
+    padding: 20px;
+  }
+
+  .gameComplete h2 {
+    font-size: 1.3rem;
+  }
+
+  .gameComplete p {
+    font-size: 1rem;
+  }
+
+  .loading {
+    font-size: 1rem;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameContainer {
+    padding: 12px;
+    padding-bottom: 60px;
+  }
+
+  .header {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .scoreInfo {
+    font-size: 0.9rem;
+  }
+
+  .backButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .submitButton,
+  .showAnswerButton,
+  .resetButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .result {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .gameComplete {
+    padding: 15px;
+  }
+
+  .gameComplete h2 {
+    font-size: 1.1rem;
+  }
+
+  .gameComplete p {
+    font-size: 0.9rem;
+  }
+
+  .puzzle {
+    padding: 12px;
   }
 }

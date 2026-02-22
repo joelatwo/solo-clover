@@ -25,6 +25,31 @@
   }
 }
 
+/* Mobile responsive sizes */
+@media (max-width: 768px) {
+  :root {
+    --puzzle-card-size: 140px;
+    --puzzle-grid-gap: 20px;
+    --puzzle-grid-padding: 16px;
+    --outer-word-size: 16px;
+    --inner-word-size: 16px;
+    --puzzle-outer-word-distance: 16px;
+    --cardBar-size: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --puzzle-card-size: 110px;
+    --puzzle-grid-gap: 16px;
+    --puzzle-grid-padding: 12px;
+    --outer-word-size: 14px;
+    --inner-word-size: 14px;
+    --puzzle-outer-word-distance: 12px;
+    --cardBar-size: 240px;
+  }
+}
+
 html,
 body {
   max-width: 100vw;

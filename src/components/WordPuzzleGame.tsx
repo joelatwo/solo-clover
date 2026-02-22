@@ -80,7 +80,6 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <h1>
           {new Date().toLocaleDateString("en-US", {
             weekday: "long",
-            year: "numeric",
             month: "long",
             day: "numeric",
           })}
