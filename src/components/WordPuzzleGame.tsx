@@ -9,7 +9,8 @@ import Card from "./Card";
 import Puzzle from "./Puzzle";
 import styles from "./WordPuzzleGame.module.css";
 import Link from "next/link";
-import { getDateKey } from "@/utils/Dates";
+import { getDateFromUrl, getDateKey } from "@/utils/Dates";
+import { init } from "next/dist/compiled/webpack/webpack";
 
 type Props = {
   initialPuzzle: PuzzleType;
@@ -57,20 +58,10 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
       return true;
     }
 
-    console.log("score", score);
-
-    if (score === null) {
-      return false;
-    }
-
     return score > 0 || numberOfAttempts === 3;
   };
 
   const isGameComplete = () => {
-    if (score === null) {
-      return false;
-    }
-
     return score > 0 || numberOfAttempts === 3;
   };
 
@@ -92,13 +83,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         <Link href="/" className={styles.backButton}>
           ← Back to Home
         </Link>
-        <h1>
-          {new Date().toLocaleDateString("en-US", {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-          })}
-        </h1>
+        <h1>{getDateKey(new Date(initialPuzzle.id))}</h1>
         <div className={styles.scoreInfo}>
           <div className={styles.score}>Score: {score}</div>
           <div className={styles.attempts}>Attempts: {numberOfAttempts}/3</div>

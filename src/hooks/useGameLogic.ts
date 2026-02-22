@@ -8,7 +8,7 @@ import {
   SavedGameState,
   SlotPosition,
 } from "@/types/game";
-import { getDateKey } from "@/utils/Dates";
+import { getDateKey, getDateKeyFromUrl } from "@/utils/Dates";
 
 export type RotateDirection = "left" | "right";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ const defaultPlacedCards = {
 };
 
 export function useGameLogic(initialPuzzle: PuzzleType | null) {
-  const [score, setScore] = useState<number | null>(null);
+  const [score, setScore] = useState<number>(0);
   const [cardsCorrectness, setCardsCorrectness] =
     useState<CardCorrectnessType | null>();
   const [numberOfAttempts, setNumberOfAttempts] = useState<number>(0);
@@ -214,7 +214,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const getLocalStorage = () => {
-    const dateKey = getDateKey(new Date());
+    const dateKey = getDateKeyFromUrl();
     const storageKey = `puzzle-${dateKey}`;
     const savedGameStateUnprocessed = localStorage.getItem(storageKey);
     let processedGameState: SavedGameState[] = [];

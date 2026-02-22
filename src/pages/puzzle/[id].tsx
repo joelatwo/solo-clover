@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = (context) => {
   const id = context?.params?.id;
   const puzzle = gameData.find((data) => data.id === id);
   if (puzzle) {
-    return { props: { puzzle: RandomizePuzzleSetup(puzzle) } };
+    return { props: { puzzle: RandomizePuzzleSetup(puzzle), dateString: id } };
   }
 
   return { notFound: true };
