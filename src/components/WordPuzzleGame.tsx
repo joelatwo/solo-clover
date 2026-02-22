@@ -11,6 +11,7 @@ import styles from "./WordPuzzleGame.module.css";
 import Link from "next/link";
 import { getDateFromUrl, getDateKey } from "@/utils/Dates";
 import { init } from "next/dist/compiled/webpack/webpack";
+import { ShareBox, ShareButton } from "./Share";
 
 type Props = {
   initialPuzzle: PuzzleType;
@@ -67,8 +68,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
 
   useEffect(() => {
     // Load the current day puzzle from local storage
-    const { dateKey, storageKey, savedGameState, numberOfAttempts } =
-      getLocalStorage();
+    const { savedGameState, numberOfAttempts } = getLocalStorage();
 
     const currentSolution = savedGameState.at(-1);
 
@@ -160,6 +160,8 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               <h2>Game Complete!</h2>
               <p>Final Score: {score}</p>
               <p>Attempts Used: {numberOfAttempts}</p>
+
+              <ShareButton getLocalStorage={getLocalStorage} />
             </div>
           )}
         </div>

@@ -1,0 +1,33 @@
+.shareBoxBorder {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding: 4px;
+}
+
+.shareBox {
+  width: 100%;
+  height: 100%;
+}
+
+.correct {
+  background-color: green;
+}
+
+.false {
+  background-color: red;
+}
+
+.shareButton {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: lightblue;
+}
