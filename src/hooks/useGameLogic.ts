@@ -111,16 +111,45 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   const validateTopLeft = (solutions: PuzzleSlots, card: Card) => {
     const { top, left } = getCardByRotation(card);
+
+    if (process.env.NODE_ENV === "development") {
+      console.log({
+        top,
+        topAnswer: solutions.top.words[0],
+        left,
+        leftAnswer: solutions.left.words[0],
+      });
+    }
+
     return solutions.left.words[0] === left && solutions.top.words[0] === top;
   };
 
   const validateTopRight = (solutions: PuzzleSlots, card: Card) => {
     const { top, right } = getCardByRotation(card);
+
+    if (process.env.NODE_ENV === "development") {
+      console.log({
+        top,
+        topAnswer: solutions.top.words[1],
+        right,
+        rightAnswer: solutions.right.words[0],
+      });
+    }
+
     return solutions.top.words[1] === top && solutions.right.words[0] === right;
   };
 
   const validateBottomLeft = (solutions: PuzzleSlots, card: Card) => {
     const { bottom, left } = getCardByRotation(card);
+
+    if (process.env.NODE_ENV === "development") {
+      console.log({
+        bottom,
+        bottomAnswer: solutions.bottom.words[1],
+        left,
+        leftAnswer: solutions.left.words[1],
+      });
+    }
 
     return (
       solutions.left.words[1] === left && solutions.bottom.words[1] === bottom
@@ -129,6 +158,15 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
 
   const validateBottomRight = (solutions: PuzzleSlots, card: Card) => {
     const { bottom, right } = getCardByRotation(card);
+
+    if (process.env.NODE_ENV === "development") {
+      console.log({
+        bottom,
+        bottomAnswer: solutions.bottom.words[0],
+        right,
+        rightAnswer: solutions.right.words[1],
+      });
+    }
 
     return (
       solutions.right.words[1] === right && solutions.bottom.words[0] === bottom

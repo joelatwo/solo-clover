@@ -3454,17 +3454,17 @@ const data: PuzzleType[] = [
       {
         id: "card0",
         rotation: 0,
-        words: ["john", "depends", "mechanism", "past"],
+        words: ["ember", "depends", "mechanism", "past"],
       },
       {
         id: "card1",
         rotation: 0,
-        words: ["bufing", "handjobs", "machines", "strategies"],
+        words: ["bufing", "cascade", "machine", "strategies"],
       },
       {
         id: "card2",
         rotation: 0,
-        words: ["nails", "rings", "mold", "resources"],
+        words: ["nail", "rings", "mold", "resources"],
       },
       {
         id: "card3",
@@ -3478,12 +3478,12 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "Waiting", words: ["john", "bufing"] },
-      right: { clue: "Jewelry", words: ["handjobs", "rings"] },
-      left: { clue: "History", words: ["past", "paths"] },
+      top: { clue: "Board Game", words: ["strategies", "mechanism"] },
+      right: { clue: "Letter", words: ["past", "receive"] },
+      left: { clue: "Gun", words: ["machine", "nail"] },
       bottom: {
-        clue: 'Mold and Attempted can be related to the word "Fungi".',
-        words: ["mold", "attempted"],
+        clue: "Mars",
+        words: ["solaris", "resources"],
       },
     },
   },
@@ -3493,17 +3493,17 @@ const data: PuzzleType[] = [
       {
         id: "card0",
         rotation: 0,
-        words: ["stocks", "behalf", "pacific", "cingular"],
+        words: ["stocks", "behalf", "pacific", "driftwood"],
       },
       {
         id: "card1",
         rotation: 0,
-        words: ["norway", "explosion", "flow", "trustee"],
+        words: ["norway", "explosion", "flow", "parental"],
       },
       {
         id: "card2",
         rotation: 0,
-        words: ["strike", "adequate", "expo", "refresh"],
+        words: ["strike", "level", "expo", "refresh"],
       },
       {
         id: "card3",
@@ -3513,14 +3513,14 @@ const data: PuzzleType[] = [
       {
         id: "card4",
         rotation: 0,
-        words: ["twist", "blame", "relative", "cleveland"],
+        words: ["twist", "blame", "relative", "aperture"],
       },
     ],
     solutions: {
-      top: { clue: "Finance", words: ["stocks", "norway"] },
-      right: { clue: "Control", words: ["explosion", "adequate"] },
-      left: { clue: "Mobile", words: ["cingular", "subject"] },
-      bottom: { clue: "Camera", words: ["expo", "filter"] },
+      top: { clue: "Finance", words: ["stocks", "flow"] },
+      right: { clue: "Control", words: ["parental", "level"] },
+      left: { clue: "Gnarly", words: ["driftwood", "twist"] },
+      bottom: { clue: "Camera", words: ["expo", "aperture"] },
     },
   },
   {
@@ -3529,12 +3529,12 @@ const data: PuzzleType[] = [
       {
         id: "card0",
         rotation: 0,
-        words: ["affair", "disable", "rational", "elections"],
+        words: ["colonnade", "disable", "rational", "elections"],
       },
       {
         id: "card1",
         rotation: 0,
-        words: ["petersburg", "manager", "comparing", "shipment"],
+        words: ["petersburg", "manage", "comparing", "shipment"],
       },
       {
         id: "card2",
@@ -3553,10 +3553,10 @@ const data: PuzzleType[] = [
       },
     ],
     solutions: {
-      top: { clue: "St.", words: ["affair", "petersburg"] },
-      right: { clue: "Storage", words: ["manager", "reservoir"] },
+      top: { clue: "Russia", words: ["colonnade", "petersburg"] },
+      right: { clue: "Water Level", words: ["manage", "reservoir"] },
       left: { clue: "Winner", words: ["elections", "successfully"] },
-      bottom: { clue: "Litter", words: ["mailed", "pollution"] },
+      bottom: { clue: "Shipping", words: ["mailed", "pollution"] },
     },
   },
   {
