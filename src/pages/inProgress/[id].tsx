@@ -9,18 +9,20 @@ import { GetStaticProps } from "next";
 import styles from "../puzzle/page.module.css";
 
 export function getStaticPaths() {
+  if (process.env.NODE_ENV !== "development") {
+    return { paths: [], fallback: false };
+  }
+
   const paths = data.map((_puzzle, index) => ({
     params: {
       id: `${index}`,
     },
   }));
 
-  console.log(paths);
   return { paths, fallback: false };
 }
 
 const getIdAsNumber = (idString: string | string[] | undefined) => {
-  console.log("getIdAsNumber", idString);
   if (idString === undefined) {
     return 0;
   }
