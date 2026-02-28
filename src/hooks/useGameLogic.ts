@@ -74,17 +74,41 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     });
   };
 
-  const placeCard = (card: Card, position: SlotPosition) => {
-    const existingCard = placedCards[position];
-    if (existingCard) {
-      setAvailableCards((prev) => {
-        const filtered = prev.filter((c) => c.id !== card.id);
-        return [...filtered, existingCard];
-      });
-    } else {
-      setAvailableCards((prev) => prev.filter((c) => c.id !== card.id));
-    }
-    setPlacedCards((prev) => ({ ...prev, [position]: card }));
+  const placeCard = (card: Card, position: SlotPosition, sourcePosition?: SlotPosition | null) => {
+    setPlacedCards((prev) => {
+      const newPlacedCards = { ...prev };
+      const existingCard = newPlacedCards[position];
+
+      // If card came from another slot, handle the swap
+      if (sourcePosition && sourcePosition !== position) {
+        // Put the dragged card in the target position
+        newPlacedCards[position] = card;
+        
+        // If there was a card at the target, move it to the source position
+        if (existingCard) {
+          newPlacedCards[sourcePosition as SlotPosition] = existingCard;
+        } else {
+          // If no card at target, just clear the source
+          newPlacedCards[sourcePosition as SlotPosition] = null;
+        }
+      } else {
+        // Card came from available cards drawer
+        // If there's already a card here, move it to available cards
+        if (existingCard) {
+          setAvailableCards((prev) => {
+            const filtered = prev.filter((c) => c.id !== card.id);
+            return [...filtered, existingCard];
+          });
+        } else {
+          // Just remove from available cards
+          setAvailableCards((prev) => prev.filter((c) => c.id !== card.id));
+        }
+        // Place the card
+        newPlacedCards[position] = card;
+      }
+
+      return newPlacedCards;
+    });
   };
 
   const removeCard = (position: SlotPosition) => {

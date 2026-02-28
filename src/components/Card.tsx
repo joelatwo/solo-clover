@@ -10,6 +10,7 @@ interface CardProps {
   card: CardType;
   isPlaced?: boolean;
   isIncorrect?: boolean;
+  sourcePosition?: string | null;
   onRotateLeft?: () => void;
   onRotateRight?: () => void;
   onCardRemove?: () => void;
@@ -23,17 +24,17 @@ export default function Card({
   card,
   isPlaced = false,
   isIncorrect = false,
+  sourcePosition = null,
   onRotateLeft,
   onRotateRight,
   onCardRemove,
 }: CardProps) {
   const [{ isDragging: isDragActive }, drag] = useDrag({
     type: "card",
-    item: { id: card.id, card },
+    item: { id: card.id, card, sourcePosition },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-    canDrag: !isPlaced,
   });
 
   // Animation: add/subtract 90 from current position on each rotate (no sync to card.rotation, so no full spin).

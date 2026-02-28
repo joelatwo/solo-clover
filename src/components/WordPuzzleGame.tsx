@@ -1,11 +1,11 @@
 "use client";
 
 import { useGameLogic } from "@/hooks/useGameLogic";
-import { PuzzleType } from "@/types/game";
+import { PuzzleType, SlotPosition, Card as CardType } from "@/types/game";
 import { getDateKey } from "@/utils/Dates";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { DndProvider } from "react-dnd";
+import { useEffect, useRef, useState } from "react";
+import { DndProvider, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Card from "./Card";
 import Puzzle from "./Puzzle";
@@ -15,6 +15,30 @@ import styles from "./WordPuzzleGame.module.css";
 type Props = {
   initialPuzzle: PuzzleType;
 };
+
+function CardBarDropZone({
+  children,
+  onCardDrop,
+}: {
+  children: React.ReactNode;
+  onCardDrop: (card: CardType, sourcePosition: SlotPosition | null) => void;
+}) {
+  const [{ isOver }, drop] = useDrop({
+    accept: "card",
+    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) => {
+      onCardDrop(item.card, item.sourcePosition || null);
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
+
+  return (
+    <div ref={drop as any} style={isOver ? { opacity: 0.7 } : {}}>
+      {children}
+    </div>
+  );
+}
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
   const [isCardBarOpen, setIsCardBarOpen] = useState(true);
@@ -41,6 +65,16 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
 
   const handleReset = () => {
     resetGame();
+  };
+
+  const handleCardReturnToDrawer = (
+    card: CardType,
+    sourcePosition: SlotPosition | null
+  ) => {
+    // If the card was dragged from a slot, remove it from that slot
+    if (sourcePosition) {
+      removeCard(sourcePosition);
+    }
   };
 
   const isSubmissionDisabled = () => {
@@ -103,34 +137,36 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
             </div>
           </div>
 
-          <div
-            className={`${styles.cardBar} ${
-              isCardBarOpen ? styles.cardBarOpen : styles.cardBarClosed
-            }`}
-          >
-            <button
-              type="button"
-              className={styles.cardBarToggle}
-              onClick={() => setIsCardBarOpen((open) => !open)}
-              aria-expanded={isCardBarOpen}
-              aria-label="Toggle available cards"
+          <CardBarDropZone onCardDrop={handleCardReturnToDrawer}>
+            <div
+              className={`${styles.cardBar} ${
+                isCardBarOpen ? styles.cardBarOpen : styles.cardBarClosed
+              }`}
             >
-              <span className={styles.cardBarChevron}>
-                {isCardBarOpen ? "▶" : "◀"}
-              </span>
-              <span className={styles.cardBarTitle}>Available Cards</span>
-            </button>
-            <div className={styles.cardBarContent}>
-              {availableCards.map((card) => (
-                <Card
-                  key={card.id}
-                  card={card}
-                  onRotateLeft={() => rotateCard(card.id, "left")}
-                  onRotateRight={() => rotateCard(card.id, "right")}
-                />
-              ))}
+              <button
+                type="button"
+                className={styles.cardBarToggle}
+                onClick={() => setIsCardBarOpen((open) => !open)}
+                aria-expanded={isCardBarOpen}
+                aria-label="Toggle available cards"
+              >
+                <span className={styles.cardBarChevron}>
+                  {isCardBarOpen ? "▶" : "◀"}
+                </span>
+                <span className={styles.cardBarTitle}>Available Cards</span>
+              </button>
+              <div className={styles.cardBarContent}>
+                {availableCards.map((card) => (
+                  <Card
+                    key={card.id}
+                    card={card}
+                    onRotateLeft={() => rotateCard(card.id, "left")}
+                    onRotateRight={() => rotateCard(card.id, "right")}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          </CardBarDropZone>
 
           <div className={styles.controls}>
             <button
