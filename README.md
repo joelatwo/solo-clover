@@ -36,6 +36,32 @@ Run tests in CI mode:
 npm run test:ci
 ```
 
+Run end-to-end tests with Playwright:
+
+```bash
+npm run test:e2e
+```
+
+If you are running in a container/Codespace and see missing shared library errors (for example `libatk-1.0.so.0`), run:
+
+```bash
+npm run test:e2e:setup
+```
+
+This installs Chromium and required Linux dependencies for Playwright.
+
+Open Playwright UI mode:
+
+```bash
+npm run test:e2e:ui
+```
+
+View the latest HTML report:
+
+```bash
+npm run test:e2e:report
+```
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
