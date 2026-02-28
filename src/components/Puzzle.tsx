@@ -19,11 +19,15 @@ interface PuzzleProps {
     left: { clue: string; words: [string, string] };
   };
   placedCards: PlacedCardsType;
-  onCardDrop: (card: CardType, position: SlotPosition, sourcePosition?: SlotPosition | null) => void;
+  onCardDrop: (
+    card: CardType,
+    position: SlotPosition,
+    sourcePosition?: SlotPosition | null,
+  ) => void;
   onCardRemove: (position: SlotPosition) => void;
   onRotatePlacedCard?: (
     position: SlotPosition,
-    direction: RotateDirection
+    direction: RotateDirection,
   ) => void;
   cardsCorrectness: CardCorrectnessType | null | undefined;
 }
@@ -38,7 +42,8 @@ export default function Puzzle({
 }: PuzzleProps) {
   const [{ isOver: isOverTopLeft }, dropTopLeft] = useDrop({
     accept: "card",
-    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) => onCardDrop(item.card, "topLeft", item.sourcePosition),
+    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) =>
+      onCardDrop(item.card, "topLeft", item.sourcePosition),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -46,7 +51,8 @@ export default function Puzzle({
 
   const [{ isOver: isOverTopRight }, dropTopRight] = useDrop({
     accept: "card",
-    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) => onCardDrop(item.card, "topRight", item.sourcePosition),
+    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) =>
+      onCardDrop(item.card, "topRight", item.sourcePosition),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -54,7 +60,8 @@ export default function Puzzle({
 
   const [{ isOver: isOverBottomRight }, dropBottomRight] = useDrop({
     accept: "card",
-    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) => onCardDrop(item.card, "bottomRight", item.sourcePosition),
+    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) =>
+      onCardDrop(item.card, "bottomRight", item.sourcePosition),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -62,7 +69,8 @@ export default function Puzzle({
 
   const [{ isOver: isOverBottomLeft }, dropBottomLeft] = useDrop({
     accept: "card",
-    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) => onCardDrop(item.card, "bottomLeft", item.sourcePosition),
+    drop: (item: { card: CardType; sourcePosition?: SlotPosition | null }) =>
+      onCardDrop(item.card, "bottomLeft", item.sourcePosition),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -120,7 +128,9 @@ export default function Puzzle({
                 onCardRemove(position);
               }}
             />
-            <div className={styles.removeHint}>Drag to move or click to remove</div>
+            <div className={styles.removeHint}>
+              Drag to move or click to remove
+            </div>
           </div>
         ) : (
           <div className={styles.dropZone}>Drop card here</div>

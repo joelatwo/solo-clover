@@ -69,7 +69,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
 
   const handleCardReturnToDrawer = (
     card: CardType,
-    sourcePosition: SlotPosition | null
+    sourcePosition: SlotPosition | null,
   ) => {
     // If the card was dragged from a slot, remove it from that slot
     if (sourcePosition) {

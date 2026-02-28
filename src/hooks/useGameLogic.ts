@@ -74,7 +74,11 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     });
   };
 
-  const placeCard = (card: Card, position: SlotPosition, sourcePosition?: SlotPosition | null) => {
+  const placeCard = (
+    card: Card,
+    position: SlotPosition,
+    sourcePosition?: SlotPosition | null,
+  ) => {
     setPlacedCards((prev) => {
       const newPlacedCards = { ...prev };
       const existingCard = newPlacedCards[position];
@@ -83,7 +87,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
       if (sourcePosition && sourcePosition !== position) {
         // Put the dragged card in the target position
         newPlacedCards[position] = card;
-        
+
         // If there was a card at the target, move it to the source position
         if (existingCard) {
           newPlacedCards[sourcePosition as SlotPosition] = existingCard;
