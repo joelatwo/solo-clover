@@ -12,29 +12,29 @@ const data: PuzzleType[] = [
       {
         id: "card1",
         rotation: 0,
-        words: ["weapon", "couple", "widespread", "alcohol"],
+        words: ["weapon", "couple", "widespread", "girl"],
       },
       {
         id: "card2",
         rotation: 0,
-        words: ["barbara", "tape", "multimedia", "solomon"],
+        words: ["barbies", "tape", "multimedia", "solo"],
       },
       {
         id: "card3",
         rotation: 0,
-        words: ["ought", "talked", "integrating", "sbjct"],
+        words: ["ought", "talked", "integrated", "subject"],
       },
       {
         id: "card4",
         rotation: 0,
-        words: ["isaac", "tumor", "tickets", "ease"],
+        words: ["binding", "tumor", "tickets", "ease"],
       },
     ],
     solutions: {
       top: { clue: "Gunsight", words: ["framework", "weapon"] },
       right: { clue: "Adhesive", words: ["couple", "tape"] },
-      left: { clue: "Test", words: ["create", "sbjct"] },
-      bottom: { clue: "Platform", words: ["multimedia", "integrating"] },
+      left: { clue: "Art", words: ["create", "subject"] },
+      bottom: { clue: "Platform", words: ["multimedia", "integrated"] },
     },
   },
   {
@@ -43,34 +43,34 @@ const data: PuzzleType[] = [
       {
         id: "card0",
         rotation: 0,
-        words: ["publicly", "cubic", "hours", "drops"],
+        words: ["publicly", "cubic", "hours", "caught"],
       },
       {
         id: "card1",
         rotation: 0,
-        words: ["instruments", "front", "dramatic", "cams"],
+        words: ["instruments", "side", "dramatic", "camera"],
       },
       {
         id: "card2",
         rotation: 0,
-        words: ["concept", "infrastructure", "sucking", "bali"],
+        words: ["concept", "infrastructure", "suck", "bail"],
       },
       {
         id: "card3",
         rotation: 0,
-        words: ["egyptian", "recognized", "avi", "awards"],
+        words: ["egyptian", "recognized", "aviation", "awards"],
       },
       {
         id: "card4",
         rotation: 0,
-        words: ["nudity", "increasingly", "somehow", "quantitative"],
+        words: ["new", "increasingly", "some", "quantitative"],
       },
     ],
     solutions: {
       top: { clue: "Piano", words: ["publicly", "instruments"] },
-      right: { clue: "Road", words: ["front", "infrastructure"] },
-      left: { clue: "Trophies", words: ["drops", "awards"] },
-      bottom: { clue: "Propeller", words: ["sucking", "avi"] },
+      right: { clue: "Road", words: ["side", "infrastructure"] },
+      left: { clue: "Trophies", words: ["caught", "awards"] },
+      bottom: { clue: "Propeller", words: ["suck", "aviation"] },
     },
   },
   {
@@ -79,7 +79,7 @@ const data: PuzzleType[] = [
       {
         id: "card0",
         rotation: 0,
-        words: ["consistency", "perth", "metals", "paying"],
+        words: ["consistency", "perch", "metals", "paying"],
       },
       {
         id: "card1",
@@ -89,7 +89,7 @@ const data: PuzzleType[] = [
       {
         id: "card2",
         rotation: 0,
-        words: ["coral", "walt", "woods", "together"],
+        words: ["coral", "waltz", "woods", "together"],
       },
       {
         id: "card3",
@@ -99,12 +99,12 @@ const data: PuzzleType[] = [
       {
         id: "card4",
         rotation: 0,
-        words: ["terry", "lights", "reading", "directory"],
+        words: ["trouble", "lights", "reading", "directory"],
       },
     ],
     solutions: {
       top: { clue: "Tolerance", words: ["consistency", "margin"] },
-      right: { clue: "Dance", words: ["episodes", "walt"] },
+      right: { clue: "Dance", words: ["episodes", "waltz"] },
       left: { clue: "Tipping", words: ["paying", "gifts"] },
       bottom: { clue: "Harbor", words: ["woods", "ports"] },
     },
@@ -120,7 +120,7 @@ const data: PuzzleType[] = [
       {
         id: "card1",
         rotation: 0,
-        words: ["bufing", "cascade", "machine", "strategies"],
+        words: ["buff", "cascade", "machine", "strategies"],
       },
       {
         id: "card2",
@@ -130,7 +130,7 @@ const data: PuzzleType[] = [
       {
         id: "card3",
         rotation: 0,
-        words: ["southwest", "announcements", "attempted", "paths"],
+        words: ["south", "announcements", "attempted", "paths"],
       },
       {
         id: "card4",

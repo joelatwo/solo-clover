@@ -1,0 +1,81 @@
+import { expect, Locator, Page, test } from "@playwright/test";
+
+const SLOT_SELECTORS = {
+  topLeft: '[class*="topLeft"]',
+  topRight: '[class*="topRight"]',
+  bottomRight: '[class*="bottomRight"]',
+  bottomLeft: '[class*="bottomLeft"]',
+} as const;
+
+const getCardRotation = async (cardRoot: Locator): Promise<number> => {
+  const styleValue = await cardRoot
+    .locator('[class*="card"]')
+    .first()
+    .evaluate((el) => {
+      return (el as HTMLElement).style.transform || "";
+    });
+
+  const match = styleValue.match(/rotate\((-?\d+)deg\)/);
+  if (!match) return 0;
+
+  const normalized = ((Number(match[1]) % 360) + 360) % 360;
+  return normalized;
+};
+
+const rotateCardToZero = async (cardRoot: Locator): Promise<void> => {
+  let rotation = await getCardRotation(cardRoot);
+
+  for (let i = 0; i < 4 && rotation !== 0; i++) {
+    await cardRoot.getByRole("button", { name: "Rotate right" }).click();
+    rotation = await getCardRotation(cardRoot);
+  }
+
+  expect(rotation).toBe(0);
+};
+
+const moveCardToSlot = async (
+  page: Page,
+  uniqueWord: string,
+  slotSelector: string,
+) => {
+  const cardRoot = page
+    .locator('[class*="cardWrapper"]')
+    .filter({ has: page.getByText(uniqueWord, { exact: true }) })
+    .first();
+
+  await expect(cardRoot).toBeVisible();
+  await rotateCardToZero(cardRoot);
+
+  const targetSlot = page.locator(slotSelector).first();
+  await expect(targetSlot).toBeVisible();
+
+  await cardRoot.dragTo(targetSlot);
+
+  const placedCard = targetSlot.locator('[class*="cardWrapper"]').first();
+  await expect(placedCard).toBeVisible();
+  await expect(placedCard.getByText(uniqueWord, { exact: true })).toBeVisible();
+
+  const placedRotation = await getCardRotation(placedCard);
+  expect(placedRotation).toBe(0);
+};
+
+test("3-1-2026 puzzle can be solved and submitted", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+  });
+
+  await page.goto("/puzzle/3-1-2026");
+
+  await moveCardToSlot(page, "framework", SLOT_SELECTORS.topLeft);
+  await moveCardToSlot(page, "weapon", SLOT_SELECTORS.topRight);
+  await moveCardToSlot(page, "barbies", SLOT_SELECTORS.bottomRight);
+  await moveCardToSlot(page, "ought", SLOT_SELECTORS.bottomLeft);
+
+  const submitButton = page.getByRole("button", { name: "Submit Solution" });
+  await expect(submitButton).toBeEnabled();
+
+  await submitButton.click();
+
+  await expect(page.getByText("Final Score: 6")).toBeVisible();
+  await expect(page.getByText("Attempts Used: 1")).toBeVisible();
+});
