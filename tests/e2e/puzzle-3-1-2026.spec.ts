@@ -59,6 +59,21 @@ const moveCardToSlot = async (
   expect(placedRotation).toBe(0);
 };
 
+const fillBoard = async (
+  page: Page,
+  layout: {
+    topLeft: string;
+    topRight: string;
+    bottomRight: string;
+    bottomLeft: string;
+  },
+) => {
+  await moveCardToSlot(page, layout.topLeft, SLOT_SELECTORS.topLeft);
+  await moveCardToSlot(page, layout.topRight, SLOT_SELECTORS.topRight);
+  await moveCardToSlot(page, layout.bottomRight, SLOT_SELECTORS.bottomRight);
+  await moveCardToSlot(page, layout.bottomLeft, SLOT_SELECTORS.bottomLeft);
+};
+
 test("3-1-2026 puzzle can be solved and submitted", async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.clear();
@@ -78,4 +93,58 @@ test("3-1-2026 puzzle can be solved and submitted", async ({ page }) => {
 
   await expect(page.getByText("Final Score: 6")).toBeVisible();
   await expect(page.getByText("Attempts Used: 1")).toBeVisible();
+});
+
+test("3-1-2026 allows three incorrect submissions and reveal hint/solution", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+  });
+
+  await page.goto("/puzzle/3-1-2026");
+
+  const submitButton = page.getByRole("button", { name: "Submit Solution" });
+
+  await fillBoard(page, {
+    topLeft: "binding",
+    topRight: "framework",
+    bottomRight: "weapon",
+    bottomLeft: "barbies",
+  });
+  await submitButton.click();
+  await expect(page.getByText("Attempts: 1/3")).toBeVisible();
+
+  await page.getByRole("button", { name: "Reset Game" }).click();
+
+  await fillBoard(page, {
+    topLeft: "weapon",
+    topRight: "ought",
+    bottomRight: "framework",
+    bottomLeft: "binding",
+  });
+  await submitButton.click();
+  await expect(page.getByText("Attempts: 2/3")).toBeVisible();
+
+  await page.getByRole("button", { name: "Reset Game" }).click();
+
+  await fillBoard(page, {
+    topLeft: "barbies",
+    topRight: "binding",
+    bottomRight: "ought",
+    bottomLeft: "framework",
+  });
+  await submitButton.click();
+
+  await expect(page.getByText("Final Score: 0")).toBeVisible();
+  await expect(page.getByText("Attempts Used: 3")).toBeVisible();
+
+  const revealButton = page
+    .getByRole("button", { name: /Show Hint|Show Solution/i })
+    .first();
+  await expect(revealButton).toBeVisible();
+  await revealButton.click();
+
+  const topLeftSlot = page.locator(SLOT_SELECTORS.topLeft).first();
+  await expect(topLeftSlot.getByText("framework", { exact: true })).toBeVisible();
 });
