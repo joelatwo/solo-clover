@@ -110,12 +110,26 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     }
   }, []);
 
+  const getCurrentDateKey = () => {
+    const today = new Date();
+    return `${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`;
+  };
+
+  const isToday = getCurrentDateKey() === initialPuzzle.id;
+
   return (
     <>
       <div className={styles.header}>
-        <Link href="/" className={styles.backButton}>
-          ← Back to Home
-        </Link>
+        <div className={styles.buttonGroup}>
+          <Link href="/" className={styles.backButton}>
+            ← Back to Home
+          </Link>
+          {!isToday && (
+            <Link href={`/puzzle/${getCurrentDateKey()}`} className={styles.todayButton}>
+              Go to Today
+            </Link>
+          )}
+        </div>
         <h1>{getDateKey(new Date(initialPuzzle.id))}</h1>
         <div className={styles.scoreInfo}>
           <div className={styles.score}>Score: {score}</div>

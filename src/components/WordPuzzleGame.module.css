@@ -14,6 +14,12 @@
   border-bottom: 2px solid #e9ecef;
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .backButton {
   display: inline-flex;
   align-items: center;
@@ -24,6 +30,28 @@
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #545b62;
+  transform: translateY(-1px);
+}
+
+.todayButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.todayButton:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
 }
 
 .header h1 {
