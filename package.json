@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "verify": "npm run lint && npm run test:ci && npm run test:e2e && npm run build",
     "export": "next build",
     "start": "next start",
     "lint": "eslint",

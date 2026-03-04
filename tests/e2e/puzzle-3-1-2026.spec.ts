@@ -146,5 +146,7 @@ test("3-1-2026 allows three incorrect submissions and reveal hint/solution", asy
   await revealButton.click();
 
   const topLeftSlot = page.locator(SLOT_SELECTORS.topLeft).first();
-  await expect(topLeftSlot.getByText("framework", { exact: true })).toBeVisible();
+  await expect(
+    topLeftSlot.getByText("framework", { exact: true }),
+  ).toBeVisible();
 });
