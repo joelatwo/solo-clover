@@ -125,7 +125,10 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
             ← Back to Home
           </Link>
           {!isToday && (
-            <Link href={`/puzzle/${getCurrentDateKey()}`} className={styles.todayButton}>
+            <Link
+              href={`/puzzle/${getCurrentDateKey()}`}
+              className={styles.todayButton}
+            >
               Go to Today
             </Link>
           )}
