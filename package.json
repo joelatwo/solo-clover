@@ -20,6 +20,7 @@
     "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.6",
     "axios": "^1.13.1",
     "lucide-react": "^0.574.0",
     "next": "15.5.2",

@@ -1,6 +1,7 @@
 import "@/pages/globals.css";
 import type { AppProps } from "next/app";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,5 +14,12 @@ export const metadata = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} className={inter.variable} />;
+  return (
+    <>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
+      <Component {...pageProps} className={inter.variable} />
+    </>
+  );
 }
