@@ -141,14 +141,17 @@
 
 .unsubmitted {
   border-color: #007bff;
+  background: #e3f2fd;
 }
 
 .correct {
-  border-color: green;
+  border-color: #28a745;
+  background: #e8f5e8;
 }
 
 .incorrect {
-  border-color: red;
+  border-color: #dc3545;
+  background: #f8d7da;
 }
 
 /* Mobile responsive text sizing */

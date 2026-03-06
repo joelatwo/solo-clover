@@ -114,6 +114,7 @@ export default function Puzzle({
               isPlaced={true}
               sourcePosition={position}
               isIncorrect={cardsCorrectness?.[position] === false}
+              isCorrect={cardsCorrectness?.[position] === true}
               onRotateLeft={
                 onRotatePlacedCard
                   ? () => onRotatePlacedCard(position, "left")

@@ -10,6 +10,7 @@ interface CardProps {
   card: CardType;
   isPlaced?: boolean;
   isIncorrect?: boolean;
+  isCorrect?: boolean;
   sourcePosition?: string | null;
   onRotateLeft?: () => void;
   onRotateRight?: () => void;
@@ -24,6 +25,7 @@ export default function Card({
   card,
   isPlaced = false,
   isIncorrect = false,
+  isCorrect = false,
   sourcePosition = null,
   onRotateLeft,
   onRotateRight,
@@ -57,7 +59,9 @@ export default function Card({
       <div
         className={`${styles.card} ${isDragActive ? styles.dragging : ""} ${
           isPlaced ? styles.placed : ""
-        } ${isIncorrect ? styles.incorrect : ""}`}
+        } ${isIncorrect ? styles.incorrect : ""} ${
+          isCorrect ? styles.correct : ""
+        }`}
         style={{
           transform: `rotate(${rotationDeg}deg)`,
         }}
