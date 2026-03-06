@@ -34,6 +34,17 @@ describe("WordPuzzleGame UI interactions", () => {
     window.history.pushState({}, "", "/puzzle/1-1-2026");
   });
 
+  it("renders a feedback link to GitHub issues", () => {
+    render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+
+    expect(
+      screen.getByRole("link", { name: /give feedback/i }),
+    ).toHaveAttribute(
+      "href",
+      "https://github.com/joelatwo/solo-clover/issues/new",
+    );
+  });
+
   it("clicking Show Solution fills all slots using real components", async () => {
     localStorage.setItem(
       "puzzle-1-1-2026",
@@ -89,7 +100,9 @@ describe("WordPuzzleGame UI interactions", () => {
     render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
 
     await waitFor(() => {
-      expect(screen.getByRole("button", { name: /show solution/i })).not.toBeNull();
+      expect(
+        screen.getByRole("button", { name: /show solution/i }),
+      ).not.toBeNull();
     });
 
     expect(screen.getAllByText(/drop card here/i)).toHaveLength(4);
@@ -98,7 +111,9 @@ describe("WordPuzzleGame UI interactions", () => {
 
     await waitFor(() => {
       expect(screen.queryByText(/drop card here/i)).toBeNull();
-      expect(screen.getAllByText(/drag to move or click to remove/i)).toHaveLength(4);
+      expect(
+        screen.getAllByText(/drag to move or click to remove/i),
+      ).toHaveLength(4);
     });
   });
 });

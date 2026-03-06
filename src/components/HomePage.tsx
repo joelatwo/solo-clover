@@ -98,6 +98,23 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className={styles.feedback}>
+          <h2>Have a suggestion or found a bug?</h2>
+          <p>
+            Send feedback directly through GitHub Issues. It helps make each
+            puzzle better.
+          </p>
+          <a
+            href="https://github.com/joelatwo/solo-clover/issues/new"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.feedbackButton}
+            data-tooltip="This goes straight to me, and I’ll take a look as soon as I can."
+          >
+            Give Feedback
+          </a>
+        </section>
+
         <footer className={styles.footer}>
           <p>Your score is saved locally and persists across sessions.</p>
         </footer>

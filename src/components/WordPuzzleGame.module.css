@@ -49,6 +49,52 @@
   transition: all 0.2s ease;
 }
 
+.feedbackButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.feedbackButton::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(-4px);
+  background: #333;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  padding: 8px 10px;
+  border-radius: 8px;
+  width: min(300px, 80vw);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 10;
+}
+
+.feedbackButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(102, 126, 234, 0.35);
+}
+
+.feedbackButton:hover::after,
+.feedbackButton:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .todayButton:hover {
   background: #0056b3;
   transform: translateY(-1px);

@@ -124,6 +124,15 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           <Link href="/" className={styles.backButton}>
             ← Back to Home
           </Link>
+          <a
+            href="https://github.com/joelatwo/solo-clover/issues/new"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.feedbackButton}
+            data-tooltip="This goes straight to me, and I’ll take a look as soon as I can."
+          >
+            Give Feedback
+          </a>
           {!isToday && (
             <Link
               href={`/puzzle/${getCurrentDateKey()}`}

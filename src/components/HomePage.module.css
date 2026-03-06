@@ -63,7 +63,9 @@
   background: white;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ruleCard:hover {
@@ -152,6 +154,74 @@
   font-size: 2.5rem;
   margin-bottom: 50px;
   color: #333;
+}
+
+.feedback {
+  padding: 60px 40px;
+  text-align: center;
+  background: white;
+  border-top: 1px solid #e9ecef;
+}
+
+.feedback h2 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.feedback p {
+  margin: 0 auto 24px auto;
+  color: #666;
+  max-width: 640px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.feedbackButton {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 999px;
+  position: relative;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.feedbackButton::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 12px);
+  transform: translateX(-50%) translateY(-4px);
+  background: #333;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 8px;
+  width: min(320px, 80vw);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 10;
+}
+
+.feedbackButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+}
+
+.feedbackButton:hover::after,
+.feedbackButton:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .modeCards {
@@ -256,6 +326,18 @@
 
   .subtitle {
     font-size: 1.1rem;
+  }
+
+  .feedback {
+    padding: 40px 20px;
+  }
+
+  .feedback h2 {
+    font-size: 1.6rem;
+  }
+
+  .feedback p {
+    font-size: 1rem;
   }
 
   .rules,

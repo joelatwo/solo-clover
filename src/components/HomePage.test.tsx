@@ -6,7 +6,18 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("heading", { name: /word puzzle game/i, level: 1 })
+      screen.getByRole("heading", { name: /word puzzle game/i, level: 1 }),
     ).toBeInTheDocument();
+  });
+
+  it("renders a feedback link to GitHub issues", () => {
+    render(<HomePage />);
+
+    expect(
+      screen.getByRole("link", { name: /give feedback/i }),
+    ).toHaveAttribute(
+      "href",
+      "https://github.com/joelatwo/solo-clover/issues/new",
+    );
   });
 });
