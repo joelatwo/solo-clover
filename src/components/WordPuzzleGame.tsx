@@ -143,7 +143,8 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     if (
       completionTriggeredBySubmitRef.current &&
       gameComplete &&
-      !wasGameCompleteRef.current
+      !wasGameCompleteRef.current &&
+      score > 0
     ) {
       setShowComeBackModal(true);
       completionTriggeredBySubmitRef.current = false;
@@ -271,8 +272,12 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby="come-back-modal-title"
+              onClick={() => setShowComeBackModal(false)}
             >
-              <div className={styles.modalContent}>
+              <div
+                className={styles.modalContent}
+                onClick={(event) => event.stopPropagation()}
+              >
                 <h2 id="come-back-modal-title">Game Complete!</h2>
                 <p>{getComeBackMessage()}</p>
                 <button
