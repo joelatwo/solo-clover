@@ -42,6 +42,9 @@ function CardBarDropZone({
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
   const [isCardBarOpen, setIsCardBarOpen] = useState(true);
+  const [showComeBackModal, setShowComeBackModal] = useState(false);
+  const completionTriggeredBySubmitRef = useRef(false);
+  const wasGameCompleteRef = useRef(false);
   const {
     placedCards,
     cardsCorrectness,
@@ -60,6 +63,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
   } = useGameLogic(initialPuzzle);
 
   const handleSubmit = () => {
+    completionTriggeredBySubmitRef.current = true;
     submitSolution();
   };
 
@@ -116,6 +120,41 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
   };
 
   const isToday = getCurrentDateKey() === initialPuzzle.id;
+
+  const getComeBackMessage = () => {
+    if (score === 6) {
+      return "Perfect score! Come back tomorrow for a new puzzle.";
+    }
+
+    if (score === 5) {
+      return "Great job! Come back tomorrow and aim for perfect.";
+    }
+
+    if (score === 4) {
+      return "Nice work finishing today’s puzzle. Come back tomorrow for another.";
+    }
+
+    return "Good effort today. Come back tomorrow for a fresh puzzle.";
+  };
+
+  useEffect(() => {
+    const gameComplete = isGameComplete();
+
+    if (
+      completionTriggeredBySubmitRef.current &&
+      gameComplete &&
+      !wasGameCompleteRef.current
+    ) {
+      setShowComeBackModal(true);
+      completionTriggeredBySubmitRef.current = false;
+    }
+
+    if (!gameComplete) {
+      completionTriggeredBySubmitRef.current = false;
+    }
+
+    wasGameCompleteRef.current = gameComplete;
+  }, [score, numberOfAttempts]);
 
   return (
     <>
@@ -225,6 +264,27 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               <ShareButton getLocalStorage={getLocalStorage} />
             </div>
           )}
+
+          {showComeBackModal ? (
+            <div
+              className={styles.modalOverlay}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="come-back-modal-title"
+            >
+              <div className={styles.modalContent}>
+                <h2 id="come-back-modal-title">Game Complete!</h2>
+                <p>{getComeBackMessage()}</p>
+                <button
+                  type="button"
+                  className={styles.modalButton}
+                  onClick={() => setShowComeBackModal(false)}
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
       </DndProvider>
     </>
