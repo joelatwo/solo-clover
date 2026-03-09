@@ -7,6 +7,22 @@ const SLOT_SELECTORS = {
   bottomLeft: '[class*="bottomLeft"]',
 } as const;
 
+const ensureCardBarOpen = async (page: Page): Promise<void> => {
+  const drawer = page
+    .locator('[class*="cardBar"]')
+    .filter({ has: page.getByText("Available Cards", { exact: true }) })
+    .first();
+
+  const drawerClasses = (await drawer.getAttribute("class")) ?? "";
+  if (!drawerClasses.includes("cardBarOpen")) {
+    await page
+      .getByRole("button", { name: "Toggle available cards" })
+      .first()
+      .click();
+    await expect(drawer).toHaveClass(/cardBarOpen/);
+  }
+};
+
 const getCardRotation = async (cardRoot: Locator): Promise<number> => {
   const styleValue = await cardRoot
     .locator('[class*="card"]')
@@ -38,6 +54,8 @@ const moveCardToSlot = async (
   uniqueWord: string,
   slotSelector: string,
 ) => {
+  await ensureCardBarOpen(page);
+
   const cardRoot = page
     .locator('[class*="cardWrapper"]')
     .filter({ has: page.getByText(uniqueWord, { exact: true }) })

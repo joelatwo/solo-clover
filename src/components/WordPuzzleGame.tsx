@@ -4,8 +4,8 @@ import { useGameLogic } from "@/hooks/useGameLogic";
 import { PuzzleType, SlotPosition, Card as CardType } from "@/types/game";
 import { getDateKey } from "@/utils/Dates";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { DndProvider, useDrop } from "react-dnd";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { DndProvider, useDragLayer, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Card from "./Card";
 import Puzzle from "./Puzzle";
@@ -15,6 +15,54 @@ import styles from "./WordPuzzleGame.module.css";
 type Props = {
   initialPuzzle: PuzzleType;
 };
+
+type DraggedCardItem = {
+  card: CardType;
+  sourcePosition?: SlotPosition | null;
+};
+
+function CardBarDragController({
+  isCardBarOpen,
+  setIsCardBarOpen,
+}: {
+  isCardBarOpen: boolean;
+  setIsCardBarOpen: Dispatch<SetStateAction<boolean>>;
+}) {
+  const { isDragging, clientOffset, itemType, item } = useDragLayer((monitor) => ({
+    isDragging: monitor.isDragging(),
+    clientOffset: monitor.getClientOffset(),
+    itemType: monitor.getItemType(),
+    item: monitor.getItem(),
+  }));
+
+  useEffect(() => {
+    if (!isDragging || itemType !== "card" || !clientOffset) {
+      return;
+    }
+
+    const draggedCard = item as DraggedCardItem | null;
+    const isDraggedFromDrawer = !draggedCard?.sourcePosition;
+
+    if (!isDraggedFromDrawer || typeof window === "undefined") {
+      return;
+    }
+
+    const openThresholdFromRight = 90;
+    const closeThresholdFromRight = 220;
+    const distanceFromRight = window.innerWidth - clientOffset.x;
+
+    if (distanceFromRight <= openThresholdFromRight && !isCardBarOpen) {
+      setIsCardBarOpen(true);
+      return;
+    }
+
+    if (distanceFromRight >= closeThresholdFromRight && isCardBarOpen) {
+      setIsCardBarOpen(false);
+    }
+  }, [clientOffset, isCardBarOpen, isDragging, item, itemType, setIsCardBarOpen]);
+
+  return null;
+}
 
 function CardBarDropZone({
   children,
@@ -189,6 +237,10 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         </div>
       </div>
       <DndProvider backend={HTML5Backend}>
+        <CardBarDragController
+          isCardBarOpen={isCardBarOpen}
+          setIsCardBarOpen={setIsCardBarOpen}
+        />
         <div className={styles.gameContainer}>
           <div className={styles.gameArea}>
             <div className={styles.puzzleArea}>

@@ -6,6 +6,13 @@ jest.mock("react-dnd", () => ({
   DndProvider: ({ children }: { children: any }) => <>{children}</>,
   useDrop: () => [{ isOver: false }, jest.fn()],
   useDrag: () => [{ isDragging: false }, jest.fn()],
+  useDragLayer: (collector: any) =>
+    collector({
+      isDragging: () => false,
+      getClientOffset: () => null,
+      getItemType: () => null,
+      getItem: () => null,
+    }),
 }));
 
 jest.mock("react-dnd-html5-backend", () => ({

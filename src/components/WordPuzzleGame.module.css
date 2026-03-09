@@ -357,6 +357,14 @@
     padding-bottom: 80px;
   }
 
+  .cardBar {
+    z-index: 2147483000;
+  }
+
+  .modalOverlay {
+    z-index: 2147483600;
+  }
+
   .header {
     flex-direction: column;
     gap: 15px;
