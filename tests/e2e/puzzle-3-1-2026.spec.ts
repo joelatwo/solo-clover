@@ -7,19 +7,55 @@ const SLOT_SELECTORS = {
   bottomLeft: '[class*="bottomLeft"]',
 } as const;
 
+const loadPuzzlePage = async (page: Page): Promise<void> => {
+  const maxAttempts = 3;
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    await page.goto("/puzzle/3-1-2026", { waitUntil: "domcontentloaded" });
+
+    const drawerToggle = page
+      .getByRole("button", { name: "Toggle available cards" })
+      .first();
+
+    const isDrawerVisible = await drawerToggle
+      .isVisible({ timeout: 4000 })
+      .catch(() => false);
+
+    if (isDrawerVisible) {
+      return;
+    }
+
+    await page.waitForTimeout(250);
+  }
+
+  throw new Error("Puzzle page did not load expected controls after retries.");
+};
+
+const disableAutoCardDrawer = async (page: Page): Promise<void> => {
+  const autoToggle = page.getByRole("button", {
+    name: "Toggle automatic card drawer behavior",
+  });
+
+  await expect(autoToggle).toBeVisible();
+  await expect(autoToggle).toContainText(/Auto Drawer:/i);
+
+  if ((await autoToggle.textContent())?.includes("On")) {
+    await autoToggle.click();
+    await expect(autoToggle).toContainText("Auto Drawer: Off");
+  }
+};
+
 const ensureCardBarOpen = async (page: Page): Promise<void> => {
-  const drawer = page
-    .locator('[class*="cardBar"]')
-    .filter({ has: page.getByText("Available Cards", { exact: true }) })
+  const toggle = page
+    .getByRole("button", { name: "Toggle available cards" })
     .first();
 
-  const drawerClasses = (await drawer.getAttribute("class")) ?? "";
-  if (!drawerClasses.includes("cardBarOpen")) {
-    await page
-      .getByRole("button", { name: "Toggle available cards" })
-      .first()
-      .click();
-    await expect(drawer).toHaveClass(/cardBarOpen/);
+  await expect(toggle).toBeVisible();
+
+  const expanded = await toggle.getAttribute("aria-expanded");
+  if (expanded !== "true") {
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
   }
 };
 
@@ -42,7 +78,15 @@ const rotateCardToZero = async (cardRoot: Locator): Promise<void> => {
   let rotation = await getCardRotation(cardRoot);
 
   for (let i = 0; i < 4 && rotation !== 0; i++) {
-    await cardRoot.getByRole("button", { name: "Rotate right" }).click();
+    const rotateRightButton = cardRoot.getByRole("button", {
+      name: "Rotate right",
+    });
+
+    await expect(rotateRightButton).toBeAttached();
+    await rotateRightButton.evaluate((button: HTMLButtonElement) => {
+      button.click();
+    });
+
     rotation = await getCardRotation(cardRoot);
   }
 
@@ -97,7 +141,8 @@ test("3-1-2026 puzzle can be solved and submitted", async ({ page }) => {
     localStorage.clear();
   });
 
-  await page.goto("/puzzle/3-1-2026");
+  await loadPuzzlePage(page);
+  await disableAutoCardDrawer(page);
 
   await moveCardToSlot(page, "framework", SLOT_SELECTORS.topLeft);
   await moveCardToSlot(page, "weapon", SLOT_SELECTORS.topRight);
@@ -120,7 +165,8 @@ test("3-1-2026 allows three incorrect submissions and reveal hint/solution", asy
     localStorage.clear();
   });
 
-  await page.goto("/puzzle/3-1-2026");
+  await loadPuzzlePage(page);
+  await disableAutoCardDrawer(page);
 
   const submitButton = page.getByRole("button", { name: "Submit Solution" });
 

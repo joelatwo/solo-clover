@@ -229,6 +229,21 @@
   padding: 16px;
 }
 
+.cardBarAutoToggle {
+  border: 1px solid #d0d7de;
+  background: #f8f9fa;
+  color: #333;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cardBarAutoToggle:hover {
+  background: #e9ecef;
+}
+
 .controls {
   display: flex;
   justify-content: center;

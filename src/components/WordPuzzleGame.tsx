@@ -22,9 +22,11 @@ type DraggedCardItem = {
 };
 
 function CardBarDragController({
+  isEnabled,
   isCardBarOpen,
   setIsCardBarOpen,
 }: {
+  isEnabled: boolean;
   isCardBarOpen: boolean;
   setIsCardBarOpen: Dispatch<SetStateAction<boolean>>;
 }) {
@@ -38,14 +40,14 @@ function CardBarDragController({
   );
 
   useEffect(() => {
-    if (!isDragging || itemType !== "card" || !clientOffset) {
+    if (!isEnabled || !isDragging || itemType !== "card" || !clientOffset) {
       return;
     }
 
     const draggedCard = item as DraggedCardItem | null;
     const isDraggedFromDrawer = !draggedCard?.sourcePosition;
 
-    if (!isDraggedFromDrawer || typeof window === "undefined") {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -58,11 +60,16 @@ function CardBarDragController({
       return;
     }
 
-    if (distanceFromRight >= closeThresholdFromRight && isCardBarOpen) {
+    if (
+      isDraggedFromDrawer &&
+      distanceFromRight >= closeThresholdFromRight &&
+      isCardBarOpen
+    ) {
       setIsCardBarOpen(false);
     }
   }, [
     clientOffset,
+    isEnabled,
     isCardBarOpen,
     isDragging,
     item,
@@ -99,6 +106,7 @@ function CardBarDropZone({
 
 export default function WordPuzzleGame({ initialPuzzle }: Props) {
   const [isCardBarOpen, setIsCardBarOpen] = useState(true);
+  const [isCardBarAutoEnabled, setIsCardBarAutoEnabled] = useState(true);
   const [showComeBackModal, setShowComeBackModal] = useState(false);
   const completionTriggeredBySubmitRef = useRef(false);
   const wasGameCompleteRef = useRef(false);
@@ -247,6 +255,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
       </div>
       <DndProvider backend={HTML5Backend}>
         <CardBarDragController
+          isEnabled={isCardBarAutoEnabled}
           isCardBarOpen={isCardBarOpen}
           setIsCardBarOpen={setIsCardBarOpen}
         />
@@ -283,6 +292,17 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
                 <span className={styles.cardBarTitle}>Available Cards</span>
               </button>
               <div className={styles.cardBarContent}>
+                <button
+                  type="button"
+                  className={styles.cardBarAutoToggle}
+                  onClick={() =>
+                    setIsCardBarAutoEnabled((isEnabled) => !isEnabled)
+                  }
+                  aria-pressed={!isCardBarAutoEnabled}
+                  aria-label="Toggle automatic card drawer behavior"
+                >
+                  Auto Drawer: {isCardBarAutoEnabled ? "On" : "Off"}
+                </button>
                 {availableCards.map((card) => (
                   <Card
                     key={card.id}

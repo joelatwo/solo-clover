@@ -1,4 +1,18 @@
-import { expect, test } from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
+
+const getDrawerToggle = (page: Page) =>
+  page.getByRole("button", { name: "Toggle available cards" }).first();
+
+const ensureDrawerClosed = async (page: Page): Promise<void> => {
+  const toggle = getDrawerToggle(page);
+  await expect(toggle).toBeVisible();
+
+  if ((await toggle.getAttribute("aria-expanded")) === "true") {
+    await toggle.click();
+  }
+
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+};
 
 test("card drawer closes and reopens while dragging from drawer", async ({
   page,
@@ -9,12 +23,10 @@ test("card drawer closes and reopens while dragging from drawer", async ({
 
   await page.goto("/puzzle/3-1-2026");
 
-  const drawer = page
-    .locator('[class*="cardBar"]')
-    .filter({ has: page.getByText("Available Cards", { exact: true }) })
-    .first();
-
-  await expect(drawer).toHaveClass(/cardBarOpen/);
+  const drawer = page.locator('[class*="cardBar"]').first();
+  const drawerToggle = getDrawerToggle(page);
+  await expect(drawerToggle).toBeVisible();
+  await expect(drawerToggle).toHaveAttribute("aria-expanded", "true");
 
   const cardRoot = page.locator('[class*="cardWrapper"]').first();
   await expect(cardRoot).toBeVisible();
@@ -31,7 +43,7 @@ test("card drawer closes and reopens while dragging from drawer", async ({
   const closedX = Math.max(startX - 320, 120);
   await page.mouse.move(closedX, startY, { steps: 12 });
 
-  await expect(drawer).not.toHaveClass(/cardBarOpen/);
+  await expect(drawerToggle).toHaveAttribute("aria-expanded", "false");
 
   const viewport = page.viewportSize();
   expect(viewport).not.toBeNull();
@@ -39,7 +51,50 @@ test("card drawer closes and reopens while dragging from drawer", async ({
   const openX = viewport!.width - 20;
   await page.mouse.move(openX, startY, { steps: 16 });
 
-  await expect(drawer).toHaveClass(/cardBarOpen/);
+  await expect(drawerToggle).toHaveAttribute("aria-expanded", "true");
 
+  await page.mouse.up();
+});
+
+test("card drawer reopens when dragging placed card toward sidebar", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    localStorage.clear();
+  });
+
+  await page.goto("/puzzle/3-1-2026");
+
+  const drawer = page.locator('[class*="cardBar"]').first();
+  const drawerToggle = getDrawerToggle(page);
+  await expect(drawerToggle).toBeVisible();
+
+  const drawerCard = page.locator('[class*="cardWrapper"]').first();
+  const topLeftSlot = page.locator('[class*="topLeft"]').first();
+
+  await drawerCard.dragTo(topLeftSlot);
+  await expect(
+    topLeftSlot.locator('[class*="cardWrapper"]').first(),
+  ).toBeVisible();
+
+  await ensureDrawerClosed(page);
+
+  const placedCard = topLeftSlot.locator('[class*="cardWrapper"]').first();
+  const placedCardBox = await placedCard.boundingBox();
+  expect(placedCardBox).not.toBeNull();
+
+  const startX = placedCardBox!.x + placedCardBox!.width / 2;
+  const startY = placedCardBox!.y + placedCardBox!.height / 2;
+
+  await page.mouse.move(startX, startY);
+  await page.mouse.down();
+
+  const viewport = page.viewportSize();
+  expect(viewport).not.toBeNull();
+
+  const openX = viewport!.width - 20;
+  await page.mouse.move(openX, startY, { steps: 16 });
+
+  await expect(drawerToggle).toHaveAttribute("aria-expanded", "true");
   await page.mouse.up();
 });

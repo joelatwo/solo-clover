@@ -16,11 +16,13 @@ const shuffleArray = <T>(array: T[]) => {
 };
 
 export const RandomizePuzzleSetup = (puzzle: PuzzleType) => {
-  puzzle.cards = shuffleArray(puzzle.cards);
-  puzzle.cards = puzzle.cards.map((card) => ({
+  const randomizedCards = shuffleArray(puzzle.cards).map((card) => ({
     ...card,
     rotation: getRandomRotation(),
   }));
 
-  return puzzle;
+  return {
+    ...puzzle,
+    cards: randomizedCards,
+  };
 };
