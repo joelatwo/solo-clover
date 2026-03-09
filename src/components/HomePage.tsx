@@ -90,8 +90,8 @@ export default function HomePage() {
               <div className={styles.modeIcon}>📅</div>
               <h3>Daily Challenge</h3>
               <p>
-                Take on today@aposs unique puzzle. New challenges every day with
-                different word combinations.
+                Take on today&apos;s unique puzzle. New challenges every day
+                with different word combinations.
               </p>
               <div className={styles.modeButton}>Daily Challenge</div>
             </Link>
@@ -114,7 +114,21 @@ export default function HomePage() {
             Give Feedback
           </a>
         </section>
-
+        <section className={styles.support}>
+          <h2>Love the game? Support the creator</h2>
+          <p>
+            If you enjoy Word Puzzle Game, consider buying me a coffee to help
+            support development.
+          </p>
+          <a
+            href="https://ko-fi.com/foreveroom"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.modeButton}
+          >
+            Support Me on Ko-fi
+          </a>
+        </section>
         <footer className={styles.footer}>
           <p>Your score is saved locally and persists across sessions.</p>
         </footer>

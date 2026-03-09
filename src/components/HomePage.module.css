@@ -294,6 +294,27 @@
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
+.support {
+  padding: 60px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffe4e6 0%, #fff0f3 100%);
+  border-top: 1px solid #e9ecef;
+}
+
+.support h2 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.support p {
+  margin: 0 auto 32px auto;
+  color: #666;
+  max-width: 640px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
 .footer {
   padding: 40px;
   text-align: center;
@@ -337,6 +358,18 @@
   }
 
   .feedback p {
+    font-size: 1rem;
+  }
+
+  .support {
+    padding: 40px 20px;
+  }
+
+  .support h2 {
+    font-size: 1.6rem;
+  }
+
+  .support p {
     font-size: 1rem;
   }
 
