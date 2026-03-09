@@ -28,12 +28,14 @@ function CardBarDragController({
   isCardBarOpen: boolean;
   setIsCardBarOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { isDragging, clientOffset, itemType, item } = useDragLayer((monitor) => ({
-    isDragging: monitor.isDragging(),
-    clientOffset: monitor.getClientOffset(),
-    itemType: monitor.getItemType(),
-    item: monitor.getItem(),
-  }));
+  const { isDragging, clientOffset, itemType, item } = useDragLayer(
+    (monitor) => ({
+      isDragging: monitor.isDragging(),
+      clientOffset: monitor.getClientOffset(),
+      itemType: monitor.getItemType(),
+      item: monitor.getItem(),
+    }),
+  );
 
   useEffect(() => {
     if (!isDragging || itemType !== "card" || !clientOffset) {
@@ -59,7 +61,14 @@ function CardBarDragController({
     if (distanceFromRight >= closeThresholdFromRight && isCardBarOpen) {
       setIsCardBarOpen(false);
     }
-  }, [clientOffset, isCardBarOpen, isDragging, item, itemType, setIsCardBarOpen]);
+  }, [
+    clientOffset,
+    isCardBarOpen,
+    isDragging,
+    item,
+    itemType,
+    setIsCardBarOpen,
+  ]);
 
   return null;
 }
