@@ -53,8 +53,8 @@
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: var(--color-gradient);
-  color: white;
+  background: var(--joelsecondary);
+  color: var(--joelsecondary-text);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
@@ -68,8 +68,8 @@
   left: 50%;
   top: calc(100% + 10px);
   transform: translateX(-50%) translateY(-4px);
-  background: var(--color-text-strong);
-  color: #fff;
+  background: var(--joelbackground);
+  color: var(--joelbackground-font);
   font-size: 0.85rem;
   line-height: 1.4;
   padding: 8px 10px;

@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: var(--color-gradient);
+  background: var(--joelbackground);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +17,8 @@
 }
 
 .header {
-  background: var(--color-gradient);
-  color: white;
+  background: var(--joelbackground-header);
+  color: var(--joelbackground-font);
   padding: 60px 40px;
   text-align: center;
 }
@@ -76,8 +76,8 @@
 .ruleNumber {
   width: 50px;
   height: 50px;
-  background: var(--color-gradient);
-  color: white;
+  background: var(--joelprimary);
+  color: var(--joelprimary-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -179,8 +179,8 @@
 
 .feedbackButton {
   display: inline-block;
-  background: var(--color-gradient);
-  color: white;
+  background: var(--joelprimary);
+  color: var(--joelprimary-text);
   text-decoration: none;
   font-weight: bold;
   padding: 14px 28px;
@@ -246,16 +246,6 @@
   overflow: hidden;
 }
 
-.modeCard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--color-gradient);
-}
-
 .modeCard:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -280,8 +270,8 @@
 
 .modeButton {
   display: inline-block;
-  background: var(--color-gradient);
-  color: white;
+  background: var(--joelprimary);
+  color: var(--joelprimary-text);
   padding: 15px 30px;
   border-radius: 50px;
   font-weight: bold;

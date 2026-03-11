@@ -1,15 +1,26 @@
 :root {
   font-family: var(--font-inter), sans-serif;
 
+  --joelprimary: yellow;
+  --joelprimary-text: white;
+  --joelsecondary: yellow;
+  --joelsecondary-text: white;
+  --joelbackground: white;
+  --joelbackground-font: black;
+
+  --joelbackground-header: yellow;
+
   --background: #ffffff;
   --foreground: #171717;
+
+  /* TODO make box-shadow */
+  /* TODO make border */
 
   /* ── Color System ─────────────────────────────────────────────────────────── */
 
   /* Brand – primary gradient (blue-purple → purple) */
   --color-primary: #667eea;
   --color-secondary: #764ba2;
-  --color-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --color-primary-rgb: 102, 126, 234;
 
   /* Accent – interactive elements, CTAs */
