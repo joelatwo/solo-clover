@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,14 +10,14 @@
 .content {
   max-width: 1000px;
   width: 100%;
-  background: white;
+  background: var(--color-surface);
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
   color: white;
   padding: 60px 40px;
   text-align: center;
@@ -39,14 +39,14 @@
 
 .rules {
   padding: 60px 40px;
-  background: #f8f9fa;
+  background: var(--color-surface-subtle);
 }
 
 .rules h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #333;
+  color: var(--color-text-strong);
 }
 
 .rulesGrid {
@@ -60,7 +60,7 @@
   align-items: flex-start;
   gap: 20px;
   padding: 30px;
-  background: white;
+  background: var(--color-surface);
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition:
@@ -76,7 +76,7 @@
 .ruleNumber {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -90,31 +90,31 @@
 .ruleContent h3 {
   margin: 0 0 15px 0;
   font-size: 1.4rem;
-  color: #333;
+  color: var(--color-text-strong);
 }
 
 .ruleContent p {
   margin: 0;
-  color: #666;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
 .scoring {
   padding: 60px 40px;
-  background: white;
+  background: var(--color-surface);
 }
 
 .scoring h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #333;
+  color: var(--color-text-strong);
 }
 
 .scoringTable {
   max-width: 500px;
   margin: 0 auto;
-  background: #f8f9fa;
+  background: var(--color-surface-subtle);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -125,7 +125,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .scoringRow:last-child {
@@ -134,44 +134,44 @@
 
 .attempt {
   font-weight: 600;
-  color: #333;
+  color: var(--color-text-strong);
   font-size: 1.1rem;
 }
 
 .points {
   font-weight: bold;
-  color: #28a745;
+  color: var(--color-success);
   font-size: 1.2rem;
 }
 
 .gameModes {
   padding: 60px 40px;
-  background: #f8f9fa;
+  background: var(--color-surface-subtle);
 }
 
 .gameModes h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #333;
+  color: var(--color-text-strong);
 }
 
 .feedback {
   padding: 60px 40px;
   text-align: center;
-  background: white;
-  border-top: 1px solid #e9ecef;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }
 
 .feedback h2 {
   margin: 0 0 16px 0;
-  color: #333;
+  color: var(--color-text-strong);
   font-size: 2rem;
 }
 
 .feedback p {
   margin: 0 auto 24px auto;
-  color: #666;
+  color: var(--color-text-muted);
   max-width: 640px;
   line-height: 1.6;
   font-size: 1.1rem;
@@ -179,7 +179,7 @@
 
 .feedbackButton {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -197,7 +197,7 @@
   left: 50%;
   top: calc(100% + 12px);
   transform: translateX(-50%) translateY(-4px);
-  background: #333;
+  background: var(--color-text-strong);
   color: #fff;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -215,7 +215,7 @@
 
 .feedbackButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.35);
 }
 
 .feedbackButton:hover::after,
@@ -234,7 +234,7 @@
 
 .modeCard {
   display: block;
-  background: white;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 40px;
   text-align: center;
@@ -253,7 +253,7 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
 }
 
 .modeCard:hover {
@@ -269,18 +269,18 @@
 .modeCard h3 {
   font-size: 1.8rem;
   margin: 0 0 20px 0;
-  color: #333;
+  color: var(--color-text-strong);
 }
 
 .modeCard p {
-  color: #666;
+  color: var(--color-text-muted);
   line-height: 1.6;
   margin-bottom: 30px;
 }
 
 .modeButton {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient);
   color: white;
   padding: 15px 30px;
   border-radius: 50px;
@@ -291,25 +291,25 @@
 
 .modeCard:hover .modeButton {
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.4);
 }
 
 .support {
   padding: 60px 40px;
   text-align: center;
-  background: linear-gradient(135deg, #ffe4e6 0%, #fff0f3 100%);
-  border-top: 1px solid #e9ecef;
+  background: var(--color-support-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .support h2 {
   margin: 0 0 16px 0;
-  color: #333;
+  color: var(--color-text-strong);
   font-size: 2rem;
 }
 
 .support p {
   margin: 0 auto 32px auto;
-  color: #666;
+  color: var(--color-text-muted);
   max-width: 640px;
   line-height: 1.6;
   font-size: 1.1rem;
@@ -318,9 +318,9 @@
 .footer {
   padding: 40px;
   text-align: center;
-  background: #f8f9fa;
-  color: #666;
-  border-top: 1px solid #e9ecef;
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer p {

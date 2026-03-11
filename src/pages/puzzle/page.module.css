@@ -1,10 +1,10 @@
 .container {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-surface-subtle);
 }
 
 .backButton:hover {
-  background: #545b62;
+  background: var(--color-neutral-hover);
   transform: translateY(-1px);
 }
 
@@ -14,13 +14,13 @@
 
 .titleSection h1 {
   margin: 0 0 5px 0;
-  color: #333;
+  color: var(--color-text-strong);
   font-size: 2rem;
 }
 
 .date {
   margin: 0;
-  color: #666;
+  color: var(--color-text-muted);
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -31,5 +31,5 @@
   justify-content: center;
   min-height: 400px;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--color-text-muted);
 }

@@ -4,6 +4,61 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  /* ── Color System ─────────────────────────────────────────────────────────── */
+
+  /* Brand – primary gradient (blue-purple → purple) */
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color-primary-rgb: 102, 126, 234;
+
+  /* Accent – interactive elements, CTAs */
+  --color-accent: #007bff;
+  --color-accent-hover: #0056b3;
+  --color-accent-rgb: 0, 123, 255;
+  --color-accent-subtle: #e3f2fd;
+
+  /* Neutral – secondary / muted actions */
+  --color-neutral: #6c757d;
+  --color-neutral-hover: #545b62;
+
+  /* Semantic: success / correct */
+  --color-success: #28a745;
+  --color-success-subtle: #e8f5e8;
+  --color-success-result: #d4edda;
+  --color-success-border: #c3e6cb;
+  --color-success-text: #155724;
+
+  /* Semantic: error / incorrect */
+  --color-error: #dc3545;
+  --color-error-subtle: #f8d7da;
+  --color-error-border: #f5c6cb;
+  --color-error-text: #721c24;
+  --color-error-rgb: 220, 53, 69;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8f9fa;
+  --color-surface-muted: #eeeeee;
+
+  /* Text */
+  --color-text-strong: #333333;
+  --color-text: #555555;
+  --color-text-muted: #666666;
+  --color-text-faint: #999999;
+  --color-text-on-dark: #ffffff;
+
+  /* Borders */
+  --color-border: #e9ecef;
+  --color-border-muted: #cccccc;
+  --color-border-input: #d0d7de;
+  --color-border-strong: #000000;
+
+  /* Support section background */
+  --color-support-bg: linear-gradient(135deg, #ffe4e6 0%, #fff0f3 100%);
+
+  /* ─────────────────────────────────────────────────────────────────────────── */
+
   /* Puzzle grid – card size is the source of truth; grid size is derived from it */
   --puzzle-card-size: 200px;
   --puzzle-grid-gap: 36px;
