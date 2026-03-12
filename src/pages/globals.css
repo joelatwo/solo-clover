@@ -1,20 +1,52 @@
 :root {
   font-family: var(--font-inter), sans-serif;
 
-  --joelprimary: yellow;
+  /* --- Core Palette --- */
+  --clover-green-deep: #2d6a2d; /* Rich forest green */
+  --clover-green-mid: #4a9e4a; /* Fresh clover green */
+  --clover-green-bright: #6abf69; /* Spring leaf green */
+  --clover-green-light: #a8d5a2; /* Pale meadow green */
+  --clover-green-mist: #d8f0d4; /* Barely-there green tint */
+
+  --clover-cream: #fdf8ee; /* Warm parchment — primary bg */
+  --clover-cream-deep: #f0e9d6; /* Card / surface */
+  --clover-cream-border: #ddd0b3; /* Soft border */
+
+  --clover-yellow: #f5c842; /* Sunflower accent */
+  --clover-yellow-soft: #fde8a0; /* Pale yellow highlight */
+
+  --clover-coral: #e8735a; /* Warm red accent */
+  --clover-sky: #7abde8; /* Soft blue accent */
+  --clover-lavender: #b39ddb; /* Soft purple accent */
+
+  --clover-brown: #5c3d1e; /* Wood / ink brown */
+  --clover-brown-light: #a07850; /* Warm tan */
+
+  --clover-ink: #1e2d1e; /* Near-black text */
+  --clover-ink-mid: #3d4f3d; /* Secondary text */
+  --clover-ink-soft: #7a8c7a; /* Placeholder / muted */
+
+  --joelprimary: var(--clover-green-mid);
   --joelprimary-text: white;
-  --joelsecondary: yellow;
-  --joelsecondary-text: white;
+  --joelprimary-hover: var(--clover-green-bright);
+  --joelsecondary: white;
+  --joelsecondary-text: black;
+  --joelsecondary-hover: var(--clover-cream);
+  --joeltertiary: var(--clover-lavender);
+  --joeltertiary-text: white;
   --joelbackground: white;
   --joelbackground-font: black;
+  --joelbackground-hover: #f0f0f0;
 
-  --joelbackground-header: yellow;
+  --joelbackground-header: var(--clover-green-deep);
 
   --background: #ffffff;
   --foreground: #171717;
 
   /* --- Border Radius --- */
-  --radius-sm: 0.5rem; /* Slightly rounded */
+  --border-solid: 3px solid;
+  --border-primary: var(--clover-green-light);
+  --border-primary-hover: var(--clover-green-mid);
   --radius-md: 1rem; /* Card corners */
   --radius-lg: 1.5rem; /* Panel corners */
   --radius-xl: 2.5rem; /* Pill / badge */
@@ -76,6 +108,7 @@
   /* Surfaces */
   --color-surface: #ffffff;
   --color-surface-subtle: #f8f9fa;
+  --color-surface-subtle-hover: #e9ecef;
   --color-surface-muted: #eeeeee;
 
   /* Text */

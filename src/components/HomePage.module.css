@@ -18,7 +18,7 @@
 
 .header {
   background: var(--joelbackground-header);
-  color: var(--joelbackground-font);
+  color: var(--joelprimary-text);
   padding: 60px 40px;
   text-align: center;
 }

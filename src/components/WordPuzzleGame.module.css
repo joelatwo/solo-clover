@@ -24,16 +24,17 @@
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: var(--color-neutral);
-  color: white;
+  background: var(--joelsecondary);
+  color: var(--joelsecondary-text);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.2s ease;
+  border: var(--border-solid) var(--border-primary);
 }
 
 .backButton:hover {
-  background: var(--color-neutral-hover);
+  background: var(--joelsecondary-hover);
   transform: translateY(-1px);
 }
 
@@ -41,8 +42,8 @@
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: var(--color-accent);
-  color: white;
+  background: var(--joelprimary);
+  color: var(--joelprimary-text);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
@@ -53,8 +54,8 @@
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: var(--joelsecondary);
-  color: var(--joelsecondary-text);
+  background: var(--joeltertiary);
+  color: var(--joeltertiary-text);
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
@@ -96,7 +97,7 @@
 }
 
 .todayButton:hover {
-  background: var(--color-accent-hover);
+  background: var(--joelprimary-hover);
   transform: translateY(-1px);
 }
 
