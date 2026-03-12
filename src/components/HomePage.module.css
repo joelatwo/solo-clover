@@ -12,7 +12,7 @@
   width: 100%;
   background: var(--color-surface);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
@@ -62,15 +62,15 @@
   padding: 30px;
   background: var(--color-surface);
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
 }
 
 .ruleCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .ruleNumber {
@@ -117,7 +117,7 @@
   background: var(--color-surface-subtle);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
 }
 
 .scoringRow {
@@ -187,8 +187,8 @@
   border-radius: 999px;
   position: relative;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
 }
 
 .feedbackButton::after {
@@ -206,16 +206,15 @@
   width: min(320px, 80vw);
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-md);
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
   z-index: 10;
 }
 
 .feedbackButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.35);
 }
 
 .feedbackButton:hover::after,
@@ -240,15 +239,16 @@
   text-align: center;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
   position: relative;
   overflow: hidden;
 }
 
 .modeCard:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .modeIcon {
@@ -276,12 +276,14 @@
   border-radius: 50px;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
 }
 
 .modeCard:hover .modeButton {
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.4);
 }
 
 .support {
