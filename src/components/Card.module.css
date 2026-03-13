@@ -37,7 +37,7 @@
 
 .card.placed {
   cursor: default;
-  background: var(--color-accent-subtle);
+  background: var(--joeltertiary);
   border-color: var(--color-accent);
 }
 

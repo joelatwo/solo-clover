@@ -34,7 +34,7 @@
 
 .slot.dropTarget {
   border-color: var(--color-accent);
-  background: var(--color-accent-subtle);
+  background: var(--joeltertiary);
 }
 
 .slot.topLeft {
@@ -141,7 +141,7 @@
 
 .unsubmitted {
   border-color: var(--color-accent);
-  background: var(--color-accent-subtle);
+  background: var(--joeltertiary);
 }
 
 .correct {

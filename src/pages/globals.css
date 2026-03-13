@@ -7,6 +7,7 @@
   --clover-green-bright: #6abf69; /* Spring leaf green */
   --clover-green-light: #a8d5a2; /* Pale meadow green */
   --clover-green-mist: #d8f0d4; /* Barely-there green tint */
+  --clover-blue-sky: #7abde8;
 
   --clover-cream: #fdf8ee; /* Warm parchment — primary bg */
   --clover-cream-deep: #f0e9d6; /* Card / surface */
@@ -32,7 +33,7 @@
   --joelsecondary: white;
   --joelsecondary-text: black;
   --joelsecondary-hover: var(--clover-cream);
-  --joeltertiary: var(--clover-lavender);
+  --joeltertiary: var(--clover-sky);
   --joeltertiary-text: white;
   --joelbackground: white;
   --joelbackground-font: black;
@@ -85,7 +86,6 @@
   --color-accent: #007bff;
   --color-accent-hover: #0056b3;
   --color-accent-rgb: 0, 123, 255;
-  --color-accent-subtle: #e3f2fd;
 
   /* Neutral – secondary / muted actions */
   --color-neutral: #6c757d;
