@@ -16,6 +16,7 @@
   --clover-yellow: #f5c842; /* Sunflower accent */
   --clover-yellow-soft: #fde8a0; /* Pale yellow highlight */
 
+  --color-error: #dc3545;
   --clover-coral: #e8735a; /* Warm red accent */
   --clover-sky: #7abde8; /* Soft blue accent */
   --clover-lavender: #b39ddb; /* Soft purple accent */
@@ -30,6 +31,7 @@
   --joelprimary: var(--clover-green-mid);
   --joelprimary-text: white;
   --joelprimary-hover: var(--clover-green-bright);
+  --joelprimary-disabled: var(--clover-green-light);
   --joelsecondary: white;
   --joelsecondary-text: black;
   --joelsecondary-hover: var(--clover-cream);
@@ -38,6 +40,9 @@
   --joelbackground: white;
   --joelbackground-font: black;
   --joelbackground-hover: #f0f0f0;
+  --joeldestructive: var(--color-error);
+  --joeldestructive-hover: var(--color-error-hover);
+  --joeldestructive-text: white;
 
   --joelbackground-header: var(--clover-green-deep);
 
@@ -99,7 +104,6 @@
   --color-success-text: #155724;
 
   /* Semantic: error / incorrect */
-  --color-error: #dc3545;
   --color-error-subtle: #f8d7da;
   --color-error-border: #f5c6cb;
   --color-error-text: #721c24;
@@ -123,9 +127,6 @@
   --color-border-muted: #cccccc;
   --color-border-input: #d0d7de;
   --color-border-strong: #000000;
-
-  /* Support section background */
-  --color-support-bg: linear-gradient(135deg, #ffe4e6 0%, #fff0f3 100%);
 
   /* ─────────────────────────────────────────────────────────────────────────── */
 

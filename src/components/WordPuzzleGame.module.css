@@ -265,33 +265,33 @@
 }
 
 .submitButton {
-  background: var(--color-accent);
-  color: white;
+  background: var(--joelprimary);
+  color: var(--joelprimary-text);
 }
 
 .showAnswerButton {
-  background: var(--color-accent);
-  color: white;
+  background: var(--joelsecondary);
+  color: var(--joelsecondary-text);
 }
 
 .submitButton:hover:not(:disabled) {
-  background: var(--color-accent-hover);
+  background: var(--joelprimary-hover);
   transform: translateY(-2px);
 }
 
 .submitButton:disabled {
-  background: var(--color-neutral);
+  background: var(--joelprimary-disabled);
   cursor: not-allowed;
   transform: none;
 }
 
 .resetButton {
-  background: var(--color-neutral);
-  color: white;
+  background: var(--joeldestructive);
+  color: var(--joeldestructive-text);
 }
 
 .resetButton:hover {
-  background: var(--color-neutral-hover);
+  background: var(--joeldestructive-hover);
   transform: translateY(-2px);
 }
 
