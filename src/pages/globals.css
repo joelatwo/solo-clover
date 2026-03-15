@@ -80,22 +80,12 @@
   --z-modal: 200;
   --z-toast: 300;
 
-  /* ── Color System ─────────────────────────────────────────────────────────── */
-
-  /* Brand – primary gradient (blue-purple → purple) */
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
-  --color-primary-rgb: 102, 126, 234;
+  /* OLD COLORS */
 
   /* Accent – interactive elements, CTAs */
   --color-accent: #007bff;
   --color-accent-hover: #0056b3;
   --color-accent-rgb: 0, 123, 255;
-
-  /* Neutral – secondary / muted actions */
-  --color-neutral: #6c757d;
-  --color-neutral-hover: #545b62;
-
   /* Semantic: success / correct */
   --color-success: #28a745;
   --color-success-subtle: #e8f5e8;

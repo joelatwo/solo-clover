@@ -4,7 +4,7 @@
 }
 
 .backButton:hover {
-  background: var(--color-neutral-hover);
+  background: var(--joelsecondary-hover);
   transform: translateY(-1px);
 }
 
