@@ -115,6 +115,69 @@ describe("useGameLogic", () => {
     });
   });
 
+  it("clears only affected slot validation when a card is removed after submission", () => {
+    const { result } = renderHook(() => useGameLogic(puzzleFixture));
+    const cards = puzzleFixture.cards;
+
+    act(() => {
+      result.current.placeCard(cards[0], "topLeft");
+      result.current.placeCard(cards[1], "topRight");
+      result.current.placeCard(cards[2], "bottomRight");
+      result.current.placeCard(cards[3], "bottomLeft");
+    });
+
+    act(() => {
+      result.current.submitSolution();
+    });
+
+    expect(result.current.cardsCorrectness).toEqual({
+      topLeft: true,
+      topRight: true,
+      bottomLeft: true,
+      bottomRight: true,
+    });
+
+    act(() => {
+      result.current.removeCard("topLeft");
+    });
+
+    expect(result.current.cardsCorrectness).toEqual({
+      topLeft: null,
+      topRight: true,
+      bottomLeft: true,
+      bottomRight: true,
+    });
+  });
+
+  it("clears only affected slot validation when a new card is placed", () => {
+    const { result } = renderHook(() => useGameLogic(puzzleFixture));
+    const cards = puzzleFixture.cards;
+
+    act(() => {
+      result.current.placeCard(cards[0], "topLeft");
+      result.current.placeCard(cards[1], "topRight");
+      result.current.placeCard(cards[2], "bottomRight");
+      result.current.placeCard(cards[3], "bottomLeft");
+    });
+
+    act(() => {
+      result.current.submitSolution();
+    });
+
+    const replacement = { ...cards[0], id: "replacement" };
+
+    act(() => {
+      result.current.placeCard(replacement, "topLeft");
+    });
+
+    expect(result.current.cardsCorrectness).toEqual({
+      topLeft: null,
+      topRight: true,
+      bottomLeft: true,
+      bottomRight: true,
+    });
+  });
+
   it("returns empty saved state when localStorage is malformed", () => {
     localStorage.setItem("puzzle-1-1-2026", "not-json");
     const { result } = renderHook(() => useGameLogic(puzzleFixture));

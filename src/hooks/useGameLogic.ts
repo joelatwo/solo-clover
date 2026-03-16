@@ -74,11 +74,32 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     });
   };
 
+  const resetCardsCorrectnessForSlots = (positions: SlotPosition[]) => {
+    setCardsCorrectness((prev) => {
+      if (prev === null || prev === undefined) {
+        return prev;
+      }
+
+      const updated: CardCorrectnessType = { ...prev };
+      positions.forEach((slotPosition) => {
+        updated[slotPosition] = null;
+      });
+
+      return updated;
+    });
+  };
+
   const placeCard = (
     card: Card,
     position: SlotPosition,
     sourcePosition?: SlotPosition | null,
   ) => {
+    const changedSlots: SlotPosition[] = [position];
+    if (sourcePosition && sourcePosition !== position) {
+      changedSlots.push(sourcePosition);
+    }
+    resetCardsCorrectnessForSlots(changedSlots);
+
     setPlacedCards((prev) => {
       const newPlacedCards = { ...prev };
       const existingCard = newPlacedCards[position];
@@ -116,6 +137,8 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const removeCard = (position: SlotPosition) => {
+    resetCardsCorrectnessForSlots([position]);
+
     const card = placedCards[position];
     if (card) {
       setAvailableCards((prev) => [...prev, card]);

@@ -84,6 +84,10 @@ export default function Puzzle({
         return styles.unsubmitted;
       }
 
+      if (cardsCorrectness[position] === null) {
+        return styles.unsubmitted;
+      }
+
       return cardsCorrectness[position] === true
         ? styles.correct
         : styles.incorrect;

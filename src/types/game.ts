@@ -28,10 +28,10 @@ export interface GameData {
 }
 
 export interface CardCorrectnessType {
-  topLeft: boolean;
-  topRight: boolean;
-  bottomLeft: boolean;
-  bottomRight: boolean;
+  topLeft: boolean | null;
+  topRight: boolean | null;
+  bottomLeft: boolean | null;
+  bottomRight: boolean | null;
 }
 
 export interface PlacedCardsType {
