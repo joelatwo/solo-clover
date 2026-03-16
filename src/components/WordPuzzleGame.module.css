@@ -103,7 +103,7 @@
 
 .header h1 {
   margin: 0;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
   font-size: 2.5rem;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .cardBarTitle {
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
   transform: rotate(180deg);
   padding: 8px 0;
 }
@@ -192,7 +192,7 @@
 
 .cardBarChevron {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
 }
 
 .cardBarContent {
@@ -288,13 +288,13 @@
 .gameComplete p {
   font-size: 1.1rem;
   margin: 8px 0;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
 }
 
 .loading {
   text-align: center;
   font-size: 1.2rem;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
   padding: 50px;
 }
 
@@ -322,12 +322,12 @@
 .modalContent h2 {
   margin-top: 0;
   margin-bottom: 12px;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
 }
 
 .modalContent p {
   margin-bottom: 20px;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
 }
 
 .modalButton {

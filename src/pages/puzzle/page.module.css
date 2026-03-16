@@ -14,13 +14,13 @@
 
 .titleSection h1 {
   margin: 0 0 5px 0;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
   font-size: 2rem;
 }
 
 .date {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -31,5 +31,5 @@
   justify-content: center;
   min-height: 400px;
   font-size: 1.2rem;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
 }

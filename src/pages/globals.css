@@ -90,15 +90,6 @@
   --z-modal: 200;
   --z-toast: 300;
 
-  /* OLD COLORS */
-
-  /* Text */
-  --color-text-strong: #333333;
-  --color-text: #555555;
-  --color-text-muted: #666666;
-  --color-text-faint: #999999;
-  --color-text-on-dark: #ffffff;
-
   /* ─────────────────────────────────────────────────────────────────────────── */
 
   /* Puzzle grid – card size is the source of truth; grid size is derived from it */

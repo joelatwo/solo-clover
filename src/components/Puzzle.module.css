@@ -60,13 +60,13 @@
 .clue {
   font-weight: bold;
   font-size: 14px;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
   margin-bottom: 4px;
 }
 
 .words {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
   text-align: center;
   margin-bottom: 8px;
 }
@@ -81,13 +81,13 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 10px;
-  color: var(--color-text-muted);
+  color: var(--joelbackground-font);
   white-space: nowrap;
 }
 
 .dropZone {
   font-size: 12px;
-  color: var(--color-text-faint);
+  color: var(--joelbackground-font);
   text-align: center;
   padding: 10px;
   width: 100%;
@@ -126,7 +126,7 @@
 .outerWordLabel {
   font-size: var(--outer-word-size);
   font-weight: bold;
-  color: var(--color-text-strong);
+  color: var(--joelbackground-font);
   background: var(--joelbackground);
   padding: 8px 12px;
   border-radius: 6px;
@@ -142,16 +142,19 @@
 .unsubmitted {
   border-color: var(--border-tertiary);
   background: var(--joelbackground);
+  color: var(--joelbackground-font);
 }
 
 .correct {
   border-color: var(--success-border);
   background: var(--success);
+  color: var(--background-dark-font);
 }
 
 .incorrect {
   border-color: var(--error-border);
   background: var(--error);
+  color: var(--background-dark-font);
 }
 
 /* Mobile responsive text sizing */
