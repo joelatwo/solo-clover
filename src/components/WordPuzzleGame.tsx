@@ -209,7 +209,7 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
       completionTriggeredBySubmitRef.current &&
       gameComplete &&
       !wasGameCompleteRef.current &&
-      score > 0
+      score >= 0
     ) {
       setShowComeBackModal(true);
       completionTriggeredBySubmitRef.current = false;

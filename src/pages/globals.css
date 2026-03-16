@@ -8,6 +8,7 @@
   --clover-green-light: #a8d5a2; /* Pale meadow green */
   --clover-green-mist: #d8f0d4; /* Barely-there green tint */
   --clover-blue-sky: #7abde8;
+  --clover-blue: #007bff;
 
   --clover-cream: #fdf8ee; /* Warm parchment — primary bg */
   --clover-cream-deep: #f0e9d6; /* Card / surface */
@@ -17,6 +18,7 @@
   --clover-yellow-soft: #fde8a0; /* Pale yellow highlight */
 
   --color-error: #dc3545;
+  --dark-red: #721c24;
   --clover-coral: #e8735a; /* Warm red accent */
   --clover-sky: #7abde8; /* Soft blue accent */
   --clover-lavender: #b39ddb; /* Soft purple accent */
@@ -39,20 +41,28 @@
   --joeltertiary-text: white;
   --joelbackground: white;
   --joelbackground-font: black;
+  --background-dark-font: white;
   --joelbackground-hover: #f0f0f0;
   --joeldestructive: var(--color-error);
   --joeldestructive-hover: var(--color-error-hover);
   --joeldestructive-text: white;
+  --error: var(--color-error);
+  --light-grey: #d3d3d3;
+  --light-grey-border: #cccccc;
 
   --joelbackground-header: var(--clover-green-deep);
 
+  --success: var(--clover-green-bright);
   --background: #ffffff;
   --foreground: #171717;
 
   /* --- Border Radius --- */
   --border-solid: 3px solid;
   --border-primary: var(--clover-green-light);
+  --border-tertiary: var(--clover-blue);
   --border-primary-hover: var(--clover-green-mid);
+  --success-border: var(--clover-green-deep);
+  --error-border: var(--dark-red);
   --radius-md: 1rem; /* Card corners */
   --radius-lg: 1.5rem; /* Panel corners */
   --radius-xl: 2.5rem; /* Pill / badge */
@@ -82,41 +92,12 @@
 
   /* OLD COLORS */
 
-  /* Accent – interactive elements, CTAs */
-  --color-accent: #007bff;
-  --color-accent-hover: #0056b3;
-  --color-accent-rgb: 0, 123, 255;
-  /* Semantic: success / correct */
-  --color-success: #28a745;
-  --color-success-subtle: #e8f5e8;
-  --color-success-result: #d4edda;
-  --color-success-border: #c3e6cb;
-  --color-success-text: #155724;
-
-  /* Semantic: error / incorrect */
-  --color-error-subtle: #f8d7da;
-  --color-error-border: #f5c6cb;
-  --color-error-text: #721c24;
-  --color-error-rgb: 220, 53, 69;
-
-  /* Surfaces */
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f8f9fa;
-  --color-surface-subtle-hover: #e9ecef;
-  --color-surface-muted: #eeeeee;
-
   /* Text */
   --color-text-strong: #333333;
   --color-text: #555555;
   --color-text-muted: #666666;
   --color-text-faint: #999999;
   --color-text-on-dark: #ffffff;
-
-  /* Borders */
-  --color-border: #e9ecef;
-  --color-border-muted: #cccccc;
-  --color-border-input: #d0d7de;
-  --color-border-strong: #000000;
 
   /* ─────────────────────────────────────────────────────────────────────────── */
 
@@ -132,13 +113,6 @@
   --inner-word-size: 24px;
   --puzzle-outer-word-distance: 24px;
   --cardBar-size: 360px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 /* Mobile responsive sizes */
@@ -173,8 +147,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--joelbackground-font);
+  background: var(--joelbackground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -188,10 +162,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

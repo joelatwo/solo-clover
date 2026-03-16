@@ -10,7 +10,7 @@
 .content {
   max-width: 1000px;
   width: 100%;
-  background: var(--color-surface);
+  background: var(--joelbackground);
   border-radius: 20px;
   box-shadow: var(--shadow-md);
   overflow: hidden;
@@ -39,7 +39,7 @@
 
 .rules {
   padding: 60px 40px;
-  background: var(--color-surface-subtle);
+  background: var(--joelbackground);
 }
 
 .rules h2 {
@@ -60,7 +60,7 @@
   align-items: flex-start;
   gap: 20px;
   padding: 30px;
-  background: var(--color-surface);
+  background: var(--joelbackground);
   border-radius: 15px;
   box-shadow: var(--shadow-md);
   transition:
@@ -101,7 +101,7 @@
 
 .scoring {
   padding: 60px 40px;
-  background: var(--color-surface);
+  background: var(--joelbackground);
 }
 
 .scoring h2 {
@@ -114,7 +114,7 @@
 .scoringTable {
   max-width: 500px;
   margin: 0 auto;
-  background: var(--color-surface-subtle);
+  background: var(--joelbackground);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -125,11 +125,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.scoringRow:last-child {
-  border-bottom: none;
 }
 
 .attempt {
@@ -140,13 +135,13 @@
 
 .points {
   font-weight: bold;
-  color: var(--color-success);
+  color: var(--success);
   font-size: 1.2rem;
 }
 
 .gameModes {
   padding: 60px 40px;
-  background: var(--color-surface-subtle);
+  background: var(--joelbackground);
 }
 
 .gameModes h2 {
@@ -159,8 +154,7 @@
 .feedback {
   padding: 60px 40px;
   text-align: center;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background: var(--joelbackground);
 }
 
 .feedback h2 {
@@ -233,7 +227,7 @@
 
 .modeCard {
   display: block;
-  background: var(--color-surface);
+  background: var(--joelbackground);
   border-radius: 20px;
   padding: 40px;
   text-align: center;
@@ -290,7 +284,6 @@
   padding: 60px 40px;
   text-align: center;
   background: var(--joelbackground);
-  border-top: 1px solid var(--color-border);
 }
 
 .support h2 {
@@ -310,9 +303,8 @@
 .footer {
   padding: 40px;
   text-align: center;
-  background: var(--color-surface-subtle);
+  background: var(--joelbackground);
   color: var(--color-text-muted);
-  border-top: 1px solid var(--color-border);
 }
 
 .footer p {

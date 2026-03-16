@@ -19,13 +19,13 @@
 }
 
 .slot {
-  border: 2px dashed var(--color-border-muted);
+  border: 2px dashed; /* color determined elsewhere */
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--color-surface-subtle);
+  background: var(--joelbackground);
   transition: all 0.2s ease;
   cursor: pointer;
   min-height: var(--puzzle-card-size);
@@ -33,7 +33,7 @@
 }
 
 .slot.dropTarget {
-  border-color: var(--color-accent);
+  border-color: var(--border-tertiary);
   background: var(--joeltertiary);
 }
 
@@ -127,7 +127,7 @@
   font-size: var(--outer-word-size);
   font-weight: bold;
   color: var(--color-text-strong);
-  background: var(--color-surface);
+  background: var(--joelbackground);
   padding: 8px 12px;
   border-radius: 6px;
   box-shadow: var(--shadow-md);
@@ -140,18 +140,18 @@
 }
 
 .unsubmitted {
-  border-color: var(--color-accent);
-  background: var(--joeltertiary);
+  border-color: var(--border-tertiary);
+  background: var(--joelbackground);
 }
 
 .correct {
-  border-color: var(--color-success);
-  background: var(--color-success-subtle);
+  border-color: var(--success-border);
+  background: var(--success);
 }
 
 .incorrect {
-  border-color: var(--color-error);
-  background: var(--color-error-subtle);
+  border-color: var(--error-border);
+  background: var(--error);
 }
 
 /* Mobile responsive text sizing */

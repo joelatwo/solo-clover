@@ -1,7 +1,6 @@
 .shareBoxBorder {
   width: 100px;
   height: 100px;
-  border: 1px solid var(--color-border-strong);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4px;
@@ -14,11 +13,11 @@
 }
 
 .correct {
-  background-color: var(--color-success);
+  background-color: var(--success);
 }
 
 .false {
-  background-color: var(--color-error);
+  background-color: var(--error);
 }
 
 .shareButton {

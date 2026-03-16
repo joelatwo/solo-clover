@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--joelbackground-font);
 }
 
 .card:hover {
@@ -38,18 +39,21 @@
 .card.placed {
   cursor: default;
   background: var(--joeltertiary);
-  border-color: var(--color-accent);
+  border-color: var(--border-tertiary);
+  color: var(--background-dark-font);
 }
 
 .card.correct {
-  background: var(--color-success-subtle);
-  border-color: var(--color-success);
+  background: var(--success);
+  border-color: var(--success-border);
+  color: var(--background-dark-font);
 }
 
 .card.incorrect {
-  border-color: var(--color-error);
-  background: var(--color-error-subtle);
+  border-color: var(--error-border);
+  background: var(--error);
   box-shadow: var(--shadow-md);
+  color: var(--background-dark-font);
 }
 
 .edge {
@@ -64,7 +68,7 @@
 .word {
   transform: rotate(180deg);
   display: inline-block;
-  color: var(--color-text-strong);
+  color: inherit;
   text-transform: capitalize;
 }
 
@@ -110,8 +114,6 @@
   padding: 0;
   border: none;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--color-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -120,6 +122,15 @@
     background 0.15s ease,
     color 0.15s ease;
   z-index: 1;
+  background-color: inherit;
+  color: inherit;
+}
+
+.rotateBtnLeft:hover,
+.rotateBtnRight:hover,
+.removeCardButton:hover {
+  width: 24px;
+  height: 24px;
 }
 
 .removeCardButton {
@@ -130,12 +141,6 @@
 .rotateBtnLeft,
 .rotateBtnRight {
   bottom: 4px;
-}
-
-.rotateBtnLeft:hover,
-.rotateBtnRight:hover {
-  background: rgba(var(--color-accent-rgb), 0.2);
-  color: var(--color-accent);
 }
 
 .rotateBtnLeft {
