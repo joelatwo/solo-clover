@@ -203,6 +203,11 @@ test("3-1-2026 allows three incorrect submissions and reveal hint/solution", asy
   await expect(page.getByText("Final Score: 0")).toBeVisible();
   await expect(page.getByText("Attempts Used: 3")).toBeVisible();
 
+  const gotItButton = page.getByRole("button", { name: "Got it" });
+  await expect(gotItButton).toBeVisible();
+  await gotItButton.click();
+  await expect(gotItButton).not.toBeVisible();
+
   const revealButton = page
     .getByRole("button", { name: /Show Hint|Show Solution/i })
     .first();
