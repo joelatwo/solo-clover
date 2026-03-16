@@ -94,6 +94,10 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     position: SlotPosition,
     sourcePosition?: SlotPosition | null,
   ) => {
+    if (sourcePosition === position) {
+      return;
+    }
+
     const changedSlots: SlotPosition[] = [position];
     if (sourcePosition && sourcePosition !== position) {
       changedSlots.push(sourcePosition);

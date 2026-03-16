@@ -43,23 +43,23 @@ describe("useGameLogic", () => {
     act(() => {
       result.current.rotateCard("tl", "right");
     });
-    expect(result.current.availableCards.find((c) => c.id === "tl")?.rotation).toBe(
-      90,
-    );
+    expect(
+      result.current.availableCards.find((c) => c.id === "tl")?.rotation,
+    ).toBe(90);
 
     act(() => {
       result.current.rotateCard("tl", "left");
     });
-    expect(result.current.availableCards.find((c) => c.id === "tl")?.rotation).toBe(
-      0,
-    );
+    expect(
+      result.current.availableCards.find((c) => c.id === "tl")?.rotation,
+    ).toBe(0);
 
     act(() => {
       result.current.rotateCard("tl", "left");
     });
-    expect(result.current.availableCards.find((c) => c.id === "tl")?.rotation).toBe(
-      270,
-    );
+    expect(
+      result.current.availableCards.find((c) => c.id === "tl")?.rotation,
+    ).toBe(270);
   });
 
   it("places and removes a card between available and board", () => {
@@ -71,14 +71,43 @@ describe("useGameLogic", () => {
     });
 
     expect(result.current.placedCards.topLeft?.id).toBe(firstCard.id);
-    expect(result.current.availableCards.map((c) => c.id)).not.toContain(firstCard.id);
+    expect(result.current.availableCards.map((c) => c.id)).not.toContain(
+      firstCard.id,
+    );
 
     act(() => {
       result.current.removeCard("topLeft");
     });
 
     expect(result.current.placedCards.topLeft).toBeNull();
-    expect(result.current.availableCards.map((c) => c.id)).toContain(firstCard.id);
+    expect(result.current.availableCards.map((c) => c.id)).toContain(
+      firstCard.id,
+    );
+  });
+
+  it("does not duplicate a card when dropped back into the same slot", () => {
+    const { result } = renderHook(() => useGameLogic(puzzleFixture));
+    const firstCard = result.current.availableCards[0];
+
+    act(() => {
+      result.current.placeCard(firstCard, "topLeft");
+    });
+
+    expect(result.current.availableCards.map((c) => c.id)).not.toContain(
+      firstCard.id,
+    );
+
+    act(() => {
+      result.current.placeCard(firstCard, "topLeft", "topLeft");
+    });
+
+    expect(result.current.placedCards.topLeft?.id).toBe(firstCard.id);
+    expect(result.current.availableCards.map((c) => c.id)).not.toContain(
+      firstCard.id,
+    );
+    expect(
+      result.current.availableCards.filter((c) => c.id === firstCard.id),
+    ).toHaveLength(0);
   });
 
   it("submits a correct solution, updates score, attempts, and localStorage", () => {
