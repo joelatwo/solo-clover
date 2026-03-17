@@ -19,7 +19,7 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
     states: SavedGameState[],
     dateKey?: string,
   ) => {
-    const map = (v: boolean) => (v ? "🟩" : "🟥");
+    const map = (v: boolean | null | undefined) => (v === true ? "🟩" : "🟥");
 
     const body = states
       .map((s) => {
