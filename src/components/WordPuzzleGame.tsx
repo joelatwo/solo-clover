@@ -168,6 +168,14 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     return score > 0 || numberOfAttempts === 3;
   };
 
+  const canShare =
+    cardsCorrectness !== null &&
+    cardsCorrectness !== undefined &&
+    cardsCorrectness.topLeft !== null &&
+    cardsCorrectness.topRight !== null &&
+    cardsCorrectness.bottomLeft !== null &&
+    cardsCorrectness.bottomRight !== null;
+
   useEffect(() => {
     // Load the current day puzzle from local storage
     const { savedGameState, numberOfAttempts } = getLocalStorage();
@@ -348,7 +356,10 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               <p>Final Score: {score}</p>
               <p>Attempts Used: {numberOfAttempts}</p>
 
-              <ShareButton getLocalStorage={getLocalStorage} />
+              <ShareButton
+                getLocalStorage={getLocalStorage}
+                canShare={canShare}
+              />
             </div>
           )}
 

@@ -9,9 +9,10 @@ type Props = {
     savedGameState: SavedGameState[];
     numberOfAttempts: number;
   };
+  canShare: boolean;
 };
 
-export const ShareButton = ({ getLocalStorage }: Props) => {
+export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const formatSavedGameStates = (
@@ -83,7 +84,12 @@ export const ShareButton = ({ getLocalStorage }: Props) => {
     <>
       <button
         className={styles.shareButton}
+        disabled={!canShare}
         onClick={() => {
+          if (!canShare) {
+            return;
+          }
+
           const localStorage = getLocalStorage();
           const formatted = formatSavedGameStates(
             localStorage.savedGameState || [],

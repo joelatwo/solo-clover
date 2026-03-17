@@ -41,6 +41,12 @@ describe("WordPuzzleGame UI interactions", () => {
     window.history.pushState({}, "", "/puzzle/1-1-2026");
   });
 
+  it("keeps Share disabled until card correctness values exist", () => {
+    render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+
+    expect(screen.getByRole("button", { name: /share/i })).toBeDisabled();
+  });
+
   it("renders a feedback link to GitHub issues", () => {
     render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
 
