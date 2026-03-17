@@ -249,8 +249,13 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
         </div>
         <h1>{getDateKey(new Date(initialPuzzle.id))}</h1>
         <div className={styles.scoreInfo}>
-          <div className={styles.score}>Score: {score}</div>
-          <div className={styles.attempts}>Attempts: {numberOfAttempts}/3</div>
+          {isGameComplete() ? (
+            <div className={styles.score}>Score: {score}</div>
+          ) : (
+            <div className={styles.attempts}>
+              Attempts: {numberOfAttempts}/3
+            </div>
+          )}
         </div>
       </div>
       <DndProvider backend={HTML5Backend}>

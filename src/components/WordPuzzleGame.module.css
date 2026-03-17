@@ -7,10 +7,12 @@
 
 .header {
   padding: 20px;
+  padding-right: 48px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+  column-gap: 20px;
   border-bottom: 2px solid var(--light-grey);
 }
 
@@ -105,13 +107,17 @@
   margin: 0;
   color: var(--joelbackground-font);
   font-size: 2.5rem;
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .scoreInfo {
   display: flex;
   gap: 20px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  padding-right: 12px;
 }
 
 .score {
@@ -358,19 +364,37 @@
     z-index: 2147483600;
   }
 
+  .feedbackButton {
+    display: none;
+  }
+
   .header {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "buttons buttons"
+      "title metric";
+    align-items: center;
+    row-gap: 10px;
+    column-gap: 12px;
     padding: 16px;
+    text-align: center;
+  }
+
+  .buttonGroup {
+    grid-area: buttons;
+    justify-self: center;
   }
 
   .header h1 {
+    grid-area: title;
+    justify-self: center;
     font-size: 1.8rem;
   }
 
   .scoreInfo {
-    gap: 15px;
+    grid-area: metric;
+    justify-self: center;
     font-size: 1rem;
   }
 
