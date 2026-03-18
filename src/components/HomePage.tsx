@@ -45,8 +45,10 @@ export default function HomePage() {
               <div className={styles.ruleContent}>
                 <h3>Match the Clues</h3>
                 <p>
-                  Each puzzle slot shows a clue and two words that should match
-                  the card words on that side.
+                  The two words on the outside of each side should relate to
+                  that side&apos;s clue: the top two words match the top clue,
+                  the right two match the right clue, and so on. The
+                  inner-facing words do not matter.
                 </p>
               </div>
             </div>
@@ -65,30 +67,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className={styles.scoring}>
-          <h2>Scoring System</h2>
-          <div className={styles.scoringTable}>
-            <div className={styles.scoringRow}>
-              <span className={styles.attempt}>1st Attempt</span>
-              <span className={styles.points}>6 points</span>
-            </div>
-            <div className={styles.scoringRow}>
-              <span className={styles.attempt}>2nd Attempt</span>
-              <span className={styles.points}>5 points</span>
-            </div>
-            <div className={styles.scoringRow}>
-              <span className={styles.attempt}>3rd+ Attempt</span>
-              <span className={styles.points}>1 point per correct match</span>
-            </div>
-          </div>
-        </section>
-
         <section className={styles.gameModes}>
-          <h2>Choose Your Game Mode</h2>
+          <h2>Daily Challenge</h2>
           <div className={styles.modeCards}>
             <Link href={`/puzzle/${dailyPuzzle}`} className={styles.modeCard}>
               <div className={styles.modeIcon}>📅</div>
-              <h3>Daily Challenge</h3>
               <p>
                 Take on today&apos;s unique puzzle. New challenges every day
                 with different word combinations.
