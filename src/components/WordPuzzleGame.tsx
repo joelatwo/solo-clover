@@ -355,11 +355,6 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               <h2>Game Complete!</h2>
               <p>Final Score: {score}</p>
               <p>Attempts Used: {numberOfAttempts}</p>
-
-              <ShareButton
-                getLocalStorage={getLocalStorage}
-                canShare={canShare}
-              />
             </div>
           )}
 
@@ -377,13 +372,23 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
               >
                 <h2 id="come-back-modal-title">Game Complete!</h2>
                 <p>{getComeBackMessage()}</p>
-                <button
-                  type="button"
-                  className={styles.modalButton}
-                  onClick={() => setShowComeBackModal(false)}
-                >
-                  Got it
-                </button>
+                <div className={styles.modalStats}>
+                  <p>Final Score: {score}</p>
+                  <p>Attempts Used: {numberOfAttempts}</p>
+                </div>
+                <div className={styles.modalActions}>
+                  <ShareButton
+                    getLocalStorage={getLocalStorage}
+                    canShare={canShare}
+                  />
+                  <button
+                    type="button"
+                    className={styles.modalButton}
+                    onClick={() => setShowComeBackModal(false)}
+                  >
+                    Got it
+                  </button>
+                </div>
               </div>
             </div>
           ) : null}

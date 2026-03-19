@@ -336,18 +336,45 @@
   color: var(--joelbackground-font);
 }
 
-.modalButton {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  background: var(--joelprimary);
-  color: var(--joelprimary-text);
-  font-weight: 600;
-  cursor: pointer;
+.modalStats {
+  margin-bottom: 20px;
 }
 
-.modalButton:hover {
-  background: var(--joelprimary-hover);
+.modalStats p {
+  margin: 6px 0;
+  color: var(--joelbackground-font);
+}
+
+.modalActions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.modalButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: var(--joeldestructive);
+  color: var(--joelprimary-text);
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition:
+    background-color var(--duration-normal) var(--ease-smooth),
+    transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.modalButton:hover,
+.modalButton:focus-visible {
+  background: var(--joeldestructive-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 768px) {

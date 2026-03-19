@@ -18,6 +18,7 @@
   --clover-yellow-soft: #fde8a0; /* Pale yellow highlight */
 
   --color-error: #dc3545;
+  --color-error-hover: var(--dark-red);
   --dark-red: #721c24;
   --clover-coral: #e8735a; /* Warm red accent */
   --clover-sky: #7abde8; /* Soft blue accent */

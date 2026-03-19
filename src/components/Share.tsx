@@ -81,7 +81,7 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
     }
   };
   return (
-    <>
+    <div className={styles.shareContainer}>
       <button
         className={styles.shareButton}
         disabled={!canShare}
@@ -103,8 +103,8 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
         Share
       </button>
       {copied ? (
-        <div style={{ marginLeft: 8, color: "black" }}>Copied!</div>
+        <div className={styles.copiedMessage}>Copied!</div>
       ) : null}
-    </>
+    </div>
   );
 };
