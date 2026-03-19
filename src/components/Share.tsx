@@ -102,9 +102,7 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
       >
         Share
       </button>
-      {copied ? (
-        <div className={styles.copiedMessage}>Copied!</div>
-      ) : null}
+      {copied ? <div className={styles.copiedMessage}>Copied!</div> : null}
     </div>
   );
 };
