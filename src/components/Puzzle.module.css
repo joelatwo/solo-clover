@@ -106,7 +106,7 @@
 }
 
 .outerWordRight {
-  right: calc(-1 * var(--puzzle-outer-word-distance));
+  right: calc(-1.5 * var(--puzzle-outer-word-distance));
   top: 50%;
   transform: translateY(-50%);
 }
