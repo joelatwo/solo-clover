@@ -154,8 +154,13 @@ test("3-1-2026 puzzle can be solved and submitted", async ({ page }) => {
 
   await submitButton.click();
 
-  await expect(page.getByText("Final Score: 6")).toBeVisible();
-  await expect(page.getByText("Attempts Used: 1")).toBeVisible();
+  const completionDialog = page.getByRole("dialog", {
+    name: "Game Complete!",
+  });
+  await expect(completionDialog).toBeVisible();
+
+  await expect(completionDialog.getByText("Final Score: 6")).toBeVisible();
+  await expect(completionDialog.getByText("Attempts Used: 1")).toBeVisible();
 });
 
 test("3-1-2026 allows three incorrect submissions and reveal hint/solution", async ({
@@ -200,13 +205,18 @@ test("3-1-2026 allows three incorrect submissions and reveal hint/solution", asy
   });
   await submitButton.click();
 
-  await expect(page.getByText("Final Score: 0")).toBeVisible();
-  await expect(page.getByText("Attempts Used: 3")).toBeVisible();
+  const completionDialog = page.getByRole("dialog", {
+    name: "Game Complete!",
+  });
+  await expect(completionDialog).toBeVisible();
 
-  const gotItButton = page.getByRole("button", { name: "Got it" });
+  await expect(completionDialog.getByText("Final Score: 0")).toBeVisible();
+  await expect(completionDialog.getByText("Attempts Used: 3")).toBeVisible();
+
+  const gotItButton = completionDialog.getByRole("button", { name: "Got it" });
   await expect(gotItButton).toBeVisible();
   await gotItButton.click();
-  await expect(gotItButton).not.toBeVisible();
+  await expect(completionDialog).toBeHidden();
 
   const revealButton = page
     .getByRole("button", { name: /Show Hint|Show Solution/i })
