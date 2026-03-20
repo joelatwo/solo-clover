@@ -35,6 +35,24 @@ const initialPuzzle: PuzzleType = {
   },
 };
 
+const completedAttempts = [0, 1, 2].map((attempts) => ({
+  placedCards: {
+    topLeft: null,
+    topRight: null,
+    bottomRight: null,
+    bottomLeft: null,
+  },
+  attempts,
+  cardsCorrectness: {
+    topLeft: false,
+    topRight: false,
+    bottomRight: false,
+    bottomLeft: false,
+  },
+}));
+
+const renderGame = () => render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+
 describe("WordPuzzleGame UI interactions", () => {
   beforeEach(() => {
     localStorage.clear();
@@ -42,7 +60,7 @@ describe("WordPuzzleGame UI interactions", () => {
   });
 
   it("does not show Share until the completion modal opens", () => {
-    render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+    renderGame();
 
     expect(
       screen.queryByRole("button", { name: /share/i }),
@@ -50,7 +68,7 @@ describe("WordPuzzleGame UI interactions", () => {
   });
 
   it("renders a feedback link to GitHub issues", () => {
-    render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+    renderGame();
 
     expect(
       screen.getByRole("link", { name: /give feedback/i }),
@@ -63,62 +81,14 @@ describe("WordPuzzleGame UI interactions", () => {
   it("clicking Show Solution fills all slots using real components", async () => {
     localStorage.setItem(
       "puzzle-1-1-2026",
-      JSON.stringify([
-        {
-          placedCards: {
-            topLeft: null,
-            topRight: null,
-            bottomRight: null,
-            bottomLeft: null,
-          },
-          attempts: 0,
-          cardsCorrectness: {
-            topLeft: false,
-            topRight: false,
-            bottomRight: false,
-            bottomLeft: false,
-          },
-        },
-        {
-          placedCards: {
-            topLeft: null,
-            topRight: null,
-            bottomRight: null,
-            bottomLeft: null,
-          },
-          attempts: 1,
-          cardsCorrectness: {
-            topLeft: false,
-            topRight: false,
-            bottomRight: false,
-            bottomLeft: false,
-          },
-        },
-        {
-          placedCards: {
-            topLeft: null,
-            topRight: null,
-            bottomRight: null,
-            bottomLeft: null,
-          },
-          attempts: 2,
-          cardsCorrectness: {
-            topLeft: false,
-            topRight: false,
-            bottomRight: false,
-            bottomLeft: false,
-          },
-        },
-      ]),
+      JSON.stringify(completedAttempts),
     );
 
-    render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+    renderGame();
 
-    await waitFor(() => {
-      expect(
-        screen.getByRole("button", { name: /show solution/i }),
-      ).not.toBeNull();
-    });
+    expect(
+      await screen.findByRole("button", { name: /show solution/i }),
+    ).toBeInTheDocument();
 
     expect(screen.getAllByText(/drop card here/i)).toHaveLength(4);
 
