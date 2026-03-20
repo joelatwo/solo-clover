@@ -51,7 +51,8 @@ const completedAttempts = [0, 1, 2].map((attempts) => ({
   },
 }));
 
-const renderGame = () => render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
+const renderGame = () =>
+  render(<WordPuzzleGame initialPuzzle={initialPuzzle} />);
 
 describe("WordPuzzleGame UI interactions", () => {
   beforeEach(() => {
@@ -79,10 +80,7 @@ describe("WordPuzzleGame UI interactions", () => {
   });
 
   it("clicking Show Solution fills all slots using real components", async () => {
-    localStorage.setItem(
-      "puzzle-1-1-2026",
-      JSON.stringify(completedAttempts),
-    );
+    localStorage.setItem("puzzle-1-1-2026", JSON.stringify(completedAttempts));
 
     renderGame();
 
