@@ -1,20 +1,45 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import puzzles from "@/data/puzzles";
+import styles from "../components/HomePage.module.css";
 
-// A custom Next.js 404 page that redirects users to the first puzzle
-// instead of showing the standard "Page not found" message.
 export default function Custom404() {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (puzzles && puzzles.length > 0) {
-      router.replace(`/puzzle/0`);
-    } else {
-      // fallback to home if puzzles data is unexpectedly empty
-      router.replace("/");
-    }
-  }, [router]);
-
-  return <p>Loading...</p>;
+  return (
+    <main style={{ padding: "2rem", margin: "0 auto" }}>
+      <section className={styles.support}>
+        <h1>🎉 Congrats!</h1>
+        <p>You&apos;ve reached the end of the current puzzles.</p>
+      </section>
+      <div style={{ display: "flex" }}>
+        <section className={styles.feedback}>
+          <h2>Have a suggestion or found a bug?</h2>
+          <p>
+            Send feedback directly through GitHub Issues. It helps make each
+            puzzle better.
+          </p>
+          <a
+            href="https://github.com/joelatwo/solo-clover/issues/new"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.feedbackButton}
+            data-tooltip="This goes straight to me, and I’ll take a look as soon as I can."
+          >
+            Give Feedback
+          </a>
+        </section>
+        <section className={styles.support}>
+          <h2>Love the game? Support the creator</h2>
+          <p>
+            If you enjoy Word Puzzle Game, consider buying me a coffee to help
+            support development.
+          </p>
+          <a
+            href="https://ko-fi.com/foreveroom"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.modeButton}
+          >
+            Support Me on Ko-fi
+          </a>
+        </section>
+      </div>
+    </main>
+  );
 }

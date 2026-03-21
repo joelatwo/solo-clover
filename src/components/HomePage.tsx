@@ -134,9 +134,6 @@ export default function HomePage() {
             Support Me on Ko-fi
           </a>
         </section>
-        <footer className={styles.footer}>
-          <p>Your score is saved locally and persists across sessions.</p>
-        </footer>
       </div>
     </div>
   );
