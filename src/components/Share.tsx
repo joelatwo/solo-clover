@@ -4,7 +4,7 @@ import styles from "./Share.module.css";
 
 type Props = {
   getLocalStorage: () => {
-    dateKey: string;
+    id: string;
     storageKey: string;
     savedGameState: SavedGameState[];
     numberOfAttempts: number;
@@ -15,10 +15,7 @@ type Props = {
 export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
   const [copied, setCopied] = useState(false);
 
-  const formatSavedGameStates = (
-    states: SavedGameState[],
-    dateKey?: string,
-  ) => {
+  const formatSavedGameStates = (states: SavedGameState[], id?: string) => {
     const map = (v: boolean | null | undefined) => (v === true ? "🟩" : "🟥");
 
     const body = states
@@ -42,21 +39,7 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
       );
     }, 0);
 
-    // format date as M-D-YYYY if possible, otherwise use provided string
-    const formatDate = (dk?: string) => {
-      if (!dk) {
-        const d = new Date();
-        return `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
-      }
-      const parsed = new Date(dk);
-      if (!isNaN(parsed.getTime())) {
-        return `${parsed.getMonth() + 1}-${parsed.getDate()}-${parsed.getFullYear()}`;
-      }
-      return dk;
-    };
-
-    const date = formatDate(dateKey);
-    const header = `Solo Clover ${date}: ${points} Points`;
+    const header = `Solo Clover Puzzle #${id}: ${points} Points`;
 
     // single newline after header (remove extra blank line)
     return `${header}\n${body}`;
@@ -93,7 +76,7 @@ export const ShareButton = ({ getLocalStorage, canShare }: Props) => {
           const localStorage = getLocalStorage();
           const formatted = formatSavedGameStates(
             localStorage.savedGameState || [],
-            localStorage.dateKey,
+            localStorage.id,
           );
           if (formatted) {
             copyToClipboard(formatted);

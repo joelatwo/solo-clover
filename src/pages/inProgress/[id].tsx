@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = (context) => {
   const puzzle = data[id];
   if (puzzle) {
     console.log(puzzle);
-    return { props: { puzzle: RandomizePuzzleSetup(puzzle), dateString: id } };
+    return { props: { puzzle: RandomizePuzzleSetup(puzzle), id: id } };
   }
 
   return { notFound: true };
@@ -47,9 +47,10 @@ export const getStaticProps: GetStaticProps = (context) => {
 
 type Props = {
   puzzle: PuzzleType;
+  id: number;
 };
 
-const Page = ({ puzzle }: Props) => {
+const Page = ({ puzzle, id }: Props) => {
   useEffect(() => {
     // Clear all localStorage on mount
     localStorage.clear();

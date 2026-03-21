@@ -21,7 +21,7 @@ const savedGameState: SavedGameState[] = [
 ];
 
 const getLocalStorage = () => ({
-  dateKey: "3-18-2026",
+  id: "3-18-2026",
   storageKey: "puzzle-3-18-2026",
   savedGameState,
   numberOfAttempts: 1,

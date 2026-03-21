@@ -9,8 +9,7 @@ export default function Custom404() {
 
   useEffect(() => {
     if (puzzles && puzzles.length > 0) {
-      const firstId = puzzles[0].id;
-      router.replace(`/puzzle/${firstId}`);
+      router.replace(`/puzzle/0`);
     } else {
       // fallback to home if puzzles data is unexpectedly empty
       router.replace("/");

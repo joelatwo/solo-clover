@@ -1,9 +1,42 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./HomePage.module.css";
-import { getDateKey } from "@/utils/Dates";
+import gameData from "@/data/puzzles";
+
+const isPuzzleComplete = (puzzleIndex: number) => {
+  const savedGameState = localStorage.getItem(`puzzle-${puzzleIndex}`);
+
+  if (!savedGameState) {
+    return false;
+  }
+
+  try {
+    const attempts = JSON.parse(savedGameState);
+
+    return Array.isArray(attempts) && attempts.length > 0;
+  } catch (_error) {
+    return false;
+  }
+};
+
+const getNextPuzzleIndex = () => {
+  for (let index = 0; index < gameData.length; index++) {
+    if (!isPuzzleComplete(index)) {
+      return index;
+    }
+  }
+
+  return 0;
+};
 
 export default function HomePage() {
-  const dailyPuzzle = getDateKey(new Date());
+  const [nextPuzzleIndex, setNextPuzzleIndex] = useState(0);
+
+  useEffect(() => {
+    setNextPuzzleIndex(getNextPuzzleIndex());
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -65,20 +98,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
-
-        <section className={styles.gameModes}>
-          <h2>Daily Challenge</h2>
-          <div className={styles.modeCards}>
-            <Link href={`/puzzle/${dailyPuzzle}`} className={styles.modeCard}>
-              <div className={styles.modeIcon}>📅</div>
-              <p>
-                Take on today&apos;s unique puzzle. New challenges every day
-                with different word combinations.
-              </p>
-              <div className={styles.modeButton}>Daily Challenge</div>
-            </Link>
-          </div>
+          <Link href={`/puzzle/${nextPuzzleIndex}`} className={styles.modeCard}>
+            <div className={styles.modeButton}>Let's Dive In</div>
+          </Link>
         </section>
 
         <section className={styles.feedback}>

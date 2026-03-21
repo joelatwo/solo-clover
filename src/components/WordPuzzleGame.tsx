@@ -1,8 +1,7 @@
 "use client";
 
 import { useGameLogic } from "@/hooks/useGameLogic";
-import { PuzzleType, SlotPosition, Card as CardType } from "@/types/game";
-import { getDateKey } from "@/utils/Dates";
+import { Card as CardType, PuzzleType, SlotPosition } from "@/types/game";
 import Link from "next/link";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { DndProvider, useDragLayer, useDrop } from "react-dnd";
@@ -187,13 +186,6 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
     }
   }, []);
 
-  const getCurrentDateKey = () => {
-    const today = new Date();
-    return `${today.getMonth() + 1}-${today.getDate()}-${today.getFullYear()}`;
-  };
-
-  const isToday = getCurrentDateKey() === initialPuzzle.id;
-
   const getComeBackMessage = () => {
     if (score === 6) {
       return "Perfect score! Come back tomorrow for a new puzzle.";
@@ -246,16 +238,16 @@ export default function WordPuzzleGame({ initialPuzzle }: Props) {
           >
             Give Feedback
           </a>
-          {!isToday && (
+          {
             <Link
-              href={`/puzzle/${getCurrentDateKey()}`}
+              href={`/puzzle/${(initialPuzzle.id + 1).toString()}`}
               className={styles.todayButton}
             >
-              Go to Today
+              Go Next
             </Link>
-          )}
+          }
         </div>
-        <h1>{getDateKey(new Date(initialPuzzle.id))}</h1>
+        <h1>Puzzle #{initialPuzzle.id}</h1>
         <div className={styles.scoreInfo}>
           {isGameComplete() ? (
             <div className={styles.score}>Score: {score}</div>

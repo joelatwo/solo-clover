@@ -2,11 +2,6 @@ import { act, renderHook } from "@testing-library/react";
 import { useGameLogic } from "./useGameLogic";
 import { PuzzleType } from "@/types/game";
 
-jest.mock("@/utils/Dates", () => ({
-  ...jest.requireActual("@/utils/Dates"),
-  getDateKeyFromUrl: jest.fn(() => "1-1-2026"),
-}));
-
 const puzzleFixture: PuzzleType = {
   id: "p1",
   cards: [

@@ -8,9 +8,9 @@ import { GetStaticProps } from "next";
 import styles from "./page.module.css";
 
 export function getStaticPaths() {
-  const paths = gameData.map((puzzle) => ({
+  const paths = gameData.map((puzzle, index) => ({
     params: {
-      id: puzzle.id,
+      id: String(index),
     },
   }));
   return { paths, fallback: false };
@@ -18,9 +18,11 @@ export function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = (context) => {
   const id = context?.params?.id;
-  const puzzle = gameData.find((data) => data.id === id);
+  const puzzle = gameData[Number(id)];
   if (puzzle) {
-    return { props: { puzzle: RandomizePuzzleSetup(puzzle), dateString: id } };
+    return {
+      props: { puzzle: { ...RandomizePuzzleSetup(puzzle), id: Number(id) } },
+    };
   }
 
   return { notFound: true };

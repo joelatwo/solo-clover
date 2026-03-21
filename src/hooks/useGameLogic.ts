@@ -8,7 +8,6 @@ import {
   SavedGameState,
   SlotPosition,
 } from "@/types/game";
-import { getDateKeyFromUrl } from "@/utils/Dates";
 import { useEffect, useState } from "react";
 
 export type RotateDirection = "left" | "right";
@@ -301,8 +300,8 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
   };
 
   const getLocalStorage = () => {
-    const dateKey = getDateKeyFromUrl();
-    const storageKey = `puzzle-${dateKey}`;
+    const id = initialPuzzle?.id ?? "unknown";
+    const storageKey = `puzzle-${id}`;
     const savedGameStateUnprocessed = localStorage.getItem(storageKey);
     let processedGameState: SavedGameState[] = [];
 
@@ -315,7 +314,7 @@ export function useGameLogic(initialPuzzle: PuzzleType | null) {
     }
 
     return {
-      dateKey,
+      id,
       storageKey,
       savedGameState: processedGameState,
       numberOfAttempts: processedGameState.length,

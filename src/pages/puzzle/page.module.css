@@ -18,13 +18,6 @@
   font-size: 2rem;
 }
 
-.date {
-  margin: 0;
-  color: var(--joelbackground-font);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
 .loading {
   display: flex;
   align-items: center;
