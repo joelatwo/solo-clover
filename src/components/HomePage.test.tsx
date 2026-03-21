@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import HomePage from "./HomePage";
 
+const diveInButtonMatcher = /let.*dive in/i;
+
 describe("HomePage", () => {
   beforeEach(() => {
     localStorage.clear();
@@ -29,7 +31,7 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("link", { name: /let's dive in/i }),
+      screen.getByRole("link", { name: diveInButtonMatcher }),
     ).toHaveAttribute("href", "/puzzle/0");
   });
 
@@ -53,7 +55,7 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("link", { name: /let's dive in/i }),
+      screen.getByRole("link", { name: diveInButtonMatcher }),
     ).toHaveAttribute("href", "/puzzle/1");
   });
 
@@ -93,7 +95,7 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByRole("link", { name: /let's dive in/i }),
+      screen.getByRole("link", { name: diveInButtonMatcher }),
     ).toHaveAttribute("href", "/puzzle/1");
   });
 });

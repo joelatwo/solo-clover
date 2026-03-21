@@ -21,8 +21,8 @@ const savedGameState: SavedGameState[] = [
 ];
 
 const getLocalStorage = () => ({
-  id: "3-18-2026",
-  storageKey: "puzzle-3-18-2026",
+  id: "3",
+  storageKey: "puzzle-3",
   savedGameState,
   numberOfAttempts: 1,
 });
@@ -51,7 +51,7 @@ describe("ShareButton", () => {
 
     await waitFor(() => {
       expect(writeText).toHaveBeenCalledWith(
-        "Solo Clover 3-18-2026: 2 Points\n🟩🟥\n🟩🟥",
+        "Solo Clover Puzzle #3: 2 Points\n🟩🟥\n🟩🟥",
       );
     });
 

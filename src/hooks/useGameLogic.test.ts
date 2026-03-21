@@ -3,7 +3,7 @@ import { useGameLogic } from "./useGameLogic";
 import { PuzzleType } from "@/types/game";
 
 const puzzleFixture: PuzzleType = {
-  id: "p1",
+  id: "0",
   cards: [
     { id: "tl", words: ["TT", "a", "b", "LL"], rotation: 0 },
     { id: "tr", words: ["TRT", "TRR", "c", "d"], rotation: 0 },
@@ -129,7 +129,7 @@ describe("useGameLogic", () => {
     expect(result.current.score).toBe(6);
     expect(result.current.numberOfAttempts).toBe(1);
 
-    const saved = JSON.parse(localStorage.getItem("puzzle-1-1-2026") || "[]");
+    const saved = JSON.parse(localStorage.getItem("puzzle-0") || "[]");
     expect(saved).toHaveLength(1);
     expect(saved[0].cardsCorrectness).toEqual({
       topLeft: true,
@@ -203,13 +203,13 @@ describe("useGameLogic", () => {
   });
 
   it("returns empty saved state when localStorage is malformed", () => {
-    localStorage.setItem("puzzle-1-1-2026", "not-json");
+    localStorage.setItem("puzzle-0", "not-json");
     const { result } = renderHook(() => useGameLogic(puzzleFixture));
 
     const storageState = result.current.getLocalStorage();
 
     expect(storageState.savedGameState).toEqual([]);
-    expect(storageState.storageKey).toBe("puzzle-1-1-2026");
+    expect(storageState.storageKey).toBe("puzzle-0");
   });
 
   it("showAnswer places a valid solved board and clears available cards", () => {

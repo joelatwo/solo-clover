@@ -38,7 +38,6 @@ export const getStaticProps: GetStaticProps = (context) => {
   const id = getIdAsNumber(context?.params?.id);
   const puzzle = data[id];
   if (puzzle) {
-    console.log(puzzle);
     return { props: { puzzle: RandomizePuzzleSetup(puzzle), id: id } };
   }
 

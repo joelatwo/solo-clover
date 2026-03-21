@@ -20,7 +20,7 @@ jest.mock("react-dnd-html5-backend", () => ({
 }));
 
 const initialPuzzle: PuzzleType = {
-  id: "2026-01-01",
+  id: "0",
   cards: [
     { id: "tl", words: ["TT", "a", "b", "LL"], rotation: 0 },
     { id: "tr", words: ["TRT", "TRR", "c", "d"], rotation: 0 },
@@ -57,7 +57,7 @@ const renderGame = () =>
 describe("WordPuzzleGame UI interactions", () => {
   beforeEach(() => {
     localStorage.clear();
-    window.history.pushState({}, "", "/puzzle/1-1-2026");
+    window.history.pushState({}, "", "/puzzle/0");
   });
 
   it("does not show Share until the completion modal opens", () => {
@@ -80,7 +80,7 @@ describe("WordPuzzleGame UI interactions", () => {
   });
 
   it("clicking Show Solution fills all slots using real components", async () => {
-    localStorage.setItem("puzzle-1-1-2026", JSON.stringify(completedAttempts));
+    localStorage.setItem("puzzle-0", JSON.stringify(completedAttempts));
 
     renderGame();
 

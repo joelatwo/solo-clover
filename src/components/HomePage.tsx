@@ -99,7 +99,7 @@ export default function HomePage() {
             </div>
           </div>
           <Link href={`/puzzle/${nextPuzzleIndex}`} className={styles.modeCard}>
-            <div className={styles.modeButton}>Let's Dive In</div>
+            <div className={styles.modeButton}>Let&apos;s Dive In</div>
           </Link>
         </section>
 
