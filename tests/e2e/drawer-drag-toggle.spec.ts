@@ -3,6 +3,27 @@ import { expect, Page, test } from "@playwright/test";
 const getDrawerToggle = (page: Page) =>
   page.getByRole("button", { name: "Toggle available cards" }).first();
 
+const loadPuzzlePage = async (page: Page): Promise<void> => {
+  const maxAttempts = 3;
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    await page.goto("/puzzle/0", { waitUntil: "domcontentloaded" });
+
+    const drawerToggle = getDrawerToggle(page);
+    const isDrawerVisible = await drawerToggle
+      .isVisible({ timeout: 4000 })
+      .catch(() => false);
+
+    if (isDrawerVisible) {
+      return;
+    }
+
+    await page.waitForTimeout(250);
+  }
+
+  throw new Error("Puzzle page did not load expected controls after retries.");
+};
+
 const ensureDrawerClosed = async (page: Page): Promise<void> => {
   const toggle = getDrawerToggle(page);
   await expect(toggle).toBeVisible();
@@ -21,7 +42,7 @@ test("card drawer closes and reopens while dragging from drawer", async ({
     localStorage.clear();
   });
 
-  await page.goto("/puzzle/3-1-2026");
+  await loadPuzzlePage(page);
 
   const drawer = page.locator('[class*="cardBar"]').first();
   const drawerToggle = getDrawerToggle(page);
@@ -63,7 +84,7 @@ test("card drawer reopens when dragging placed card toward sidebar", async ({
     localStorage.clear();
   });
 
-  await page.goto("/puzzle/3-1-2026");
+  await loadPuzzlePage(page);
 
   const drawer = page.locator('[class*="cardBar"]').first();
   const drawerToggle = getDrawerToggle(page);
