@@ -13,6 +13,8 @@ export function getStaticPaths() {
       id: String(index),
     },
   }));
+
+  console.log("\n\nTotal Puzzles: ", gameData.length);
   return { paths, fallback: false };
 }
 
