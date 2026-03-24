@@ -540,6 +540,42 @@ const data: PuzzleType[] = [
       bottom: { clue: "Theater", words: ["themes", "muster"] },
     },
   },
+  {
+    id: "3-16-2025",
+    cards: [
+      {
+        id: "card0",
+        rotation: 0,
+        words: ["profiles", "kind", "occupied", "newspaper"],
+      },
+      {
+        id: "card1",
+        rotation: 0,
+        words: ["choice", "timer", "appliances", "neat"],
+      },
+      {
+        id: "card2",
+        rotation: 0,
+        words: ["shopping", "under", "peers", "deemed"],
+      },
+      {
+        id: "card3",
+        rotation: 0,
+        words: ["fast", "radios", "town", "maintaining"],
+      },
+      {
+        id: "card4",
+        rotation: 0,
+        words: ["fraud", "babies", "vegetarian", "then"],
+      },
+    ],
+    solutions: {
+      top: { clue: "Options", words: ["profiles", "choice"] },
+      right: { clue: "Clock", words: ["timer", "maintaining"] },
+      left: { clue: "Publication", words: ["newspaper", "under"] },
+      bottom: { clue: "Spree", words: ["fast", "shopping"] },
+    },
+  },
 ];
 
 export default data;
