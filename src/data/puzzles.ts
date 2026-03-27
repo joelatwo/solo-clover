@@ -576,6 +576,42 @@ const data: PuzzleType[] = [
       bottom: { clue: "Spree", words: ["fast", "shopping"] },
     },
   },
+  {
+    id: "3-17-2025",
+    cards: [
+      {
+        id: "card0",
+        rotation: 0,
+        words: ["teenager", "according", "slope", "forgotten"],
+      },
+      {
+        id: "card1",
+        rotation: 0,
+        words: ["army", "aerospace", "sunglasses", "opposed"],
+      },
+      {
+        id: "card2",
+        rotation: 0,
+        words: ["names", "office", "frontpage", "mediterranean"],
+      },
+      {
+        id: "card3",
+        rotation: 0,
+        words: ["myself", "amount", "fireplace", "attachments"],
+      },
+      {
+        id: "card4",
+        rotation: 0,
+        words: ["upstart", "middle", "constructed", "immune"],
+      },
+    ],
+    solutions: {
+      top: { clue: "Turtle", words: ["teenager", "army"] },
+      right: { clue: "Satellite", words: ["aerospace", "office"] },
+      left: { clue: "Email", words: ["forgotten", "attachments"] },
+      bottom: { clue: "Home", words: ["frontpage", "fireplace"] },
+    },
+  },
 ];
 
 export default data;

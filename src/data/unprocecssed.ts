@@ -2,42 +2,6 @@ import { PuzzleType } from "@/types/game";
 
 export const data: PuzzleType[] = [
   {
-    id: "3-17-2025",
-    cards: [
-      {
-        id: "card0",
-        rotation: 0,
-        words: ["those", "according", "slope", "enhancing"],
-      },
-      {
-        id: "card1",
-        rotation: 0,
-        words: ["bodies", "aerospace", "sunglasses", "opposed"],
-      },
-      {
-        id: "card2",
-        rotation: 0,
-        words: ["names", "networking", "frontpage", "mediterranean"],
-      },
-      {
-        id: "card3",
-        rotation: 0,
-        words: ["himself", "amount", "fireplace", "attachments"],
-      },
-      {
-        id: "card4",
-        rotation: 0,
-        words: ["upskirts", "pmid", "constructed", "immune"],
-      },
-    ],
-    solutions: {
-      top: { clue: "Cadavers", words: ["those", "bodies"] },
-      right: { clue: "Satellite", words: ["aerospace", "networking"] },
-      left: { clue: "Strengthening", words: ["enhancing", "attachments"] },
-      bottom: { clue: "Home", words: ["frontpage", "fireplace"] },
-    },
-  },
-  {
     id: "3-18-2025",
     cards: [
       {
